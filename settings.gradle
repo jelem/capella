@@ -1,0 +1,11 @@
+rootProject.name = 'Java Elementary Homework'
+
+def rootDir = new File('.')
+rootDir.eachDirMatch ~/task_\d+\.*\d*/, {
+  def gradleIgnoreLessonFile = new File(it.path + File.separator + '.ignoreMe')
+  if (!gradleIgnoreLessonFile.exists()) {
+    it.eachDirMatch ~/^(?!acceptanceTests|john.doe).*$/, {
+		include(it.path.substring(2))
+    }
+  }
+}
