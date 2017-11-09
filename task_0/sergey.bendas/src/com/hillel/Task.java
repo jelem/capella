@@ -12,11 +12,17 @@ public class Task {
     
     int arrayLength = scan.nextInt();
     
-    int[] array = new int[arrayLength];
+    System.out.print("Enter width: ");
+    
+    int arrayWidth = scan.nextInt();
+    
+    int[][] array = new int[arrayLength][arrayWidth];
     
     for(int i = 0; i < array.length; i++) {
-      System.out.print("Enter element #" + i + " : ");
-      array[i] = scan.nextInt();
+      for(int j = 0; j < array[i].length; j++) {
+        System.out.print("Enter element at (" + i + "; " + j + ") : ");
+        array[i][j] = scan.nextInt();
+      }
     }        
   }
 }
