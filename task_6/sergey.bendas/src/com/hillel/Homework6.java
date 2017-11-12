@@ -16,7 +16,6 @@ public class Homework6 {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter task number: ");
     byte task = scanner.nextByte();
-
     switch (task) {
       case 1:
         task1();
@@ -62,7 +61,7 @@ public class Homework6 {
 
   private static void task2() {
     int[] array = createArrayWithEnteredLength();
-    array = fillArrayFromOneToN(array);
+    fillArrayFromOneToN(array);
     printArray(array);
   }
 
@@ -106,11 +105,10 @@ public class Homework6 {
     return new int[len];
   }
 
-  private static int[] fillArrayFromOneToN(int[] array) {
+  private static void fillArrayFromOneToN(int[] array) {
     for (int i = 0; i < array.length; i++) {
       array[i] = i + 1;
     }
-    return array;
   }
 
   private static void fillArrayFromNToOne(int[] array) {
