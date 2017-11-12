@@ -13,7 +13,6 @@ public class Homework6 {
   }
 
   private static void selectTaskNumber() {
-
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter task number: ");
     byte task = scanner.nextByte();
