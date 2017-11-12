@@ -1,3 +1,4 @@
-# Homework for Java Elementary
+# Task 1 - Find factorial
 
-[![Build Status](https://travis-ci.org/jelem/capella.svg?branch=master)](https://travis-ci.org/jelem/capella)
+Factorial of a number **n** is:  
+n! = 1 * 2 * 3 * .. * n
