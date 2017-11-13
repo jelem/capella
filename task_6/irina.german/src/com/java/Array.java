@@ -6,13 +6,13 @@ public class Array {
 
     }
 
-    public void array1_1 (int[] ar){    //1 вариант
+    public void fiveFromTenArray_1 (int[] ar){    //1 вариант
         for (int i = 0 ; i< 5; i++ ){
             System.out.println(ar[i]);
         }
     }
 
-    public void array1_2 (int a, int b){    //2 вариант (a = 5, b = 10)
+    public void fiveFromTenArray_2 (int a, int b){    //2 вариант (a = 5, b = 10)
 
         int[] ar = new int[b];
         for (int i = 0 ; i< b; i++ ) {
@@ -23,7 +23,7 @@ public class Array {
         }
     }
 
-    public int[] array2 (int n){
+    public int[] nElementsArray_1 (int n){
         int[] ar = new int[n];
 
         for (int i = 0 ; i< n; i++ ){
@@ -33,7 +33,7 @@ public class Array {
     }
 
 
-    public int[] array3 (int n){
+    public int[] nElementsArray_2 (int n){
         int[] ar = new int[n];
         for (int i = 0 ; i< n; i++ ){
             ar[i] = n - i;
@@ -42,7 +42,7 @@ public class Array {
     }
 
 
-    public void array4 (int[] ar){
+    public void divisionBy3Array (int[] ar){
          for (int i = 0 ; i< ar.length; i++ ){
             if (ar[i] % 3 == 0) {
                 System.out.println(ar[i]);
@@ -51,7 +51,7 @@ public class Array {
     }
 
 
-    public void array5 (int[] ar){
+    public void evenElementArray (int[] ar){
         for (int i = 0 ; i< ar.length; i++ ){
             if (ar[i] % 2 == 0) {
                 System.out.println(ar[i]);
@@ -60,7 +60,7 @@ public class Array {
     }
 
 
-    public int array6 (int[] ar){
+    public int sumOfElementsArray (int[] ar){
         int sum = 0;
         for (int i = 0 ; i< ar.length; i++ ){
             sum += ar[i];
@@ -69,7 +69,7 @@ public class Array {
     }
 
 
-    public int array7 (int[] ar){
+    public int averageOfArray (int[] ar){
         int sum = 0;
         for (int i = 0 ; i< ar.length; i++ ){
             sum += ar[i];
@@ -79,7 +79,7 @@ public class Array {
     }
 
 
-    public int array8 (int[] ar) {
+    public int maxMinSumArray (int[] ar) {
         int min = ar[0];
         int max = ar[0];
         for (int i = 1; i < ar.length; i++) {
@@ -94,7 +94,7 @@ public class Array {
     }
 
 
-    public int array9 (int[] ar) {
+    public int multiplicationArray (int[] ar) {
         int mult = 1;
         for (int i = 0; i < ar.length; i++) {
             if (ar[i] % 2 != 0) {
@@ -104,7 +104,7 @@ public class Array {
         return mult;
     }
 
-    public void array10 (int[] ar, int n) {
+    public void positionOfNArray (int[] ar, int n) {
 
         int a = 0;
         boolean isExist = false;
