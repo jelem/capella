@@ -6,3 +6,4 @@ build/
 gradlew
 gradlew.bat
 out/
+target/
