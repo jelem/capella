@@ -1,4 +1,4 @@
-package com;
+package com.hillel;
 
 import java.util.Scanner;
 
