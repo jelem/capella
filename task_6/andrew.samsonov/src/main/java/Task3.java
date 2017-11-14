@@ -1,7 +1,7 @@
 /**
  * Created by Andrew on 14.11.2017.
  */
-public class Task_3 {
+public class Task3 {
 
   public static void main(String[] args) {
     int n = 9;
