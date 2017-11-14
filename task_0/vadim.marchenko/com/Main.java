@@ -1,4 +1,4 @@
-package src;
+package com;
 
 import java.util.Scanner;
 
@@ -44,19 +44,11 @@ public class Main {
     }
 
     public static boolean isEven(int number) {
-        if (number % 2 == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (number % 2 == 0);
     }
 
     public static boolean moduloOperation(int firstInteger, int secondInteger) {
-        if (firstInteger % secondInteger == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (firstInteger % secondInteger == 0);
     }
 
     public static int closestToTen(int firstInteger, int secondInteger) {
