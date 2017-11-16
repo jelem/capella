@@ -8,15 +8,23 @@ import org.junit.Test;
 public class ExerciseTest {
 
   @Test
-  public void sholdSumarize() {
-    int result = Exercise.sumOfDigits(123543);
-    assertEquals(18, result);
+  public void shouldSummarize() {
+    int result1 = Exercise.sumOfDigits(123543);
+    assertEquals(18, result1);
+    int result2 = Exercise.sumOfDigits(65812348);
+    assertEquals(37, result2);
+    int result3 = Exercise.sumOfDigits(8465187);
+    assertEquals(39, result3);
   }
 
   @Test
-  public void sholdCountFactorial() {
-    int result = Exercise.factorial(5);
-    assertEquals(120, result);
+  public void shouldCountFactorial() {
+    int result1 = Exercise.factorial(5);
+    int result2 = Exercise.factorial(7);
+    int result3 = Exercise.factorial(9);
+    assertEquals(120, result1);
+    assertEquals(5040, result2);
+    assertEquals(362880, result3);
   }
 
   @Test

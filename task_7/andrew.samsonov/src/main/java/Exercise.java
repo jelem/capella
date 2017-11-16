@@ -6,7 +6,7 @@ import com.sun.org.apache.xpath.internal.SourceTree;
 public class Exercise {
 
   public static void main(String[] args) {
-    System.out.println(sumOfDigits(123543));
+    System.out.println(sumOfDigits(8465187));
   }
 
   public static int sumOfDigits(int number) {
