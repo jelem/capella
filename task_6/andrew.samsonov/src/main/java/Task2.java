@@ -15,7 +15,7 @@ public class Task2 {
 
   private static int[] init(int[] array) {
     for (int i = 0; i < array.length; i++) {
-      array[i] = i+1;
+      array[i] = i + 1;
     }
     return array;
   }
