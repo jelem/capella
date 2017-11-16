@@ -4,8 +4,8 @@
 public class Task3 {
 
   public static void main(String[] args) {
-    int n = 9;
-    int[] array = new int[n];
+    int length = 9;
+    int[] array = new int[length];
     initReverse(array);
 
     for (int i = 0; i < array.length; i++) {
@@ -13,11 +13,11 @@ public class Task3 {
     }
   }
 
-  private static int[] initReverse(int[] ar) {
-    for (int i = 0, j = ar.length; i < ar.length; i++, j--) {
-      ar[i] = j;
+  private static int[] initReverse(int[] array) {
+    for (int i = 0, j = array.length; i < array.length; i++, j--) {
+      array[i] = j;
     }
-    return ar;
+    return array;
   }
 
 }

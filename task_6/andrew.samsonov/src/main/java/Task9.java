@@ -4,8 +4,8 @@
 public class Task9 {
 
   public static void main(String[] args) {
-    int n = 7;
-    int[] array = new int[n];
+    int length = 7;
+    int[] array = new int[length];
     init(array);
     int multiplication = 1;
 
@@ -20,11 +20,11 @@ public class Task9 {
     System.out.println("Multiplication: " + multiplication);
   }
 
-  private static int[] init(int[] ar) {
-    for (int i = 0; i < ar.length; i++) {
-      ar[i] = i + 1;
+  private static int[] init(int[] array) {
+    for (int i = 0; i < array.length; i++) {
+      array[i] = i + 1;
     }
-    return ar;
+    return array;
   }
 
 }

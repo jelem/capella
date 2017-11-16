@@ -4,8 +4,8 @@
 public class Task5 {
 
   public static void main(String[] args) {
-    int n = 25;
-    int[] array = new int[n];
+    int length = 25;
+    int[] array = new int[length];
     init(array);
 
     for (int i = 0; i < array.length; i++) {
@@ -16,11 +16,11 @@ public class Task5 {
     }
   }
 
-  private static int[] init(int[] ar) {
-    for (int i = 0; i < ar.length; i++) {
-      ar[i] = i + 1;
+  private static int[] init(int[] array) {
+    for (int i = 0; i < array.length; i++) {
+      array[i] = i + 1;
     }
-    return ar;
+    return array;
   }
 
 }

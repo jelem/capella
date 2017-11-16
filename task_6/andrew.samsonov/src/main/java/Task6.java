@@ -4,9 +4,9 @@
 public class Task6 {
 
   public static void main(String[] args) {
-    int n = 5;
+    int length = 5;
     int sum = 0;
-    int[] array = new int[n];
+    int[] array = new int[length];
     init(array);
 
     for (int i = 0; i < array.length; i++) {
@@ -17,11 +17,11 @@ public class Task6 {
     System.out.println("Sum: " + sum);
   }
 
-  private static int[] init(int[] ar) {
-    for (int i = 0; i < ar.length; i++) {
-      ar[i] = i + 1;
+  private static int[] init(int[] array) {
+    for (int i = 0; i < array.length; i++) {
+      array[i] = i + 1;
     }
-    return ar;
+    return array;
   }
 
 
