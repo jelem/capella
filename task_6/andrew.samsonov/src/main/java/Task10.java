@@ -22,16 +22,16 @@ public class Task10 {
     return array;
   }
 
-  private static void search(int[] array, int n) {
+  private static void search(int[] array, int number) {
     for (int i = 0; i < array.length; i++) {
-      if (array[i] == n) {
+      if (array[i] == number) {
         System.out.println();
-        System.out.print(array[i] + " in the " + i +" position");
+        System.out.print(array[i] + " in the " + i + " position");
         return;
       }
     }
     System.out.println();
-    System.out.print(n + " doesn\'t exist");
+    System.out.print(number + " doesn\'t exist");
   }
 
 }
