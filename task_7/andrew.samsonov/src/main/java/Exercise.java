@@ -1,9 +1,7 @@
-import com.sun.org.apache.xpath.internal.SourceTree;
-
-/**
- * Created by Andrew on 16.11.2017.
- */
 public class Exercise {
+
+  private static final String PERIMETER = "perimeter";
+  private static final String SQUARE = "square";
 
   public static void main(String[] args) {
     System.out.println(sumOfDigits(8465187));
@@ -29,13 +27,11 @@ public class Exercise {
   public static int triangleCalculation(int side, String formula) {
     int result = 0;
     switch (formula) {
-      case "perimeter":
+      case PERIMETER:
         result = 4 * side;
         break;
-      case "square":
+      case SQUARE:
         result = side * side;
-        break;
-      default:
         break;
     }
     return result;
