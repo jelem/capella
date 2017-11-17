@@ -33,6 +33,7 @@ public class Exercise {
       case SQUARE:
         result = side * side;
         break;
+      default:
     }
     return result;
   }
