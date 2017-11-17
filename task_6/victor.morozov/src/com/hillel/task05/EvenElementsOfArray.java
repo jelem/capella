@@ -12,14 +12,14 @@ public class EvenElementsOfArray {
       n = scanner.nextInt();
     } while (n <= 0);
 
-    int[] array = ArrayInit(n);
+    int[] array = arrayInit(n);
 
-    System.out.println(ArrayToString(array));
+    System.out.println(arrayToString(array));
 
-    EvenElements(array);
+    evenElements(array);
   }
 
-  private static void EvenElements(int[] array) {
+  private static void evenElements(int[] array) {
     System.out.println("Четные элементы массива");
     for (int i = 0; i < array.length; i++) {
       if (array[i] % 2 == 0) {
@@ -28,7 +28,7 @@ public class EvenElementsOfArray {
     }
   }
 
-  private static String ArrayToString(int[] array) {
+  private static String arrayToString(int[] array) {
     String str = "";
 
     for(int i = 0; i < array.length; ++i) {
@@ -37,7 +37,7 @@ public class EvenElementsOfArray {
     return str;
   }
 
-  private static int[] ArrayInit(int n) {
+  private static int[] arrayInit(int n) {
     int[] arr = new int[n];
 
     for(int i = 0; i < arr.length; i++) {

@@ -5,11 +5,11 @@ public class FirstFiveElementOfArray {
   public static void main(String[] args) {
     int[] array = new int[10];
 
-    ArrayInit(array);
+    arrayInit(array);
 
-    ArrayPrint(array, 5);
+    arrayPrint(array, 5);
   }
-  private static void ArrayInit (int[] array) {
+  private static void arrayInit (int[] array) {
     for (int i = 0; i < array.length; i++) {
       array[i] = i;
     }
@@ -19,7 +19,7 @@ public class FirstFiveElementOfArray {
     }
     System.out.println();
   }
-  private static void ArrayPrint (int[] array, int index) {
+  private static void arrayPrint (int[] array, int index) {
     if (index < array.length) {
       System.out.print("First " + index + " elements: ");
       for (int i = 0; i < index; i++) {

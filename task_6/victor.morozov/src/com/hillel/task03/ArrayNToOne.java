@@ -14,12 +14,12 @@ public class ArrayNToOne {
       n = scanner.nextInt();
     } while (n <= 0);
 
-    int[] array = ArrayInit(n);
+    int[] array = arrayInit(n);
 
-    System.out.print(ArrayToStr(array));
+    System.out.print(arrayToStr(array));
   }
 
-  private static String ArrayToStr(int[] array) {
+  private static String arrayToStr(int[] array) {
     String str = "";
     for (int i = 0; i < array.length; i++) {
       str += array[i] + " ";
@@ -27,7 +27,7 @@ public class ArrayNToOne {
     return str;
   }
 
-  private static int[] ArrayInit(int n) {
+  private static int[] arrayInit(int n) {
     int[] arr = new int[n];
     for (int i = 0; i < arr.length; i++) {
       arr[i] = n--;

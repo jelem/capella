@@ -6,14 +6,14 @@ public class SumElementsOfArray {
   public static void main(String[] args) {
     System.out.println("6. Найдите сумму элементов массива");
 
-    int[] array = ArrayInit();
+    int[] array = arrayInit();
 
-    System.out.println(ArrayToString(array));
+    System.out.println(arrayToString(array));
 
-    System.out.println("Сумма элементов массива: " + ArraySumElements(array));
+    System.out.println("Сумма элементов массива: " + arraySumElements(array));
   }
 
-  private static int ArraySumElements(int[] array) {
+  private static int arraySumElements(int[] array) {
     int sum = 0;
     for (int elem : array) {
       sum += elem;
@@ -21,7 +21,7 @@ public class SumElementsOfArray {
     return sum;
   }
 
-  private static String ArrayToString(int[] array) {
+  private static String arrayToString(int[] array) {
     String str = "";
     for(int i = 0; i < array.length; ++i) {
       str = str + array[i] + " ";
@@ -29,7 +29,7 @@ public class SumElementsOfArray {
     return str;
   }
 
-  private static int[] ArrayInit() {
+  private static int[] arrayInit() {
     int n = 0;
     Scanner scanner = new Scanner(System.in);
 

@@ -13,11 +13,11 @@ public class ArrayOneToN {
       n = scanner.nextInt();
     } while (n <= 0);
 
-    int[] array = ArrayInit(n);
+    int[] array = arrayInit(n);
 
-    System.out.print(ArrayToString(array));
+    System.out.print(arrayToString(array));
   }
-  private static int[] ArrayInit(int n) {
+  private static int[] arrayInit(int n) {
     int[] arr = new int[n];
 
     for(int i = 0; i < arr.length; i++) {
@@ -26,7 +26,7 @@ public class ArrayOneToN {
     return arr;
   }
 
-  private static String ArrayToString(int[] arr) {
+  private static String arrayToString(int[] arr) {
     String str = "";
 
     for(int i = 0; i < arr.length; ++i) {

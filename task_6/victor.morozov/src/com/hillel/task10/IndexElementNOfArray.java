@@ -7,15 +7,15 @@ public class IndexElementNOfArray {
   public static void main(String[] args) {
     System.out.println("10. Определите позицию (индекс) элемента с числом n, если такого числа нет, выведите соответствующее сообщение");
 
-    int[] array = ArrayInit();
+    int[] array = arrayInit();
 
-    int n = InputN();
+    int n = inputN();
 
     System.out.println();
-    System.out.println(IndexElement(array, n));
+    System.out.println(indexElement(array, n));
   }
 
-  private static String IndexElement(int[] array, int n) {
+  private static String indexElement(int[] array, int n) {
     String index = "";
     for (int i = 0; i < array.length; i++) {
       if (n == array[i]) {
@@ -29,7 +29,7 @@ public class IndexElementNOfArray {
     }
   }
 
-  private static int InputN() {
+  private static int inputN() {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Введите искомый элемент: ");
     int result = scanner.nextInt();
@@ -37,7 +37,7 @@ public class IndexElementNOfArray {
     return result;
   }
 
-  private static int[] ArrayInit() {
+  private static int[] arrayInit() {
     int n = 0;
     Scanner scanner = new Scanner(System.in);
 

@@ -13,14 +13,14 @@ public class ArrayElementsDivThree {
       n = scanner.nextInt();
     } while (n <= 0);
 
-    int[] array = ArrayInit(n);
+    int[] array = arrayInit(n);
 
-    System.out.println(ArrayToString(array));
+    System.out.println(arrayToString(array));
 
-    ElementsDivThree(array);
+    elementsDivThree(array);
   }
 
-  private static void ElementsDivThree(int[] array) {
+  private static void elementsDivThree(int[] array) {
     System.out.println("Элементы массива, которые делятся на 3 без остатка");
     for (int i = 0; i < array.length; i++) {
       if (array[i] % 3 == 0) {
@@ -29,7 +29,7 @@ public class ArrayElementsDivThree {
     }
   }
 
-  private static String ArrayToString(int[] array) {
+  private static String arrayToString(int[] array) {
     String str = "";
 
     for(int i = 0; i < array.length; ++i) {
@@ -38,7 +38,7 @@ public class ArrayElementsDivThree {
     return str;
   }
 
-  private static int[] ArrayInit(int n) {
+  private static int[] arrayInit(int n) {
     int[] arr = new int[n];
 
     for(int i = 0; i < arr.length; i++) {

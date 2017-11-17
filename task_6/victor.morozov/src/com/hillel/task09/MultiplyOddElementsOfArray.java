@@ -6,14 +6,14 @@ public class MultiplyOddElementsOfArray {
   public static void main(String[] args) {
     System.out.println("9. Определите произведение всех нечетных элементов массива");
 
-    int[] array = ArrayInit();
+    int[] array = arrayInit();
 
-    System.out.println(ArrayToString(array));
+    System.out.println(arrayToString(array));
 
-    System.out.println("Произведение всех нечетных элементов массива: " + MultiplyOddElements(array));
+    System.out.println("Произведение всех нечетных элементов массива: " + multiplyOddElements(array));
   }
 
-  private static int MultiplyOddElements(int[] array) {
+  private static int multiplyOddElements(int[] array) {
     int result = 1;
     for (int i = 0; i < array.length; i++) {
       if (array[i] % 2 != 0) {
@@ -23,7 +23,7 @@ public class MultiplyOddElementsOfArray {
     return result;
   }
 
-  private static String ArrayToString(int[] array) {
+  private static String arrayToString(int[] array) {
     String str = "";
     for(int i : array) {
       str += i + " ";
@@ -31,7 +31,7 @@ public class MultiplyOddElementsOfArray {
     return str;
   }
 
-  private static int[] ArrayInit() {
+  private static int[] arrayInit() {
     int n = 0;
     Scanner scanner = new Scanner(System.in);
 

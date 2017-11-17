@@ -6,14 +6,14 @@ public class AverageFromElementsOfArray {
   public static void main(String[] args) {
     System.out.println("7. Найдите среднее арифметическое элементов массива");
 
-    int[] array = ArrayInit();
+    int[] array = arrayInit();
 
-    System.out.println(ArrayToString(array));
+    System.out.println(arrayToString(array));
 
-    System.out.println("Среднее арифметическое элементов массива: " + ArrayAverageElements(array));
+    System.out.println("Среднее арифметическое элементов массива: " + arrayAverageElements(array));
   }
 
-  private static int ArrayAverageElements(int[] array) {
+  private static int arrayAverageElements(int[] array) {
     int sum = 0;
     for (int elem : array) {
       sum += elem;
@@ -21,7 +21,7 @@ public class AverageFromElementsOfArray {
     return sum / array.length;
   }
 
-  private static String ArrayToString(int[] array) {
+  private static String arrayToString(int[] array) {
     String str = "";
     for(int i = 0; i < array.length; ++i) {
       str = str + array[i] + " ";
@@ -29,7 +29,7 @@ public class AverageFromElementsOfArray {
     return str;
   }
 
-  private static int[] ArrayInit() {
+  private static int[] arrayInit() {
     int n = 0;
     Scanner scanner = new Scanner(System.in);
 
