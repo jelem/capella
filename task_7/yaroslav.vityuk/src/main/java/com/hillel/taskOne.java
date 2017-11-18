@@ -1,6 +1,6 @@
 package com.hillel;
 
-public class taskOne {
+public class TaskOne {
 
   public static int sumOfDigits(int number) {
     int sum = 0;
