@@ -43,10 +43,10 @@ public class Arrays {
         int arrayMax = createArray()[0];
         for (int i = 0; i < createArray().length; i++) {
             if (arrayMin > createArray()[i]) {
-                    arrayMin = createArray()[i];
+                arrayMin = createArray()[i];
             }
             if (arrayMax < createArray()[i]) {
-                    arrayMax = createArray()[i];
+                arrayMax = createArray()[i];
             }
         }
         System.out.println("Минимальный элемент этого массива : " + arrayMin);
