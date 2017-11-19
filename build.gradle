@@ -41,7 +41,7 @@ subprojects {
   
   checkstyle {
     configFile = rootProject.file('config/checkstyle/checkstyle.xml')
-    checkstyleTest.enabled = false
+    checkstyleTest.enabled = true
     checkstyleAcceptanceTest.enabled = false
     toolVersion = '7.1.2'
   }
