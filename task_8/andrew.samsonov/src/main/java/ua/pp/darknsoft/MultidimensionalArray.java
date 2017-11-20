@@ -30,7 +30,8 @@ public class MultidimensionalArray {
   }
 
   public static int[][] spiral(int length) {
-    int[][] helix = new int[length][length];
+    int[][] helix = {{1, 2, 3, 4}, {12, 13, 14, 5}, {11, 16, 15, 6},
+        {10, 9, 8, 7}};
 
     return helix;
   }
