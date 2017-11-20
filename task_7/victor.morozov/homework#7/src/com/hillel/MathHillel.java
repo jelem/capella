@@ -14,6 +14,9 @@ public class MathHillel {
 
   public static long factorial (long number) {
     long result = 1;
+    if (number == 0) {
+      return 1;
+    }
     if (number > 0) {
       for (int i = 1; i <= number; i++) {
         result *= i;

@@ -33,7 +33,7 @@ public class MathHillelTest {
   @Test
   public void shouldFactorialZero () {
     long result = MathHillel.factorial(0);
-    assertEquals(-1, result);
+    assertEquals(1, result);
   }
 
   @Test
