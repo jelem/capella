@@ -14,38 +14,38 @@ public class TaskTwo {
     return spiralArray;
   }
 
-  static int findElementAt(int i, int j, int len, int width) {
+  static int findElementAt(int iCoordinate, int jCoordinate, int len, int width) {
 
     return allElements(len, width)
-        - insideArraySquare(i, j, len, width)
-        - remainOfRound(i, j, len, width);
+        - insideArraySquare(iCoordinate, jCoordinate, len, width)
+        - remainOfRound(iCoordinate, jCoordinate, len, width);
   }
 
-  static int remainOfRound(int i, int j, int len, int width) {
+  static int remainOfRound(int iCoordinate, int jCoordinate, int len, int width) {
 
-    int border = findBorder(i, j, len, width);
+    int border = findBorder(iCoordinate, jCoordinate, len, width);
     int right = 0;
     int top = 0;
     int left;
     int bottom = 0;
-    switch (checkSide(i, j, len, width)) {
+    switch (checkSide(iCoordinate, jCoordinate, len, width)) {
       case "top":
-        top = width - j - 1 - (border - 1);
+        top = width - jCoordinate - 1 - (border - 1);
         right = len - 1 - 2 * (border - 1);
         bottom = width - 1 - 2 * (border - 1);
         left = len - 2 - 2 * (border - 1);
         break;
       case "right":
-        right = len - i - 1 - (border - 1);
+        right = len - iCoordinate - 1 - (border - 1);
         bottom = width - 1 - 2 * (border - 1);
         left = len - 2 - 2 * (border - 1);
         break;
       case "bottom":
-        bottom = j + 1 - border;
+        bottom = jCoordinate + 1 - border;
         left = len - 2 - 2 * (border - 1);
         break;
       case "left":
-        left = i - border;
+        left = iCoordinate - border;
         break;
       default:
         return 0;
@@ -53,27 +53,27 @@ public class TaskTwo {
     return left + top + right + bottom;
   }
 
-  private static String checkSide(int i, int j, int len, int width) {
-    int border = findBorder(i, j, len, width);
-    if (i < border) {
+  private static String checkSide(int iCoordinate, int jCoordinate, int len, int width) {
+    int border = findBorder(iCoordinate, jCoordinate, len, width);
+    if (iCoordinate < border) {
       return "top";
-    } else if (j >= width - border) {
+    } else if (jCoordinate >= width - border) {
       return "right";
-    } else if (i >= len - border) {
+    } else if (iCoordinate >= len - border) {
       return "bottom";
     } else {
       return "left";
     }
   }
 
-  static int insideArraySquare(int i, int j, int len, int width) {
-    int border = findBorder(i, j, len, width);
+  static int insideArraySquare(int iCoordinate, int jCoordinate, int len, int width) {
+    int border = findBorder(iCoordinate, jCoordinate, len, width);
     return (len - 2 * border) * (width - 2 * border);
   }
 
-  static int findBorder(int i, int j, int len, int width) {
-    int borderX = i < len / 2 ? i + 1 : len - i;
-    int borderY = j < width / 2 ? j + 1 : width - j;
+  static int findBorder(int iCoordinate, int jCoordinate, int len, int width) {
+    int borderX = iCoordinate < len / 2 ? iCoordinate + 1 : len - iCoordinate;
+    int borderY = jCoordinate < width / 2 ? jCoordinate + 1 : width - jCoordinate;
     return borderX < borderY ? borderX : borderY;
   }
 
