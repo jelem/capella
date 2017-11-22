@@ -2,10 +2,10 @@ package com.hillel;
 
 public class TryPaskal {
 
-  public static int[][] printPaskal(int n) {
-    int[][] paskalArray = new int[n][];
+  public static int[][] printPaskal(int size) {
+    int[][] paskalArray = new int[size][];
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < size; i++) {
       int[] columnsArray = new int[i + 1];
       paskalArray[i] = columnsArray;
       if (i > 0) {
