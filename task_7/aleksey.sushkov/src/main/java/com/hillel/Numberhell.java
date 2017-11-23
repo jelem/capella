@@ -4,7 +4,8 @@ public class Numberhell {
 
   public static int sumOfNumbers(int numb) {
 
-    int lastnumb = 0, res = 0;
+    int lastnumb = 0;
+    int res = 0;
     do {
       lastnumb = numb % 10;
       res += lastnumb;
@@ -30,7 +31,7 @@ public class Numberhell {
   public static int triangleCalculation(int side, String formula) {
 
     int res = 0;
-    switch(formula) {
+    switch (formula) {
       case "perimeter":
         res = side * 4;
         break;
