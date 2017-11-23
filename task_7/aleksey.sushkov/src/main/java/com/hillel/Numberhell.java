@@ -10,7 +10,8 @@ public class Numberhell {
       lastnumb = numb % 10;
       res += lastnumb;
       numb /= 10;
-    } while (numb > 0);
+    } 
+    while (numb > 0);
     return res;
   }
 
@@ -18,8 +19,7 @@ public class Numberhell {
     int res = 1;
     if (numb == 0) {
       return 1;
-    }
-    else {
+    } else {
       for (int i = 1; i <= numb; i++) {
         res *= i;
       }
