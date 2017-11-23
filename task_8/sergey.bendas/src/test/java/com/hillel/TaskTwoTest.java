@@ -44,7 +44,10 @@ public class TaskTwoTest {
 
   @Test
   public void shouldFillSpiralArray5() {
+    long before = System.nanoTime();
     int[][] result = TaskTwo.fillSpiralArray(6, 13);
+    long after = System.nanoTime();
+    System.out.println(after-before);
     int[][] testArray = {
         {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13},
         {34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 14},

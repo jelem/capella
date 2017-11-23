@@ -6,7 +6,6 @@ public class TaskOne {
     int[][] pascalArray = new int[len][];
     pascalArray[0] = new int[]{1};
     for (int i = 1; i < pascalArray.length; i++) {
-      pascalArray[i] = new int[i];
       pascalArray[i] = nextPascalLine(pascalArray[i - 1]);
     }
     return pascalArray;
