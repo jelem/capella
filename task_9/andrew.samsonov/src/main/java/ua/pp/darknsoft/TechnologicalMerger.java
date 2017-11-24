@@ -38,37 +38,28 @@ public class TechnologicalMerger {
   }
 
   private static int[] sort(int[] array) {
-    int x = 0;
-    int y = array.length - 1;
+    int xCoord = 0;
+    int yCoord = array.length - 1;
     int temp = 0;
-    while (x < y) {
-      for (int i = x; i < y; i++) {
+    while (xCoord < yCoord) {
+      for (int i = xCoord; i < yCoord; i++) {
         if (array[i] > array[i + 1]) {
           temp = array[i];
           array[i] = array[i + 1];
           array[i + 1] = temp;
         }
       }
-      y--;
-      for (int i = y; i > x; i--) {
+      yCoord--;
+      for (int i = yCoord; i > xCoord; i--) {
         if (array[i] < array[i - 1]) {
           temp = array[i];
           array[i] = array[i - 1];
           array[i - 1] = temp;
         }
       }
-      x++;
+      xCoord++;
     }
     return array;
-  }
-
-  public static void main(String[] args) {
-    int[] array1 = {7, 2};
-    int[] array2 = {9, 5, 6, 4, 1, 10, 8};
-    int[] resultArray = merge(array1, array2);
-    for (int i = 0; i < resultArray.length; i++) {
-      System.out.print(resultArray[i] + " ");
-    }
   }
 
 }
