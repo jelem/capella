@@ -38,26 +38,26 @@ public class TechnologicalMerger {
   }
 
   private static int[] sort(int[] array) {
-    int xCoord = 0;
-    int yCoord = array.length - 1;
+    int leftBorder = 0;
+    int rightBorder = array.length - 1;
     int temp = 0;
-    while (xCoord < yCoord) {
-      for (int i = xCoord; i < yCoord; i++) {
+    while (leftBorder < rightBorder) {
+      for (int i = leftBorder; i < rightBorder; i++) {
         if (array[i] > array[i + 1]) {
           temp = array[i];
           array[i] = array[i + 1];
           array[i + 1] = temp;
         }
       }
-      yCoord--;
-      for (int i = yCoord; i > xCoord; i--) {
+      rightBorder--;
+      for (int i = rightBorder; i > leftBorder; i--) {
         if (array[i] < array[i - 1]) {
           temp = array[i];
           array[i] = array[i - 1];
           array[i - 1] = temp;
         }
       }
-      xCoord++;
+      leftBorder++;
     }
     return array;
   }
