@@ -1,10 +1,10 @@
 public class Factorial {
 
   public static int factorial(int number) {
-    int f = 1;      //т.к. факториал нуля равен единице
+    int fact = 1;      //т.к. факториал нуля равен единице
     for (int i = 1; i <= number; i++) {
-      f *= i;
+      fact *= i;
     }
-    return f;
+    return fact;
   }
 }
