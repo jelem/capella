@@ -38,56 +38,56 @@ public class TaskThreeTest {
   @Test
   public void shouldIsSumInArray1() {
     int[] testArray = {1, 2, 3, 4, 8, 10};
-    boolean result = TaskThree.isSumInArray1(3, testArray);
+    boolean result = TaskThree.isSumInArray(3, testArray);
     assertThat(result, is(true));
   }
 
   @Test
   public void shouldIsSumInArray2() {
-    int[] testArray = {1, 2, 3, 4, 8, 10};
-    boolean result = TaskThree.isSumInArray1(8, testArray);
+    int[] testArray = {0, 2, 3, 5, 8, 10};
+    boolean result = TaskThree.isSumInArray(6, testArray);
     assertThat(result, is(false));
   }
 
   @Test
   public void shouldIsSumInArray3() {
     int[] testArray = {-4, -1, 0, 1, 5, 8, 11, 20};
-    boolean result = TaskThree.isSumInArray1(7, testArray);
+    boolean result = TaskThree.isSumInArray(7, testArray);
     assertThat(result, is(true));
   }
 
   @Test
   public void shouldIsSumInArray4() {
     int[] testArray = {-4, -1, 0, 5, 8, 11, 20};
-    boolean result = TaskThree.isSumInArray1(4, testArray);
+    boolean result = TaskThree.isSumInArray(4, testArray);
     assertThat(result, is(true));
   }
 
   @Test
   public void shouldIsSumInArray5() {
     int[] testArray = {-4, -1, 0, 5, 8, 11, 20};
-    boolean result = TaskThree.isSumInArray1(6, testArray);
+    boolean result = TaskThree.isSumInArray(6, testArray);
     assertThat(result, is(false));
   }
 
   @Test
   public void shouldIsSumInArray6() {
     int[] testArray = {-4, 4};
-    boolean result = TaskThree.isSumInArray1(0, testArray);
+    boolean result = TaskThree.isSumInArray(0, testArray);
     assertThat(result, is(true));
   }
 
   @Test
   public void shouldIsSumInArray7() {
     int[] testArray = {-4, 4};
-    boolean result = TaskThree.isSumInArray1(1, testArray);
+    boolean result = TaskThree.isSumInArray(1, testArray);
     assertThat(result, is(false));
   }
 
   @Test
   public void shouldIsSumInArray8() {
     int[] testArray = {1, 2, 3, 5, 5, 5, 5};
-    boolean result = TaskThree.isSumInArray1(10, testArray);
+    boolean result = TaskThree.isSumInArray(10, testArray);
     assertThat(result, is(true));
   }
 }

@@ -2,11 +2,11 @@ package com.hillel;
 
 public class TaskThree {
 
-  public static boolean isSumInArray1(int number, int[] array) {
+  public static boolean isSumInArray(int number, int[] array) {
     int indexOfValue = indexOfMaxPossibleValue(number, array);
-    for (int i = 0; i < indexOfValue; i++) {
+    for (int i = 0; i < indexOfValue - 1; i++) {
       for (int j = i; j < indexOfValue; j++) {
-        if (array[i] + array[j + 1] == number) {
+        if (i != j + 1 && array[i] + array[j + 1] == number) {
           return true;
         }
       }
