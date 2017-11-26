@@ -6,27 +6,27 @@ import org.junit.Test;
 
 public class SquareTest {
 
-	@Test
-	public void shouldCountSquare() {
+ @Test
+ public void shouldCountSquare() {
 
-		int result = Square.squareCalculation(20, "square");
+	int result = Square.squareCalculation(20, "square");
 
-		assertEquals(400, result);
-	}
+	assertEquals(400, result);
+ }
 
-	@Test
-	public void shouldCountSquare2() {
+ @Test
+ public void shouldCountSquare2() {
 
-		int result = Square.squareCalculation(20, "perimeter");
+	int result = Square.squareCalculation(20, "perimeter");
 
-		assertEquals(80, result);
-	}
+	assertEquals(80, result);
+ }
 
-	@Test
-	public void shouldCountSquare3() {
+ @Test
+ public void shouldCountSquare3() {
 
-		int result = Square.squareCalculation(20, "summa");
+	int result = Square.squareCalculation(20, "summa");
 
-		assertEquals(0, result);
-	}
+	assertEquals(0, result);
+ }
 }
