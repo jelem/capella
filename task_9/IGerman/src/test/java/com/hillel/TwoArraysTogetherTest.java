@@ -1,8 +1,9 @@
 package com.hillel;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
-import org.junit.Test;
 
 public class TwoArraysTogetherTest {
 

@@ -24,6 +24,7 @@ public class SumOfTwoNumbersTest {
 
     assertThat(result, is(true));
   }
+  
   @Test
   public void shouldCheckIfArrayContainsSum3() {
 
