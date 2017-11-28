@@ -7,12 +7,11 @@ public class ShortWords {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in, "UTF-8");
     String words = scanner.nextLine();
-    String[] strArray = words.split(" ");
-    shortThisWords(strArray);
+    shortThisWords(words);
   }
 
-
-  public static String[] shortThisWords(String[] wordsArray) {
+  public static String[] shortThisWords(String check) {
+    String[] wordsArray = stringToArray(check);
     String empty = "";
     for (int i = 0; i < wordsArray.length; i++) {
       if (wordsArray[i].length() > 4) {
@@ -25,5 +24,9 @@ public class ShortWords {
       }
     }
     return wordsArray;
+  }
+
+  public static String[] stringToArray(String words) {
+    return words.split(" ");
   }
 }
