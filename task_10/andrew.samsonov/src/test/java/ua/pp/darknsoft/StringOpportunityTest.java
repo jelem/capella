@@ -18,6 +18,7 @@ public class StringOpportunityTest {
     String testStr = StringsOpportunity.numericValueOfSymbols("internationalization");
     assertThat(testStr, is("i18n"));
   }
+
   @Test
   public void numericValueOfSymbolsTestForShort() {
     String testStr = StringsOpportunity.numericValueOfSymbols("cat");
