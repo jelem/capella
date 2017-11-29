@@ -7,7 +7,12 @@ public class StringsOpportunity {
   }
 
   public static String numericValueOfSymbols(String string) {
-    return "" + string.charAt(0) + (string.length() - 2) + string.charAt(string.length() - 1);
+    if (string.length() > 4) {
+      return "" + string.charAt(0) + (string.length() - 2) + string.charAt(string.length() - 1);
+    } else {
+      return string;
+    }
+
   }
 
   public static int palindrome(String string) {
