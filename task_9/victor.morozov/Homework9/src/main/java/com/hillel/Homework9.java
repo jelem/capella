@@ -3,7 +3,7 @@ package com.hillel;
 public class Homework9 {
 
   public static int[] twoArrayToThirdAsc(int[] first, int[] second) {
-    int [] third = new int[first.length + second.length];
+    int[] third = new int[first.length + second.length];
     int ifirst = 0, isecond = 0, ithird = 0;
 
     while (ithird < third.length) {
@@ -37,6 +37,7 @@ public class Homework9 {
   }
 
   public static boolean searchSumInArray(int sum, int[] array) {
+    int op = 0;
     for (int i = 0; i < array.length - 1; i++) {
       for (int j = i + 1; j < array.length; j++) {
         if (array[i] >= sum || array[j] >= sum) {
@@ -49,15 +50,14 @@ public class Homework9 {
           return true;
         }
       }
-
     }
     return false;
   }
 
-  public static void printArray(int [] array) {
+  public static void printArray(int[] array) {
     for (int elem : array) {
-        System.out.print(elem + " ");
-      }
+      System.out.print(elem + " ");
+    }
   }
 
 }
