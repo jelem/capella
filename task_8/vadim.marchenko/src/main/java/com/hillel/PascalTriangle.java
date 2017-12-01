@@ -7,7 +7,7 @@ public class PascalTriangle {
   }
 
   public static int[][] createPascalTriangle() {
-    int numberOfRows = 6;
+    int numberOfRows = 10;
     int[][] triangle = new int[numberOfRows][];
     for (int i = 0; i < numberOfRows; i++) {
       triangle[i] = new int[i + 1];
@@ -33,5 +33,6 @@ public class PascalTriangle {
       }
       System.out.println();
     }
+
   }
 }
