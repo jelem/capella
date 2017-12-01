@@ -1,0 +1,32 @@
+I think when the volume of data improve in 2 ( Volume = Volume * 2), the volume of operation
+improve in 8 (Volume = Volume * 8). 
+^ Volume of Operation
+.
+.  *
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. *
+. 
+.
+.
+.
+.  
+.
+.*
+*...........................................................> Volume of Data

@@ -1,0 +1,16 @@
+Рассмотрим модель памяти в юнит-тестах.
+@Test
+  public void convertToBriefTestForLongWord() {
+    String str = "internationalization";
+    String actual =  WrapperForMethods.convertToBrief(str);
+    String expected = "i18n";
+    assertEquals(actual, expected);
+  }
+Здесь str, actual, expected - сами ссылки находятся в stack, а ссылаются на hip.
+Не смотря на то что values of expected и actual равны сами адресса у них разные т.к.
+actual получает адресс ссылки из метода WrapperForMethods.convertToBrief под именем tmp.
+Думаю, что сама локальная переменная tmp после выхода из метода уничтожается в стеке. 
+Поэтому в pull ничего не попадет. В методе WrapperForMethods.convertToBrief имеется
+переменная типа int length, которая имеет простой тип и поэтому просто находится в стеке
+и после завершения метода уничтожается.
+
