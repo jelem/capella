@@ -10,12 +10,12 @@ public class WordPalindrome {
     String[] arrayStrings = str.split(",");
 
     for (int i = 0; i < arrayStrings.length; i++) {
-      while () {//пока [i] != .length - (i + 1)
-        if () {//[0] == .length - 1
-          //[1] == .length - 2
-
-        }
-      }
+//      while () { //пока [i] != .length - (i + 1)
+//        if (arrayStrings[i].length() / 2 ) { //[0] == .length - 1
+//          //[1] == .length - 2
+//
+//        }
+//      }
     }
   }
 }
