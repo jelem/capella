@@ -4,25 +4,25 @@ import java.util.Scanner;
 
 public class Task2 {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
-        int n;
+    int n;
 
-        do {
-            System.out.print("Enter N elements of array: ");
-            n = scanner.nextInt();
-        } while (n < 1);
+    do {
+      System.out.print("Enter N elements of array: ");
+      n = scanner.nextInt();
+    } while (n < 1);
 
-        int[] array = new int[n];
+    int[] array = new int[n];
 
-        System.out.print("Your array: ");
+    System.out.print("Your array: ");
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = i + 1;
-            System.out.print(array[i] + " ");
-        }
-
+    for (int i = 0; i < array.length; i++) {
+      array[i] = i + 1;
+      System.out.print(array[i] + " ");
     }
+
+  }
 }
