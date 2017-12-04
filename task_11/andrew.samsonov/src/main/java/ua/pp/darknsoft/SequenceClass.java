@@ -14,7 +14,10 @@ public class SequenceClass {
 
   //-->DIFFICULT: LINE O(N)
   public static int sequenceByIterationMethod(int index) {
-    int member1 = 1, member2 = 1, member3 = 1, memberNext = 1, memberBuf = 1;
+    int member1 = 1;
+    int member2 = 1;
+    int member3 = 1;
+    int memberNext = 1;
 
     for (int i = 4; i <= index; i++) {
       memberNext = member1 + member2 + member3;
