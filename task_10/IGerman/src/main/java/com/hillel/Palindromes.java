@@ -11,11 +11,11 @@ public class Palindromes {
     for (String string : arStr) {
       string = string.trim();
       char[] arChar = string.toCharArray();
-      String newString = "";
+      StringBuilder newString = new StringBuilder();
       for (int i = arChar.length - 1; i >= 0; i--) {
-        newString += arChar[i];
+        newString.append(arChar[i]);
       }
-      if (string.equals(newString)) {
+      if (string.equals(newString.toString())) {
         count++;
       }
     }

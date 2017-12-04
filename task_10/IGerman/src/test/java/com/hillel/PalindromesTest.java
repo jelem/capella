@@ -26,17 +26,16 @@ public class PalindromesTest {
   public void shouldCountTime() {
 
     long beforeWithArray = System.nanoTime();
-    int result1 = Palindromes.findPalindromes1("deleveled, evitative, cat, dog, deified");
+    Palindromes.findPalindromes1("deleveled, evitative, cat, dog, deified");
 
     long afterWithArray = System.nanoTime();
     System.out.println("findPalindromes1 with Arrays - " + (afterWithArray - beforeWithArray));
 
     long beforeWithStringBuilder = System.nanoTime();
-    int result2 = Palindromes.findPalindromes2("deleveled, evitative, cat, dog, deified");
+    Palindromes.findPalindromes2("deleveled, evitative, cat, dog, deified");
 
     long afterWithStringBuilder = System.nanoTime();
     System.out.println("findPalindromes2 with StringBuilder - " + (afterWithStringBuilder
         - beforeWithStringBuilder));
-
   }
 }
