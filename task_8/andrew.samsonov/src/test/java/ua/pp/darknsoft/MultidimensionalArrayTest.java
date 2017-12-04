@@ -1,6 +1,6 @@
 package ua.pp.darknsoft;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
 
@@ -28,56 +28,62 @@ public class MultidimensionalArrayTest {
   @Test
   public void pascalTriangleTest1() {
     int[][] autoPascal = MultidimensionalArray.pascalTriangle(1);
-    assertEquals("Loser", PASCAL1, autoPascal);
+    assertArrayEquals("Loser", PASCAL1, autoPascal);
   }
 
   @Test
   public void pascalTriangleTest2() {
     int[][] autoPascal = MultidimensionalArray.pascalTriangle(2);
-    assertEquals("Loser", PASCAL2, autoPascal);
+    assertArrayEquals("Loser", PASCAL2, autoPascal);
   }
 
   @Test
   public void pascalTriangleTest3() {
     int[][] autoPascal = MultidimensionalArray.pascalTriangle(3);
-    assertEquals("Loser", PASCAL3, autoPascal);
+    assertArrayEquals("Loser", PASCAL3, autoPascal);
+  }
+
+  @Test
+  public void pascalTriangleTest33() {
+    int[][] autoPascal = MultidimensionalArray.pascalTriangle(3);
+    assertArrayEquals("Loser", PASCAL3, autoPascal);
   }
 
   @Test
   public void pascalTriangleTest9() {
     int[][] autoPascal = MultidimensionalArray.pascalTriangle(9);
-    assertEquals("Loser", PASCAL9, autoPascal);
+    assertArrayEquals("Loser", PASCAL9, autoPascal);
   }
 
   /* HELIX TEST*/
   @Test
   public void spiralTest0() {
     int[][] autoHelix = MultidimensionalArray.helixInit(0);
-    assertEquals("Loser", HELIX0x0, autoHelix);
+    assertArrayEquals("Loser", HELIX0x0, autoHelix);
   }
 
   @Test
   public void spiralTest1() {
     int[][] autoHelix = MultidimensionalArray.helixInit(1);
-    assertEquals("Loser", HELIX1x1, autoHelix);
+    assertArrayEquals("Loser", HELIX1x1, autoHelix);
   }
 
   @Test
   public void spiralTest3() {
     int[][] autoHelix = MultidimensionalArray.helixInit(3);
-    assertEquals("Loser", HELIX3x3, autoHelix);
+    assertArrayEquals("Loser", HELIX3x3, autoHelix);
   }
 
   @Test
   public void spiralTest4() {
     int[][] autoHelix = MultidimensionalArray.helixInit(4);
-    assertEquals("Loser", HELIX4x4, autoHelix);
+    assertArrayEquals("Loser", HELIX4x4, autoHelix);
   }
 
   @Test
   public void spiralTest8() {
     int[][] autoHelix = MultidimensionalArray.helixInit(8);
-    assertEquals("Loser", HELIX8x8, autoHelix);
+    assertArrayEquals("Loser", HELIX8x8, autoHelix);
   }
 
 
