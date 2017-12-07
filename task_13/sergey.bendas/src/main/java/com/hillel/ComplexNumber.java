@@ -1,5 +1,7 @@
 package com.hillel;
 
+import static java.math.BigDecimal.ROUND_HALF_UP;
+
 import java.math.BigDecimal;
 
 public class ComplexNumber {
@@ -108,8 +110,12 @@ public class ComplexNumber {
   @Override
   public String toString() {
     String sign = this.imaginary < 0 ? "-" : "+";
-    double real = (double) Math.round(this.real * 1000) / 1000;
-    double imaginary = (double) Math.round(this.imaginary * 1000) / 1000;
+    BigDecimal decimalReal = new BigDecimal(this.real);
+    decimalReal = decimalReal.setScale(4, ROUND_HALF_UP);
+    double real = decimalReal.doubleValue();
+    BigDecimal decimalImaginary = new BigDecimal(this.imaginary);
+    decimalImaginary = decimalImaginary.setScale(4, ROUND_HALF_UP);
+    double imaginary = decimalImaginary.doubleValue();
     String stringReal = (real == Math.round(real) ? Long.toString(Math.round(real))
         : Double.toString(real));
     String stringImaginary = (imaginary == Math.round(imaginary) ? Long
