@@ -5,8 +5,6 @@ import java.util.Arrays;
 public class HomeworkTask9 {
 
   public static void main(String[] args) {
-    int[] array1 = {1, 3, 5};
-    int[] array2 = {2, 4, 8, 9, 12};
   }
 
   public static int[] sortArrays(int[] array1, int[] array2) {
