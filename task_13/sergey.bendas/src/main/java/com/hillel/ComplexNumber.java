@@ -107,15 +107,30 @@ public class ComplexNumber {
     this.imaginary = imaginary;
   }
 
+  private double round(double number) {
+    BigDecimal decimalReal = new BigDecimal(number);
+    decimalReal = decimalReal.setScale(4, ROUND_HALF_UP);
+    return decimalReal.doubleValue();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return this == obj || obj != null && getClass() == obj.getClass() && !(round(real)
+        != ((ComplexNumber) obj).real) && !(round(imaginary) != ((ComplexNumber) obj).imaginary);
+  }
+
+  @Override
+  public int hashCode() {
+    Double real = round(this.real);
+    Double imaginary = round(this.imaginary);
+    return real.hashCode() + imaginary.hashCode();
+  }
+
   @Override
   public String toString() {
     String sign = this.imaginary < 0 ? "-" : "+";
-    BigDecimal decimalReal = new BigDecimal(this.real);
-    decimalReal = decimalReal.setScale(4, ROUND_HALF_UP);
-    double real = decimalReal.doubleValue();
-    BigDecimal decimalImaginary = new BigDecimal(this.imaginary);
-    decimalImaginary = decimalImaginary.setScale(4, ROUND_HALF_UP);
-    double imaginary = decimalImaginary.doubleValue();
+    double real = round(this.real);
+    double imaginary = round(this.imaginary);
     String stringReal = (real == Math.round(real) ? Long.toString(Math.round(real))
         : Double.toString(real));
     String stringImaginary = (imaginary == Math.round(imaginary) ? Long

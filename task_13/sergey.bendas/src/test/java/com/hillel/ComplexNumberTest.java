@@ -13,7 +13,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(1, 1);
     ComplexNumber cn2 = new ComplexNumber(3, 3);
     ComplexNumber result = cn.add(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -22,7 +22,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(1, 2);
     ComplexNumber cn2 = new ComplexNumber(3, 4);
     ComplexNumber result = cn.add(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -30,7 +30,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(4, 4);
     ComplexNumber cn = new ComplexNumber(1, 1);
     ComplexNumber result = cn.add(3, 3);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -38,7 +38,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(4, 6);
     ComplexNumber cn = new ComplexNumber(1, 2);
     ComplexNumber result = cn.add(3, 4);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -47,7 +47,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(1, 3);
     ComplexNumber cn2 = new ComplexNumber(2, 2);
     ComplexNumber result = cn.sub(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -56,7 +56,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(1, 2);
     ComplexNumber cn2 = new ComplexNumber(3, 4);
     ComplexNumber result = cn.sub(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -64,7 +64,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(-1.9, -1.6);
     ComplexNumber cn = new ComplexNumber(1.4, 1.8);
     ComplexNumber result = cn.sub(3.3, 3.4);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -72,7 +72,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(1, 1);
     ComplexNumber cn = new ComplexNumber(1, 1);
     ComplexNumber result = cn.sub(0, 0);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -81,7 +81,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(1, 1);
     ComplexNumber cn2 = new ComplexNumber(1, 1);
     ComplexNumber result = cn.mul(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -90,7 +90,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(1, 2);
     ComplexNumber cn2 = new ComplexNumber(3, 4);
     ComplexNumber result = cn.mul(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -98,7 +98,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(-1.5, 10.7);
     ComplexNumber cn = new ComplexNumber(1.4, 1.8);
     ComplexNumber result = cn.mul(3.3, 3.4);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -106,7 +106,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(-15, 23);
     ComplexNumber cn = new ComplexNumber(5, 1);
     ComplexNumber result = cn.mul(-2, 5);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -115,7 +115,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(4, 5);
     ComplexNumber cn2 = new ComplexNumber(0, 0);
     ComplexNumber result = cn.div(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -124,7 +124,7 @@ public class ComplexNumberTest {
     ComplexNumber cn = new ComplexNumber(1, 1);
     ComplexNumber cn2 = new ComplexNumber(1, 1);
     ComplexNumber result = cn.div(cn2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -132,7 +132,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(2.2, -0.4);
     ComplexNumber cn = new ComplexNumber(3, 4);
     ComplexNumber result = cn.div(1, 2);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -140,7 +140,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(1.28, 0.96);
     ComplexNumber cn = new ComplexNumber(0, 8);
     ComplexNumber result = cn.div(3, 4);
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -148,7 +148,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(2, 1);
     ComplexNumber cn = new ComplexNumber(3, 4);
     ComplexNumber result = cn.sqrt();
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -156,7 +156,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(1, 0);
     ComplexNumber cn = new ComplexNumber(1, 0);
     ComplexNumber result = cn.sqrt();
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
@@ -164,7 +164,7 @@ public class ComplexNumberTest {
     ComplexNumber expected = new ComplexNumber(1, -2);
     ComplexNumber cn = new ComplexNumber(-3, -4);
     ComplexNumber result = cn.sqrt();
-    assertThat(result.toString(), is(expected.toString()));
+    assertThat(result, is(expected));
   }
 
   @Test
