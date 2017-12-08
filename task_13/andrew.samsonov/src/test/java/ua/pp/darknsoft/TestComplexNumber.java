@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class TestComplexNumber {
 
-  private static final ComplexNumber COMPLEX_NUMBER_ZERO = new ComplexNumber(0, 0);
   private static final ComplexNumber COMPLEX_NUMBER_ADDITION = new ComplexNumber(2, -4);
   private static final ComplexNumber COMPLEX_NUMBER_SUBTRACTION = new ComplexNumber(8, -8);
   private static final ComplexNumber COMPLEX_NUMBER_MULTIPLICATION = new ComplexNumber(-5, -1);
@@ -47,27 +46,11 @@ public class TestComplexNumber {
   }
 
   @Test
-  public void multiplicationTest02() {
-    ComplexNumber alphaComplex = new ComplexNumber(2, 3);
-    ComplexNumber betaComplex = new ComplexNumber(0, 0);
-    ComplexNumber actual = alphaComplex.multiplication(betaComplex);
-    assertThat(actual, is(COMPLEX_NUMBER_ZERO));
-  }
-
-  @Test
   public void divisionTest01() {
     ComplexNumber alphaComplex = new ComplexNumber(-2, 1);
     ComplexNumber betaComplex = new ComplexNumber(1, -1);
     ComplexNumber actual = alphaComplex.division(betaComplex);
     assertThat(actual, is(COMPLEX_NUMBER_DIVISION));
-  }
-
-  @Test
-  public void divisionTest02() {
-    ComplexNumber alphaComplex = new ComplexNumber(-2, 1);
-    ComplexNumber betaComplex = new ComplexNumber(0, 0);
-    ComplexNumber actual = alphaComplex.division(betaComplex);
-    assertThat(actual, is(COMPLEX_NUMBER_ZERO));
   }
 
   @Test
