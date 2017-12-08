@@ -5,9 +5,6 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-/**
- * Created by Andrew on 08.12.2017.
- */
 public class TestComplexNumber {
 
   private static final ComplexNumber COMPLEX_NUMBER_ZERO = new ComplexNumber(0, 0);
