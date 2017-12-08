@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class TestComplexNumber {
 
+  private static final String TO_STRING = "-1.0 + 1.0i";
   private static final ComplexNumber COMPLEX_NUMBER_ZERO = new ComplexNumber(0, 0);
   private static final ComplexNumber COMPLEX_NUMBER_ADDITION = new ComplexNumber(2, -4);
   private static final ComplexNumber COMPLEX_NUMBER_SUBTRACTION = new ComplexNumber(8, -8);
@@ -21,6 +22,12 @@ public class TestComplexNumber {
       new ComplexNumber(-Math.sqrt(2.0) / 2.0, -Math.sqrt(2.0) / 2.0),
       new ComplexNumber(Math.sqrt(2.0) / 2.0, -Math.sqrt(2.0) / 2.0)
   };
+
+  @Test
+  public void shouldPrint() {
+    ComplexNumber actual = new ComplexNumber(-1, 1);
+    assertThat(actual.toString(), is(TO_STRING));
+  }
 
   @Test
   public void additionTest01() {
