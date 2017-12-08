@@ -105,4 +105,15 @@ public class ComplexNumber {
     }
     return true;
   }
+
+  @Override
+  public int hashCode() {
+    int result;
+    long temp;
+    temp = Double.doubleToLongBits(realNumber);
+    result = (int) (temp ^ (temp >>> 32));
+    temp = Double.doubleToLongBits(imaginaryNumber);
+    result = 31 * result + (int) (temp ^ (temp >>> 32));
+    return result;
+  }
 }
