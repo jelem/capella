@@ -1,11 +1,9 @@
 package com.hillel;
 
-
-import static com.hillel.StringFunctions.countPalimdroms;
+import static com.hillel.StringFunctions.countPalindroms;
 import static com.hillel.StringFunctions.emailConvert;
 import static com.hillel.StringFunctions.shorteningString;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -31,7 +29,7 @@ public class StringFunctionsTest {
   @Test
   public void countPalindromsTest() {
     String expected = "There are 3 palindromes in the text";
-    String result = countPalimdroms("deleveled, evitative, cat, dog, deified ");
+    String result = countPalindroms("deleveled, evitative, cat, dog, deified ");
 
     assertThat(result, is(expected));
   }
