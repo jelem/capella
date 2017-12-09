@@ -123,7 +123,7 @@ public class ComplexNumber {
   public int hashCode() {
     Double real = round(this.real);
     Double imaginary = round(this.imaginary);
-    return real.hashCode() + imaginary.hashCode();
+    return 31 * real.hashCode() + imaginary.hashCode();
   }
 
   @Override
