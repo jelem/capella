@@ -25,7 +25,7 @@ public class StringFunctions {
     return str;
   }
 
-  public static String countPalimdroms(String str) {
+  public static String countPalindroms(String str) {
     int count = 0;
     String[] strArray = str.split(",");
 
