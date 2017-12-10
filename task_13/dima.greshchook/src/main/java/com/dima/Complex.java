@@ -45,13 +45,13 @@ public class Complex {
   }
 
   public static Complex sqrt(double num) {
-   return Complex.sqrt(new Complex(num , 0));
+    return Complex.sqrt(new Complex(num , 0));
   }
 
   public static Complex sqrt(Complex num) {
-    double r = num.abs();
-    double f = Math.acos(num.real / r);
-    return new Complex(r * Math.cos(f / 2), r * Math.sin(f / 2));
+    double length = num.abs();
+    double angle = Math.acos(num.real / length);
+    return new Complex(length * Math.cos(angle / 2), length * Math.sin(angle / 2));
   }
 
 

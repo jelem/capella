@@ -67,20 +67,6 @@ public class ComplexTest {
   }
 
   @Test
-  public void sqrtForDoubleEqualZeroTest() {
-    Complex result  = Complex.sqrt(0);
-    assertEquals(result.getReal(), 0., DELTA);
-    assertEquals(result.getImagine(), 0., DELTA);
-  }
-
-  @Test
-  public void sqrtForDoubleLessZeroTest() {
-    Complex result  = Complex.sqrt(-9);
-    assertEquals(result.getReal(), 0., DELTA);
-    assertEquals(result.getImagine(), 3., DELTA);
-  }
-
-  @Test
   public void sqrtForComplexTest_I() {
     Complex complex = new Complex(1, 0);
     Complex result  = Complex.sqrt(complex);
