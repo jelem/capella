@@ -10,16 +10,16 @@ public class Recurtion {
   }
 
   public static int iteratyFibonazi(int num) {
-    int f1 = 1;
-    int f2 = 1;
-    int f3 = 1;
-    int f4 = 1;
+    int fib1 = 1;
+    int fib2 = 1;
+    int fib3 = 1;
+    int fib4 = 1;
 
     for (int i = 4; i <= num; i++) {
-      f4 = f1 + f2 + f3;
-      f1 = f2;
-      f2 = f3;
-      f3 = f4;
+      fib4 = fib1 + fib2 + fib3;
+      fib1 = fib2;
+      fib2 = fib3;
+      fib3 = fib4;
     }
 
     return f4;
