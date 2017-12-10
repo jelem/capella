@@ -7,16 +7,16 @@ public class SequenceIteractive {
     System.out.println(result);
   }
 
-  public static int sequenceMember(int n) {
+  public static int sequenceMember(int number) {
 
-    int[] ar = new int[n];
+    int[] ar = new int[number];
     ar[0] = 1;
     ar[1] = 1;
     ar[2] = 1;
 
-    for (int i = 3; i < n; i++) {
+    for (int i = 3; i < number; i++) {
       ar[i] = ar[i - 1] + ar[i - 2] + ar[i - 3];
     }
-    return ar[n - 1];
+    return ar[number - 1];
   }
 }
