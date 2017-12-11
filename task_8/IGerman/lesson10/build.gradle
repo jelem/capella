@@ -1,4 +1,4 @@
-group 'ua.pp.darknsoft'
+group 'com.hillel'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -10,5 +10,5 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
