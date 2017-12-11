@@ -11,7 +11,7 @@ public class Task_1 {
     // Task_2
     String str2 = "internationalization localization cat elephant monitor";
     String[] arr = str2.split(" ");
-    for(int i = 0; i < arr.length; i++) {
+    for (int i = 0; i < arr.length; i++) {
       System.out.print(sokrachenie(arr[i]) + " ");
     }
 
@@ -19,9 +19,9 @@ public class Task_1 {
     int countPal = 0;
     String str3 = "deleveled, evitative, cat, dog, deified";
     String[] arr1 = str3.split(",");
-    for(int i = 0; i < arr1.length; i++) {
+    for (int i = 0; i < arr1.length; i++) {
       arr1[i] = arr1[i].trim();
-      if(isPalindrom(arr1[i])) {
+      if (isPalindrom(arr1[i])) {
         countPal++;
       }
     }
@@ -37,7 +37,7 @@ public class Task_1 {
   }
 
   public static String sokrachenie(String str) {
-    if(str.length() >= 4) {
+    if (str.length() >= 4) {
       int count = str.length() - 2;
       str = str.charAt(0) + Integer.toString(count) + str.charAt(str.length() - 1);
     }
@@ -45,17 +45,17 @@ public class Task_1 {
   }
 
   public static boolean isPalindrom(String str) {
-    int i = 0;
-    int j = str.length() - 1;
+    int begin = 0;
+    int end = str.length() - 1;
     int palin = 0;
     int count = 0;
-    while (i <= j) {
-      if(str.charAt(i) == str.charAt(j)) {
+    while (begin <= end) {
+      if (str.charAt(begin) == str.charAt(end)) {
         count++;
       }
       palin++;
-      i++;
-      j--;
+      begin++;
+      end--;
     }
     if (palin == count) {
       return true;
