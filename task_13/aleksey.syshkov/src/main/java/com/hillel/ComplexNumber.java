@@ -40,9 +40,9 @@ public class ComplexNumber {
     double module = Math.sqrt(this.alpha * this.alpha + this.beta * this.beta);
     double phi = Math.acos(this.alpha / (Math.sqrt(module)));
 
-    double kor_a = Math.sqrt(module) * Math.cos((phi + 2 * Math.PI) / 2);
-    double kor_b = Math.sqrt(module) * Math.cos((phi + 2 * Math.PI) / 2);
-    return new ComplexNumber(kor_a, kor_b);
+    double korA = Math.sqrt(module) * Math.cos((phi + 2 * Math.PI) / 2);
+    double korB = Math.sqrt(module) * Math.cos((phi + 2 * Math.PI) / 2);
+    return new ComplexNumber(korA, korB);
   }
 
   @Override
@@ -51,9 +51,17 @@ public class ComplexNumber {
   }
 
   @Override
-  public boolean equals(Object ob) {
-    ComplexNumber other = (ComplexNumber)ob;
-    return this.alpha == other.alpha && this.beta == other.beta;
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+    if (object == null || getClass() != object.getClass()) {
+      return false;
+    }
+
+    ComplexNumber that = (ComplexNumber) object;
+
+    return this.alpha == that.alpha && this.beta == that.beta;
   }
 
   @Override
