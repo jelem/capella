@@ -17,7 +17,8 @@ public class ComplexNumber {
     return imaginaryPart;
   }
 
-  public ComplexNumber() {}
+  public ComplexNumber() {
+  }
 
   @Override
   public String toString() {
@@ -33,13 +34,13 @@ public class ComplexNumber {
   }
 
   public ComplexNumber multiplication(ComplexNumber mul) {
-    return new ComplexNumber((realPart * mul.realPart - imaginaryPart * mul.imaginaryPart),
-                            (mul.realPart * imaginaryPart + realPart * mul.imaginaryPart));
+    return new ComplexNumber((realPart * mul.realPart - imaginaryPart * mul.imaginaryPart), (mul.realPart * imaginaryPart + realPart * mul.imaginaryPart));
   }
 
   public ComplexNumber division(ComplexNumber div) {
-    return new ComplexNumber((float)((realPart * div.realPart + imaginaryPart * div.imaginaryPart)/(Math.pow(div.realPart,2) + (Math.pow(div.imaginaryPart,2)))),
-                             (float)((imaginaryPart * div.realPart - realPart * div.imaginaryPart)/(Math.pow(div.realPart,2) + (Math.pow(div.imaginaryPart,2)))));
+    return new ComplexNumber(
+        (float) ((realPart * div.realPart + imaginaryPart * div.imaginaryPart)/(Math.pow(div.realPart, 2) + (Math.pow(div.imaginaryPart, 2)))),
+        (float) ((imaginaryPart * div.realPart - realPart * div.imaginaryPart)/(Math.pow(div.realPart, 2) + (Math.pow(div.imaginaryPart, 2)))));
   }
 }
 
