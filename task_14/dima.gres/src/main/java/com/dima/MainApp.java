@@ -25,9 +25,9 @@ public class MainApp {
   private static void calculateWinner(char[][] board) {
     if (isHasWon('x', board)) {
       System.out.println("Congratulations mister X! You've won the game!!");
-    }else if(isHasWon('y', board)){
+    }else if(isHasWon('y', board)) {
       System.out.println("Congratulations mister Y! You are the best player!");
-    }else{
+    }else {
       System.out.println("...Draw...");
     }
   }
@@ -45,8 +45,7 @@ public class MainApp {
   public static boolean validateCoordinates(int[] coords, char[][] field) {
     int row = coords[0];
     int col = coords[1];
-    return !(row >= field.length || col >= field[0].length
-            || field[row][col] != ' ');
+    return !(row >= field.length || col >= field[0].length || field[row][col] != ' ');
   }
 
 
