@@ -9,38 +9,41 @@ import ua.pp.darknsoft.game.TicTacToe;
 public class Controller {
 
   @FXML
-  Button buttonId_00;
+  Button buttonOne;
   @FXML
-  Button buttonId_01;
+  Button buttonTwo;
   @FXML
-  Button buttonId_02;
+  Button buttonThree;
   @FXML
-  Button buttonId_10;
+  Button buttonFour;
   @FXML
-  Button buttonId_11;
+  Button buttonFive;
   @FXML
-  Button buttonId_12;
+  Button buttonSix;
   @FXML
-  Button buttonId_20;
+  Button buttonSeven;
   @FXML
-  Button buttonId_21;
+  Button buttonEight;
   @FXML
-  Button buttonId_22;
+  Button buttonNine;
   @FXML
   Label infoLabel;
   @FXML
   Button buttonNewGame;
+  @FXML
+  Label scoreLabelX;
+  @FXML
+  Label scoreLabelO;
 
   public void buttonAction_00(ActionEvent actionEvent) {
     int[] coord = new int[]{0, 0};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_00.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonOne.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -50,12 +53,11 @@ public class Controller {
     int[] coord = new int[]{1, 0};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_10.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonFour.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -65,12 +67,11 @@ public class Controller {
     int[] coord = new int[]{2, 0};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_20.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonSeven.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -80,12 +81,11 @@ public class Controller {
     int[] coord = new int[]{0, 1};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_01.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonTwo.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -95,12 +95,11 @@ public class Controller {
     int[] coord = new int[]{1, 1};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_11.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonFive.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -110,12 +109,11 @@ public class Controller {
     int[] coord = new int[]{2, 1};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_21.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonEight.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -125,12 +123,11 @@ public class Controller {
     int[] coord = new int[]{0, 2};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_02.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonThree.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -140,12 +137,11 @@ public class Controller {
     int[] coord = new int[]{1, 2};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_12.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonSix.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -156,12 +152,11 @@ public class Controller {
     int[] coord = new int[]{2, 2};
     if (TicTacToe.validateCoordinates(coord)) {
       TicTacToe.makeMove(coord, TicTacToe.getCurrentPlayer());
-      buttonId_22.setText(TicTacToe.getCurrentPlayer() + "");
+      buttonNine.setText(TicTacToe.getCurrentPlayer() + "");
       if (!TicTacToe.calculateWinner()) {
         TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
         infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
       } else {
-        infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
         gameStop();
       }
     }
@@ -169,35 +164,41 @@ public class Controller {
 
   public void buttonAction_newGame(ActionEvent actionEvent) {
     TicTacToe.newGame();
-    buttonId_00.setText("");
-    buttonId_01.setText("");
-    buttonId_02.setText("");
-    buttonId_10.setText("");
-    buttonId_11.setText("");
-    buttonId_12.setText("");
-    buttonId_20.setText("");
-    buttonId_21.setText("");
-    buttonId_22.setText("");
-    buttonId_00.setVisible(true);
-    buttonId_01.setVisible(true);
-    buttonId_02.setVisible(true);
-    buttonId_10.setVisible(true);
-    buttonId_11.setVisible(true);
-    buttonId_12.setVisible(true);
-    buttonId_20.setVisible(true);
-    buttonId_21.setVisible(true);
-    buttonId_22.setVisible(true);
+    TicTacToe.switchCurrentPlayer(TicTacToe.getCurrentPlayer());
+    infoLabel.setText("Ход за игроком: " + TicTacToe.getCurrentPlayer());
+    buttonOne.setText("");
+    buttonTwo.setText("");
+    buttonThree.setText("");
+    buttonFour.setText("");
+    buttonFive.setText("");
+    buttonSix.setText("");
+    buttonSeven.setText("");
+    buttonEight.setText("");
+    buttonNine.setText("");
+    buttonOne.setDisable(false);
+    buttonTwo.setDisable(false);
+    buttonThree.setDisable(false);
+    buttonFour.setDisable(false);
+    buttonFive.setDisable(false);
+    buttonSix.setDisable(false);
+    buttonSeven.setDisable(false);
+    buttonEight.setDisable(false);
+    buttonNine.setDisable(false);
   }
 
   public void gameStop() {
-    buttonId_00.setVisible(false);
-    buttonId_01.setVisible(false);
-    buttonId_02.setVisible(false);
-    buttonId_10.setVisible(false);
-    buttonId_11.setVisible(false);
-    buttonId_12.setVisible(false);
-    buttonId_20.setVisible(false);
-    buttonId_21.setVisible(false);
-    buttonId_22.setVisible(false);
+    buttonOne.setDisable(true);
+    buttonTwo.setDisable(true);
+    buttonThree.setDisable(true);
+    buttonFour.setDisable(true);
+    buttonFive.setDisable(true);
+    buttonSix.setDisable(true);
+    buttonSeven.setDisable(true);
+    buttonEight.setDisable(true);
+    buttonNine.setDisable(true);
+    TicTacToe.setScore();
+    infoLabel.setText("Победил игрок: " + TicTacToe.getCurrentPlayer());
+    scoreLabelX.setText("X: " + TicTacToe.getScoreX());
+    scoreLabelO.setText("O: " + TicTacToe.getScoreO());
   }
 }

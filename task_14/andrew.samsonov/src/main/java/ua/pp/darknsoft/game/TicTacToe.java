@@ -4,6 +4,8 @@ public class TicTacToe {
 
   private static char[][] field = new char[3][3];
   private static char currentPlayer = 'X';
+  private static int scoreX = 0;
+  private static int scoreO = 0;
 
   public static char[][] getField() {
     return field;
@@ -15,6 +17,22 @@ public class TicTacToe {
 
   public static char getCurrentPlayer() {
     return currentPlayer;
+  }
+
+  public static int getScoreX() {
+    return scoreX;
+  }
+
+  public static int getScoreO() {
+    return scoreO;
+  }
+
+  public static void setScore() {
+    if (getCurrentPlayer() == 'X') {
+      scoreX++;
+    } else {
+      scoreO++;
+    }
   }
 
   public static void setCurrentPlayer(char currentPlayer) {
@@ -52,7 +70,6 @@ public class TicTacToe {
       for (int j = 0; j <= 2; j++) {
         if (j > 0 && getField()[i][j] != '\u0000' && getField()[i][j] == getField()[i][j - 1]) {
           horizon++;
-          System.out.println(horizon + " " + i + "-" + j);
         }
         if (horizon == 2) {
           return true;
@@ -61,6 +78,20 @@ public class TicTacToe {
           vertical++;
         }
         if (vertical == 3) {
+          return true;
+        }
+        if (i > 0 && i == j && getField()[i][j] != '\u0000' && getField()[i][j] == getField()[i
+            - 1][j - 1]) {
+          leftDiagonal++;
+        }
+        if (leftDiagonal == 2) {
+          return true;
+        }
+        if (i > 0 && j < 2 && getField()[i][j] != '\u0000' && getField()[i][j] == getField()[i
+            - 1][j + 1]) {
+          rightDiagonal++;
+        }
+        if (rightDiagonal == 3) {
           return true;
         }
       }

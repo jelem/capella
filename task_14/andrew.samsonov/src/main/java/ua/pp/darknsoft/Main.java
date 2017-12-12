@@ -7,13 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application {
 
   public void start(Stage primaryStage) throws Exception {
     Parent parent = FXMLLoader.load(getClass().getResource("/fxml/xo.fxml"));
 
     Scene scene = new Scene(parent);
-    primaryStage.setTitle("TicTacToe");
+    primaryStage.setTitle("Capella - - TicTacToe -  - Hillel");
     primaryStage.setScene(scene);
     primaryStage.setMaxHeight(760);
     primaryStage.setMaxWidth(600);

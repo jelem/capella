@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -11,11 +12,35 @@
 
 <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.pp.darknsoft.controllers.Controller">
    <children>
-      <Button fx:id="buttonNewGame" mnemonicParsing="false" onAction="#buttonAction_newGame" text="Новая игра">
-         <VBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </VBox.margin>
-      </Button>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <left>
+            <Label fx:id="scoreLabelX" text="Player X" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets left="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
+         <center>
+            <Button fx:id="buttonNewGame" mnemonicParsing="false" onAction="#buttonAction_newGame" prefHeight="47.0" prefWidth="119.0" text="Новая игра" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </center>
+         <right>
+            <Label fx:id="scoreLabelO" text="Player O" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets right="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </right>
+      </BorderPane>
       <GridPane alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,39 +53,39 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="buttonId_00" mnemonicParsing="false" onAction="#buttonAction_00" prefHeight="300.0" prefWidth="300.0" textAlignment="CENTER">
+            <Button fx:id="buttonOne" mnemonicParsing="false" onAction="#buttonAction_00" prefHeight="300.0" prefWidth="300.0" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_01" mnemonicParsing="false" onAction="#buttonAction_01" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="1">
+            <Button fx:id="buttonTwo" mnemonicParsing="false" onAction="#buttonAction_01" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="1">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_02" mnemonicParsing="false" onAction="#buttonAction_02" prefHeight="300.0" prefWidth="300.0" textAlignment="RIGHT" GridPane.columnIndex="2">
+            <Button fx:id="buttonThree" mnemonicParsing="false" onAction="#buttonAction_02" prefHeight="300.0" prefWidth="300.0" textAlignment="RIGHT" GridPane.columnIndex="2">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_10" mnemonicParsing="false" onAction="#buttonAction_10" prefHeight="300.0" prefWidth="300.0" GridPane.rowIndex="1">
+            <Button fx:id="buttonFour" mnemonicParsing="false" onAction="#buttonAction_10" prefHeight="300.0" prefWidth="300.0" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_11" mnemonicParsing="false" onAction="#buttonAction_11" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="buttonFive" mnemonicParsing="false" onAction="#buttonAction_11" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_12" mnemonicParsing="false" onAction="#buttonAction_12" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="buttonSix" mnemonicParsing="false" onAction="#buttonAction_12" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_20" mnemonicParsing="false" onAction="#buttonAction_20" prefHeight="300.0" prefWidth="300.0" GridPane.rowIndex="2">
+            <Button fx:id="buttonSeven" mnemonicParsing="false" onAction="#buttonAction_20" prefHeight="300.0" prefWidth="300.0" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_21" mnemonicParsing="false" onAction="#buttonAction_21" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="buttonEight" mnemonicParsing="false" onAction="#buttonAction_21" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="buttonId_22" mnemonicParsing="false" onAction="#buttonAction_22" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="buttonNine" mnemonicParsing="false" onAction="#buttonAction_22" prefHeight="300.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
                </font></Button>
