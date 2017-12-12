@@ -45,11 +45,8 @@ public class MainApp {
   public static boolean validateCoordinates(int[] coords, char[][] field) {
     int row = coords[0];
     int col = coords[1];
-    if (row >= field.length || col >= field[0].length
-            || field[row][col] != ' ') {
-      return false;
-    }
-    return true;
+    return !(row >= field.length || col >= field[0].length
+            || field[row][col] != ' ');
   }
 
 
@@ -62,18 +59,12 @@ public class MainApp {
 
 
   public static boolean gameFinished(char[][] field) {
-    if (!isFull(field) || isHasWon('x', field) || isHasWon('y',field)) {
-      return true;
-    }
-    return false;
+    return !isFull(field) || isHasWon('x', field) || isHasWon('y',field);
   }
 
   private static boolean isHasWon(char current, char[][] field) {
-    if (isFillTheRows(current, field) || isFillTheCollumns(current, field) ||
-            isFillTheMainDiagonal(current, field) || isFillSideDiagonal(current, field)) {
-      return true;
-    }
-    return false;
+    return isFillTheRows(current, field) || isFillTheCollumns(current, field) ||
+            isFillTheMainDiagonal(current, field) || isFillSideDiagonal(current, field);
   }
 
   private static boolean isFillSideDiagonal(char current, char[][] field) {
