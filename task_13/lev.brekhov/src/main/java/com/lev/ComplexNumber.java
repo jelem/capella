@@ -2,7 +2,8 @@ package com.lev;
 
 public class ComplexNumber {
 
-  private float realPart, imaginaryPart;
+  private float realPart;
+  private float imaginaryPart;
 
   public ComplexNumber(float realPart, float imaginaryPart) {
     this.realPart = realPart;
