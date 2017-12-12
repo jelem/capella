@@ -91,7 +91,7 @@
                </font></Button>
          </children>
       </GridPane>
-      <Label fx:id="infoLabel" text="Ход за играком: X">
+      <Label fx:id="infoLabel" text="Ход за игроком: X">
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
