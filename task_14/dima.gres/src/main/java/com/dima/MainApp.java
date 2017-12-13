@@ -14,7 +14,8 @@ public class MainApp {
       showField(field);
       do {
         inputCoordinates(coords, field);
-      } while (!validateCoordinates(coords, field));
+      }
+      while ( !validateCoordinates(coords, field) );
       makeMove(field, coords, currentPlayer);
       currentPlayer = switchCurrentPlayer(currentPlayer);
     }
@@ -25,9 +26,9 @@ public class MainApp {
   private static void calculateWinner(char[][] board) {
     if (isHasWon('x', board)) {
       System.out.println("Congratulations mister X! You've won the game!!");
-    }else if(isHasWon('y', board)) {
+    } else if (isHasWon('y', board)) {
       System.out.println("Congratulations mister Y! You are the best player!");
-    }else {
+    } else {
       System.out.println("...Draw...");
     }
   }
@@ -62,8 +63,10 @@ public class MainApp {
   }
 
   private static boolean isHasWon(char current, char[][] field) {
-    return isFillTheRows(current, field) || isFillTheCollumns(current, field) ||
-            isFillTheMainDiagonal(current, field) || isFillSideDiagonal(current, field);
+    return isFillTheRows(current, field)
+            || isFillTheCollumns(current, field)
+            || isFillTheMainDiagonal(current, field)
+            || isFillSideDiagonal(current, field);
   }
 
   private static boolean isFillSideDiagonal(char current, char[][] field) {
@@ -124,7 +127,7 @@ public class MainApp {
 
   private static boolean isFull(char[][] field) {
     for (int i = 0; i < field.length; i++) {
-      for (int j = 0; j < field[i].length; j++){
+      for (int j = 0; j < field[i].length; j++) {
         if (field[i][j] == ' ' ) {
           return true;
         }
@@ -136,10 +139,10 @@ public class MainApp {
 
   private static void showField(char[][] field) {
     for (int i = 0; i < field.length; i++) {
-      for (int j = 0; j < field[i].length; j++){
+      for (int j = 0; j < field[i].length; j++) {
         if (field[i][j] != ' ') {
-          System.out.print(" "+ field[i][j] + " ");
-        }else {
+          System.out.print(" " + field[i][j] + " ");
+        } else {
           System.out.print(i + " " + j);
         }
         if (j >= 0 && j < 2) {
@@ -155,7 +158,7 @@ public class MainApp {
 
   public static void fillBoard(char[][] field) {
     for (int i = 0; i < field.length; i++) {
-      for (int j = 0; j < field[i].length; j++){
+      for (int j = 0; j < field[i].length; j++) {
         field[i][j] = ' ';
       }
     }
