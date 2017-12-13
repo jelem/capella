@@ -1,5 +1,7 @@
 package com.lev;
 
+import java.util.Scanner;
+
 public class TicTacToe {
 
 //  public static void main(String[] args) {
@@ -21,8 +23,10 @@ public class TicTacToe {
 //    calculateWinner();
 //  }
 //
-//  private static String inputCoordinates() {
-//
+//  public static String inputCoordinates() {
+//    Scanner sc = new Scanner(System.in);
+//    String coords = sc.nextLine();
+//    String[] arrayStrings = coords.split(" ");
 //    return null;
 //  }
 //
