@@ -1,12 +1,9 @@
-package ua.pp.darknsoft.geometric_figures;
+package ua.pp.darknsoft.figures;
 
-import ua.pp.darknsoft.geometric_figures.heirs.Circle;
-import ua.pp.darknsoft.geometric_figures.heirs.Rectangle;
-import ua.pp.darknsoft.geometric_figures.heirs.Square;
+import ua.pp.darknsoft.figures.heirs.Circle;
+import ua.pp.darknsoft.figures.heirs.Rectangle;
+import ua.pp.darknsoft.figures.heirs.Square;
 
-/**
- * Created by Andrew on 15.12.2017.
- */
 public class Main {
 
   public static void main(String[] args) {

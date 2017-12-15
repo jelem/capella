@@ -4,9 +4,6 @@ import ua.pp.darknsoft.enterprise.heirs.Digger;
 import ua.pp.darknsoft.enterprise.heirs.Foreman;
 import ua.pp.darknsoft.enterprise.heirs.Loader;
 
-/**
- * Created by Andrew on 15.12.2017.
- */
 public class Main {
 
   public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ua.pp.darknsoft.geometric_figures;
+package ua.pp.darknsoft.figures;
 
 public class Figure {
 

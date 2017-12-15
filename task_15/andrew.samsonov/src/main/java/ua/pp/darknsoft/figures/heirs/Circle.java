@@ -1,6 +1,6 @@
-package ua.pp.darknsoft.geometric_figures.heirs;
+package ua.pp.darknsoft.figures.heirs;
 
-import ua.pp.darknsoft.geometric_figures.Figure;
+import ua.pp.darknsoft.figures.Figure;
 
 public class Circle extends Figure {
 
