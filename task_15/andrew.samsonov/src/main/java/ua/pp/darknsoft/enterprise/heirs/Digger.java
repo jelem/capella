@@ -19,11 +19,14 @@ public class Digger extends Worker {
   @Override
   public void doWork() {
     if (tool != null) {
-      System.out.println(("Копать " + tool.toString().substring(0, tool.toString().length()-1) + "ой").toLowerCase());
+      System.out.println(
+          ("Копать " + tool.toString().substring(0, tool.toString().length() - 1) + "ой")
+              .toLowerCase());
     } else {
       System.out.println("Копать руками");
     }
   }
+
   @Override
   public String toString() {
     return "Разнорабочий - " + super.getPosition();

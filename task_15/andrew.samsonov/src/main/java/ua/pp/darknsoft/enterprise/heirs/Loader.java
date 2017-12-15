@@ -28,6 +28,7 @@ public class Loader extends Worker {
       System.out.println("Носить в руках");
     }
   }
+
   @Override
   public String toString() {
     return "Разнорабочий - " + super.getPosition();
