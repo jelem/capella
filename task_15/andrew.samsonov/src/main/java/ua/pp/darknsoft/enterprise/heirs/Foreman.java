@@ -1,16 +1,17 @@
 package ua.pp.darknsoft.enterprise.heirs;
 
+import ua.pp.darknsoft.enterprise.Tools;
 import ua.pp.darknsoft.enterprise.Worker;
 
 public class Foreman extends Worker {
 
-  private String tool;
+  private Tools tool;
 
   public Foreman(String name, String position) {
     super(name, position);
   }
 
-  public Foreman(String name, String position, String tool) {
+  public Foreman(String name, String position, Tools tool) {
     super(name, position);
     this.tool = tool;
   }

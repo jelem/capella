@@ -13,7 +13,7 @@ public class Main {
     Worker workerThree = new Loader("Степан", "Грузчик", Tools.ТЕЛЕЖКА);
     Worker workerFour = new Loader("Эй ты", "Разнорабочий");
 
-    Worker[] company = new Worker[5];
+    final Worker[] company = new Worker[5];
     company[0] = boss;
     company[1] = workerOne;
     company[2] = workerTwo;
@@ -26,6 +26,4 @@ public class Main {
     }
 
   }
-
-
 }
