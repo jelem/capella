@@ -11,7 +11,6 @@ public class Main {
     Worker workerOne = new Digger("Петро", "Землекоп", Tools.ЛОПАТА);
     Worker workerTwo = new Digger("Иван", "Землекоп", Tools.КИРКА);
     Worker workerThree = new Loader("Степан", "Грузчик", Tools.ТЕЛЕЖКА);
-
     Worker[] company = new Worker[5];
     company[0] = boss;
     company[1] = workerOne;
