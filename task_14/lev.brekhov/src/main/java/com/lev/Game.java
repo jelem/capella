@@ -1,7 +1,5 @@
 package com.lev;
 
-import java.util.Scanner;
-
 public class Game {
 
   public static final char X = 'X';
@@ -15,7 +13,6 @@ public class Game {
   public Game(Player player1, Player player2) {
     board = new Board();
 
-    board.print();
     this.player1 = player1;
     this.player2 = player2;
 
@@ -37,7 +34,6 @@ public class Game {
       changePlayer();
       board.print();
     }
-
     return gameResult();
   }
 
@@ -46,17 +42,8 @@ public class Game {
         || board.isFilled();
   }
 
-  private String gameResult() {
-    changePlayer();
-
-    if (board.isWin()) {
-      return "Winner " + currentPlayer.getName();
-    }
-    if (board.isFilled()) {
-      return "No one";
-    } else {
-      return "In order";
-    }
+  public void makeMove() {
+    currentPlayer.makeMove();
   }
 
   private void changePlayer() {
@@ -67,16 +54,16 @@ public class Game {
     }
   }
 
-  private void makeMove() {
-    System.out.println("Makes move: " + currentPlayer.getName());
-    Scanner sc = new Scanner(System.in);
-    boolean isFilled = false;
-    while (!isFilled) {
-      System.out.println("Enter coords (x,y), where x,y can be 1-3: ");
-      String[] arr = sc.next().split(",");
-      int x = Integer.parseInt(arr[0]);
-      int y = Integer.parseInt(arr[1]);
-      isFilled = board.fillCell(x, y, currentPlayer.getSymbol());
+  private String gameResult() {
+    changePlayer();
+
+    if (board.isWin()) {
+      return "Easy game for " + currentPlayer.getName();
+    }
+    if (board.isFilled()) {
+      return "No one is wins";
+    } else {
+      return "In order";
     }
   }
 }
