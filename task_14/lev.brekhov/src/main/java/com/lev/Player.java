@@ -5,11 +5,11 @@ public class Player {
   private String name;
   private char symbol;
 
-  public void makeMove() {
+  public void makeMove(Board board) {
   }
 
   public String getName() {
-    return this.name;
+    return name;
   }
 
   public char getSymbol() {

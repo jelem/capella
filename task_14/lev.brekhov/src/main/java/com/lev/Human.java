@@ -12,7 +12,7 @@ public class Human extends Player {
     this.symbol = symbol;
   }
 
-  public void makeMove() {
+  public void makeMove(Board board) {
     System.out.println("Makes move: " + this.name);
     Scanner sc = new Scanner(System.in);
     boolean isFilled = false;
@@ -21,7 +21,7 @@ public class Human extends Player {
       String[] arr = sc.next().split(",");
       int xCoord = Integer.parseInt(arr[0]);
       int yCoord = Integer.parseInt(arr[1]);
-      isFilled = Board.fillCell(xCoord, yCoord, this.symbol);
+      isFilled = board.fillCell(xCoord, yCoord, this.symbol);
     }
   }
 

@@ -30,7 +30,7 @@ public class Game {
   public String play() {
 
     while (!gameFinished()) {
-      makeMove();
+      makeMove(board);
       changePlayer();
       board.print();
     }
@@ -42,8 +42,8 @@ public class Game {
         || board.isFilled();
   }
 
-  public void makeMove() {
-    currentPlayer.makeMove();
+  public void makeMove(Board board) {
+    currentPlayer.makeMove(board);
   }
 
   private void changePlayer() {

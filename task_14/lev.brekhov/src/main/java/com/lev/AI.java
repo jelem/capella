@@ -12,7 +12,7 @@ public class AI extends Player {
     this.symbol = symbol;
   }
 
-  public void makeMove() {
+  public void makeMove(Board board) {
     int min = 1;
     int max = 3;
     Random random = new Random();
@@ -22,7 +22,7 @@ public class AI extends Player {
     while (!isFilled) {
       int xCoord = random.nextInt(max - min + 1) + min;
       int yCoord = random.nextInt(max - min + 1) + min;
-      isFilled = Board.fillCell(xCoord, yCoord, this.symbol);
+      isFilled = board.fillCell(xCoord, yCoord, this.symbol);
       System.out.println();
     }
   }

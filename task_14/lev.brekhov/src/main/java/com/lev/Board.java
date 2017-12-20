@@ -16,7 +16,7 @@ public class Board {
     }
   }
 
-  public static boolean fillCell(int x, int y, char value) {
+  public boolean fillCell(int x, int y, char value) {
     if (field[x - 1][y - 1] == ' ') {
       field[--x][--y] = value;
       return true;
