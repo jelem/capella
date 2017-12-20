@@ -20,9 +20,9 @@ public class AI extends Player {
     System.out.print("Now, " + this.name + " is moving:");
     boolean isFilled = false;
     while (!isFilled) {
-      int x = random.nextInt(max - min + 1) + min;
-      int y = random.nextInt(max - min + 1) + min;
-      isFilled = Board.fillCell(x, y, this.symbol);
+      int xCoord = random.nextInt(max - min + 1) + min;
+      int yCoord = random.nextInt(max - min + 1) + min;
+      isFilled = Board.fillCell(xCoord, yCoord, this.symbol);
       System.out.println();
     }
   }

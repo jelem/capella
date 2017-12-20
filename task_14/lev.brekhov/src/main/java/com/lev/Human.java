@@ -19,9 +19,9 @@ public class Human extends Player {
     while (!isFilled) {
       System.out.println("Enter coords (x,y), where x,y can be 1-3: ");
       String[] arr = sc.next().split(",");
-      int x = Integer.parseInt(arr[0]);
-      int y = Integer.parseInt(arr[1]);
-      isFilled = Board.fillCell(x, y, this.symbol);
+      int xCoord = Integer.parseInt(arr[0]);
+      int yCoord = Integer.parseInt(arr[1]);
+      isFilled = Board.fillCell(xCoord, yCoord, this.symbol);
     }
   }
 
