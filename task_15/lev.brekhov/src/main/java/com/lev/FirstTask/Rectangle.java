@@ -15,6 +15,6 @@ public class Rectangle extends Shape {
   }
 
   public double square() {
-    return vSide * hSide;
+    return Math.pow(vSide, 2);
   }
 }

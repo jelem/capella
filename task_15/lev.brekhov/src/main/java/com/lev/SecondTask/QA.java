@@ -1,6 +1,6 @@
 package com.lev.SecondTask;
 
-public class QA extends Employee{
+public class QA extends Employee {
 
   private String name;
 

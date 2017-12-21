@@ -1,6 +1,6 @@
 package com.lev.SecondTask;
 
-public class Programmer extends Employee{
+public class Programmer extends Employee {
 
   private String name;
 

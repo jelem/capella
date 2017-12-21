@@ -13,6 +13,6 @@ public class Square extends Shape {
   }
 
   public double square() {
-    return side * side;
+    return Math.pow(side, 2);
   }
 }
