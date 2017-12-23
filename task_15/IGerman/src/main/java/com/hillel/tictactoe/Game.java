@@ -84,7 +84,7 @@ public class Game {
 
   private int[] inputCoordinates() {
     System.out.println("Player " + currentPlayer.getSymbol() + " input your coordinates");
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "UTF-8");
     int[] coords = new int[2];
     if (scanner.hasNextLine()) {
       String ss = scanner.nextLine();
