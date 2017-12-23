@@ -44,16 +44,8 @@ public class CustomArrayList<T> implements CustomList<T> {
     array[size++] = element;
   }
 
-  private void resize() {
-    T[] newArray = (T[]) new Object[array.length * 2];
-    System.arraycopy(array, 0, newArray, 0, array.length);
-    array = newArray;
-    System.out.println("array.length: " + array.length);
-  }
-
   @Override
   public void add(int index, T element) {
-
     if (index >= size || index < 0) {
       throw new NoSuchElementException("Wrong index");
     }
@@ -127,5 +119,12 @@ public class CustomArrayList<T> implements CustomList<T> {
       }
     }
     return -1;
+  }
+
+  private void resize() {
+    T[] newArray = (T[]) new Object[array.length * 2];
+    System.arraycopy(array, 0, newArray, 0, array.length);
+    array = newArray;
+    System.out.println("array.length: " + array.length);
   }
 }
