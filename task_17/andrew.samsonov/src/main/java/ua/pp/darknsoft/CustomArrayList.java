@@ -2,18 +2,18 @@ package ua.pp.darknsoft;
 
 import java.util.NoSuchElementException;
 
-public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeType> {
+public class CustomArrayList<T> implements CustomList<T> {
 
-  private GeneralizeType[] array;
+  private T[] array;
   private int size;
   private static final int DEFAULT_CAPACITY = 10;
 
   public CustomArrayList() {
-    array = (GeneralizeType[]) new Object[DEFAULT_CAPACITY];
+    array = (T[]) new Object[DEFAULT_CAPACITY];
   }
 
   public CustomArrayList(int cap) {
-    array = (GeneralizeType[]) new Object[cap];
+    array = (T[]) new Object[cap];
   }
 
   @Override
@@ -27,7 +27,7 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   @Override
-  public boolean contains(GeneralizeType element) {
+  public boolean contains(T element) {
     for (int i = 0; i < size; i++) {
       if (array[i] == element) {
         return true;
@@ -37,7 +37,7 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   @Override
-  public void add(GeneralizeType element) {
+  public void add(T element) {
     if (size >= array.length) {
       resize();
     }
@@ -45,14 +45,14 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   private void resize() {
-    GeneralizeType[] newArray = (GeneralizeType[]) new Object[array.length * 2];
+    T[] newArray = (T[]) new Object[array.length * 2];
     System.arraycopy(array, 0, newArray, 0, array.length);
     array = newArray;
     System.out.println("array.length: " + array.length);
   }
 
   @Override
-  public void add(int index, GeneralizeType element) {
+  public void add(int index, T element) {
 
     if (index >= size || index < 0) {
       throw new NoSuchElementException("Wrong index");
@@ -60,7 +60,7 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
     if (size >= array.length) {
       resize();
     }
-    GeneralizeType[] newArray = (GeneralizeType[]) new Object[array.length + 1];
+    T[] newArray = (T[]) new Object[array.length + 1];
     System.arraycopy(array, 0, newArray, 0, index + 1);
     newArray[index] = element;
     System.arraycopy(array, index, newArray, index + 1, array.length - index);
@@ -69,7 +69,7 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   @Override
-  public boolean remove(GeneralizeType element) {
+  public boolean remove(T element) {
     for (int i = 0; i < size; i++) {
       if (array[i] == element) {
         for (int j = i; j < size; j++) {
@@ -83,11 +83,11 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   @Override
-  public GeneralizeType remove(int index) {
+  public T remove(int index) {
     if (index >= size || index < 0) {
       throw new NoSuchElementException("Wrong index");
     }
-    GeneralizeType tmp = array[index];
+    T tmp = array[index];
     for (int j = index; j < size; j++) {
       array[j] = array[j + 1];
     }
@@ -104,7 +104,7 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   @Override
-  public GeneralizeType get(int index) {
+  public T get(int index) {
     if (index >= size || index < 0) {
       throw new NoSuchElementException("Wrong index");
     }
@@ -112,7 +112,7 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   @Override
-  public void set(int index, GeneralizeType element) {
+  public void set(int index, T element) {
     if (index >= size || index < 0) {
       throw new NoSuchElementException("Wrong index");
     }
@@ -120,7 +120,7 @@ public class CustomArrayList<GeneralizeType> implements CustomList<GeneralizeTyp
   }
 
   @Override
-  public int indexOf(GeneralizeType element) {
+  public int indexOf(T element) {
     for (int i = 0; i < size; i++) {
       if (array[i].equals(element)) {
         return i;

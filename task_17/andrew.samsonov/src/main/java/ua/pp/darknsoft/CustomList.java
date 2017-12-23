@@ -1,28 +1,28 @@
 package ua.pp.darknsoft;
 
-public interface CustomList<GeneralizeType> {
+public interface CustomList<T> {
 
   int size();
 
   boolean isEmpty();
 
-  boolean contains(GeneralizeType element);
+  boolean contains(T element);
 
-  void add(GeneralizeType element);
+  void add(T element);
 
-  void add(int index, GeneralizeType element);
+  void add(int index, T element);
 
 
-  boolean remove(GeneralizeType element);
+  boolean remove(T element);
 
-  GeneralizeType remove(int index);
+  T remove(int index);
 
   void clear();
 
-  GeneralizeType get(int index);
+  T get(int index);
 
-  void set(int index, GeneralizeType element);
+  void set(int index, T element);
 
-  int indexOf(GeneralizeType element);
+  int indexOf(T element);
 
 }
