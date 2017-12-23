@@ -6,6 +6,6 @@ public class Main {
     Game game = new Game();
     game.start();
     game.mainLoop();
-    game.over();
+    game.Over();
   }
 }

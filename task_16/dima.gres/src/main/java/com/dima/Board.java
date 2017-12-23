@@ -1,280 +1,149 @@
 package com.dima;
 
-import java.util.Vector;
+import java.util.NoSuchElementException;
 
 public class Board {
-  public static char X = 'X';
-  public static char O = 'O';
-  public static int CLASSIC = 9;
+  public static final int CLASSIC = 3;
+  public static final char X = 'X';
+  public static final char O = 'O';
+  private int size;
+  private int len;
+  private char[][] field;
+  private int row;
+  private int col;
 
-  private char[] field;
-  private int free;
-  private int[] indexes;
+  public char[][] getField() {
+    return field;
+  }
 
-
+  public int getLen() {
+    return len;
+  }
 
   public Board() {
-    field = new char[CLASSIC];
-    free = CLASSIC;
-    indexes = new int[CLASSIC];
-    for (int i = 0; i < CLASSIC; i++) {
-      field[i] = ' ';
-      indexes[i] = i;
+    size = CLASSIC;
+    len = size * size;
+    field = new char[3][3];
+    intialize();
+  }
+
+  private void intialize() {
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        field[i][j] = ' ';
+      }
     }
   }
 
-
   public void draw() {
-    for (int i = 0; i < field.length; i++) {
-      if (field[i] != ' ') {
-        System.out.print(" " + field[i] + " ");
-      } else {
-        System.out.print("*" + i + "*");
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        if (j > 0 && j < size) {
+          System.out.print("|");
+        }
+        if (field[i][j] != ' ') {
+          System.out.print(" " + field[i][j] + " ");
+        } else {
+          System.out.print(" " + (i * 3 + j) + " ");
+        }
       }
-      if ( i % 3 == 0 || (i >  0 && (i - 1) % 3 == 0 )){
-        System.out.print("|");
-      }
-
-      if ( (i + 1) % 3 == 0 && i < 6) {
+      if (i < size - 1) {
         System.out.println("\n___________");
       }
     }
     System.out.println("\n");
   }
 
-  public boolean isValid(int buf) {
-    return !( buf < 0 || buf >= field.length || field[buf] != ' ');
-  }
-
-  public void fill(char signature, int buf) {
-    field[buf] = signature;
-    deleteToNum(buf);
-    free--;
-  }
-
-  public void fillRandome(char signature) {
-    int rand = randNum(free);
-    int num = indexes[rand];
-    deleteToIndex(rand);
-    field[num] = signature;
-    free--;
-  }
-
-  public void fillSmart(char signature) {
-    int max = indexes[0];
-    int id = 0;
-    int del = 0;
-    for (int i = 0; i < free; i++) {
-      id = indexes[i];
-      //System.out.println(id + " -> " + evaluate(id, signature));
-      if (evaluate(id, signature) > evaluate(max, signature)) {
-        max = indexes[i];
+  public static void copy(Board to, Board from, int len) {
+    for (int i = 0; i < len; i++) {
+      for (int j = 0; j < len; j++) {
+        to.getField()[i][j] = from.getField()[i][j];
       }
     }
-
-    //System.out.println("max: " + max);
-    field[max] = signature;
-    deleteToNum(max);
-    free--;
   }
 
-  public int evaluate(int index, char signature) {
-    char current = signature;
-    char enemy = signature == X ? O : X;
-    if (index == 0) {
-      if (field[1] == current && field[2] == current) {
-        return 10;
-      } else if (field[3] == current && field[6] == current) {
-        return 10;
-      } else if (field[4] == current && field[8] == current) {
-        return 10;
-      }
-    } else if (index == 1) {
-      if (field[0] == current && field[2] == current) {
-        return 10;
-      } else if (field[4] == current && field[7] == current) {
-        return 10;
-      }
-    } else if (index == 2) {
-      if (field[0] == current && field[1] == current) {
-        return 10;
-      } else if (field[5] == current && field[8] == current) {
-        return 10;
-      } else if (field[4] == current && field[6] == current) {
-        return 10;
-      }
-    } else if (index == 3) {
-      if (field[4] == current && field[5] == current) {
-        return 10;
-      } else if (field[0] == current && field[6] == current) {
-        return 10;
-      }
-    } else if (index == 4) {
-      if (field[3] == current && field[5] == current) {
-        return 10;
-      } else if (field[1] == current && field[7] == current) {
-        return 10;
-      } else if (field[0] == current && field[8] == current) {
-        return 10;
-      } else if (field[2] == current && field[6] == current) {
-        return 10;
-      }
-    } else if (index == 5) {
-      if (field[3] == current && field[4] == current) {
-        return 10;
-      } else if (field[2] == current && field[8] == current) {
-        return 10;
-      }
-    } else if (index == 6) {
-      if (field[7] == current && field[8] == current) {
-        return 10;
-      } else if (field[0] == current && field[3] == current) {
-        return 10;
-      } else if (field[2] == current && field[4] == current) {
-        return 10;
-      }
-    } else if (index == 7) {
-      if (field[6] == current && field[8] == current) {
-        return 10;
-      } else if (field[1] == current && field[4] == current) {
-        return 10;
-      }
-    } else if (index == 8) {
-      if (field[6] == current && field[7] == current) {
-        return 10;
-      } else if (field[2] == current && field[5] == current) {
-        return 10;
-      } else if (field[0] == current && field[4] == current) {
-        return 10;
-      }
-    }
-
-    if (index == 0) {
-      if (field[1] == enemy && field[2] == enemy) {
-        return 0;
-      } else if (field[3] == enemy && field[6] == enemy) {
-        return 0;
-      } else if (field[4] == enemy && field[8] == enemy) {
-        return 0;
-      }
-    } else if (index == 1) {
-      if (field[0] == enemy && field[2] == enemy) {
-        return 0;
-      } else if (field[4] == enemy && field[7] == enemy) {
-        return 0;
-      }
-    } else if (index == 2) {
-      if (field[0] == enemy && field[1] == enemy) {
-        return 0;
-      } else if (field[5] == enemy && field[8] == enemy) {
-        return 0;
-      } else if (field[4] == enemy && field[6] == enemy) {
-        return 0;
-      }
-    } else if (index == 3) {
-      if (field[4] == enemy && field[5] == enemy) {
-        return 0;
-      } else if (field[0] == enemy && field[6] == enemy) {
-        return 0;
-      }
-    } else if (index == 4) {
-      if (field[3] == enemy && field[5] == enemy) {
-        return 0;
-      } else if (field[1] == enemy && field[7] == enemy) {
-        return 0;
-      } else if (field[0] == enemy && field[8] == enemy) {
-        return 0;
-      } else if (field[2] == enemy && field[6] == enemy) {
-        return 0;
-      }
-    } else if (index == 5) {
-      if (field[3] == enemy && field[4] == enemy) {
-        return 0;
-      } else if (field[2] == enemy && field[8] == enemy) {
-        return 0;
-      }
-    } else if (index == 6) {
-      if (field[7] == enemy && field[8] == enemy) {
-        return 0;
-      } else if (field[0] == enemy && field[3] == enemy) {
-        return 0;
-      } else if (field[2] == enemy && field[4] == enemy) {
-        return 0;
-      }
-    } else if (index == 7) {
-      if (field[6] == enemy && field[8] == enemy) {
-        return 0;
-      } else if (field[1] == enemy && field[4] == enemy) {
-        return 0;
-      }
-    } else if (index == 8) {
-      if (field[6] == enemy && field[7] == enemy) {
-        return 0;
-      } else if (field[2] == enemy && field[5] == enemy) {
-        return 0;
-      } else if (field[0] == enemy && field[4] == enemy) {
-        return 0;
-      }
-    }
-    return -10;
+  public boolean isFull() {
+    return  len == 0;
   }
 
-  private int randNum(int num ) {
-    return  (int) Math.floor( (Math.random() * num) );
+  public boolean isWin(char ch) {
+    return oneOfRows(ch) || oneOfCols(ch) || mainDiag(ch) || otherDiag(ch);
   }
 
-
-  public int getFree() {
-    return free;
-  }
-
-  public boolean isFill() {
-    return free == 0;
-  }
-
-  public boolean isWin(char signature) {
-    return ( field[0] == signature && field[1] == signature && field[2] == signature ) ||
-           ( field[3] == signature && field[4] == signature && field[5] == signature ) ||
-           ( field[6] == signature && field[7] == signature && field[8] == signature ) ||
-           ( field[0] == signature && field[3] == signature && field[6] == signature ) ||
-           ( field[1] == signature && field[4] == signature && field[7] == signature ) ||
-           ( field[2] == signature && field[5] == signature && field[8] == signature ) ||
-           ( field[0] == signature && field[4] == signature && field[8] == signature ) ||
-           ( field[2] == signature && field[4] == signature && field[6] == signature );
-  }
-
-  int binarySearch(int num) {
-    int left = 0;
-    int right = free -1;
-    int middle = (left + right) / 2;
-    while (left < right) {
-      if (indexes[left] == num) {
-        return left;
-      } else if (indexes[middle] == num) {
-        return middle;
-      } else if (indexes[right] == num) {
-        return  right;
-      } else if (indexes[middle] < num) {
-        left = middle + 1;
-      } else {
-        right = middle - 1;
-      }
-      middle = (left + right) / 2;
-    }
-    return -1;
-  }
-
-  void deleteToIndex(int index) {
-    for (int i = index; i < free - 1; i++) {
-      indexes[i] = indexes[i + 1];
-    }
-  }
-
-  void deleteToNum(int num) {
-    int index = binarySearch(num);
-    if (index == -1) {
+  public void setCell(char ch, int index) {
+    if (!isValidCoord(index)) {
       return;
     }
-    deleteToIndex(index);
+    parseCoords(index);
+    len--;
+    field[row][col] = ch;
+  }
+
+  public boolean isValidCoord(int index) {
+    return index >= 0 && index < size * size && thisCellIsEmpty(index);
+  }
+
+  private void parseCoords(int index) {
+    row = index / size;
+    col = index % size;
+  }
+
+  private boolean thisCellIsEmpty(int index) {
+    parseCoords(index);
+    return field[row][col] == ' ';
+  }
+
+  private boolean otherDiag(char ch) {
+    for (int i = 0; i < size; i++) {
+      if (field[i][size - 1 - i] != ch) {
+        return false;
+      }
+    }
+    return  true;
+  }
+
+  private boolean mainDiag(char ch) {
+    for (int i = 0; i < size; i++) {
+      if (field[i][i] != ch) {
+        return false;
+      }
+    }
+    return  true;
+  }
+
+  private boolean oneOfCols(char ch) {
+    for (int i = 0; i < size; i++) {
+      if (thisCol(ch, i)) {
+        return true;
+      }
+    }
+    return  false;
+  }
+
+  private boolean thisCol(char ch, int id) {
+    for (int i = 0; i < size; i++) {
+      if (field[i][id] != ch) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private boolean oneOfRows(char ch) {
+    for (int i = 0; i < size; i++) {
+      if (thisRow(ch, i)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private boolean thisRow(char ch, int id) {
+    for (int i = 0; i < size; i++) {
+     if (field[id][i] != ch) {
+       return false;
+     }
+    }
+    return true;
   }
 }

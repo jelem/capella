@@ -1,15 +1,16 @@
 package com.dima;
 
 public abstract class Player {
-  private char signature;
+  private char thisChar;
+
+
+  public Player(char thisChar) {
+    this.thisChar = thisChar;
+  }
+
+  public char getThisChar() {
+    return thisChar;
+  }
 
   public abstract void makeMove(Board board);
-
-  public char getSignature() {
-    return signature;
-  }
-
-  public Player(char signature) {
-    this.signature = signature;
-  }
 }

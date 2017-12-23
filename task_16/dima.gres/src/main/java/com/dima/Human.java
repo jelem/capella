@@ -3,21 +3,19 @@ package com.dima;
 import java.util.Scanner;
 
 public class Human extends Player {
-  private Scanner scanner = new Scanner(System.in, "UTF-8");
+  public Human(char thisChar) {
+    super(thisChar);
+  }
 
   @Override
   public void makeMove(Board board) {
-    Conversation.inputMessage(this.getSignature());
-    int buf = scanner.nextInt();
-    while ( !board.isValid(buf) ) {
-      Conversation.errorMessage(this.getSignature());
-      Conversation.inputMessage(this.getSignature());
-      buf = scanner.nextInt();
+    Scanner scanner = new Scanner(System.in);
+    MessageBox.input(this.getThisChar());
+    int index = scanner.nextInt();
+    while (!board.isValidCoord(index)) {
+      MessageBox.error();
+      index = scanner.nextInt();
     }
-    board.fill(getSignature() ,buf);
-  }
-
-  public Human(char ch) {
-    super(ch);
+    board.setCell(this.getThisChar(), index);
   }
 }
