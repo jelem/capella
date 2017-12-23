@@ -1,5 +1,7 @@
 package ua.pp.darknsoft;
 
+import java.util.NoSuchElementException;
+
 public class CustomArrayList<Item> implements CustomList<Item> {
 
   private Item[] array;
@@ -53,7 +55,7 @@ public class CustomArrayList<Item> implements CustomList<Item> {
   public void add(int index, Item element) {
 
     if (index >= size || index < 0) {
-      throw new IllegalArgumentException("Wrong index");
+      throw new NoSuchElementException("Wrong index");
     }
     if (size >= array.length) {
       resize();
@@ -83,7 +85,7 @@ public class CustomArrayList<Item> implements CustomList<Item> {
   @Override
   public Item remove(int index) {
     if (index >= size || index < 0) {
-      throw new IllegalArgumentException("Wrong index");
+      throw new NoSuchElementException("Wrong index");
     }
     Item tmp = array[index];
     for (int j = index; j < size; j++) {
@@ -98,17 +100,21 @@ public class CustomArrayList<Item> implements CustomList<Item> {
     for (int i = 0; i < size; i++) {
       array[i] = null;
     }
+    size = 0;
   }
 
   @Override
   public Item get(int index) {
+    if (index >= size || index < 0) {
+      throw new NoSuchElementException("Wrong index");
+    }
     return array[index];
   }
 
   @Override
   public void set(int index, Item element) {
     if (index >= size || index < 0) {
-      throw new IllegalArgumentException("Wrong index");
+      throw new NoSuchElementException("Wrong index");
     }
     array[index] = element;
   }
