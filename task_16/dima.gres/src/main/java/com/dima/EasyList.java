@@ -3,6 +3,7 @@ package com.dima;
 import java.util.NoSuchElementException;
 
 public class EasyList implements BaseList {
+
   private int size;
   private int len;
   private int[] array;

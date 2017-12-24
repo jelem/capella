@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 
-
 public class EasyListTest {
 
   @Test
@@ -36,9 +35,9 @@ public class EasyListTest {
     actual = easyList.get(7);
     assertEquals(8, actual);
     easyList.removeToIndex(0);
-    actual =easyList.get(0);
+    actual = easyList.get(0);
     assertEquals(1, actual);
-    actual =easyList.get(4);
+    actual = easyList.get(4);
     assertEquals(6, actual);
     actual = easyList.getLen();
     assertEquals(7, actual);

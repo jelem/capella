@@ -28,9 +28,9 @@ public class BoardTests {
   @Test
   public void testIsWinRow() {
     Board board = new Board();
-    board.setCell(Board.X,0);
-    board.setCell(Board.X,1);
-    board.setCell(Board.X,2);
+    board.setCell(Board.X, 0);
+    board.setCell(Board.X, 1);
+    board.setCell(Board.X, 2);
     board.draw();
     boolean result = board.isWin(Board.X);
   }
@@ -38,9 +38,9 @@ public class BoardTests {
   @Test
   public void testIsWinRow2() {
     Board board = new Board();
-    board.setCell(Board.X,0);
-    board.setCell(Board.O,1);
-    board.setCell(Board.X,2);
+    board.setCell(Board.X, 0);
+    board.setCell(Board.O, 1);
+    board.setCell(Board.X, 2);
     board.draw();
     boolean result = board.isWin(Board.X);
     assertEquals(result, false);
@@ -49,9 +49,9 @@ public class BoardTests {
   @Test
   public void testIsWinCol() {
     Board board = new Board();
-    board.setCell(Board.O,0);
-    board.setCell(Board.O,3);
-    board.setCell(Board.O,6);
+    board.setCell(Board.O, 0);
+    board.setCell(Board.O, 3);
+    board.setCell(Board.O, 6);
     board.draw();
     boolean result = board.isWin(Board.O);
     assertEquals(result, true);
@@ -60,9 +60,9 @@ public class BoardTests {
   @Test
   public void testIsWinMain() {
     Board board = new Board();
-    board.setCell(Board.O,0);
-    board.setCell(Board.O,4);
-    board.setCell(Board.O,8);
+    board.setCell(Board.O, 0);
+    board.setCell(Board.O, 4);
+    board.setCell(Board.O, 8);
     board.draw();
     boolean result = board.isWin(Board.O);
     assertEquals(result, true);
@@ -71,9 +71,9 @@ public class BoardTests {
   @Test
   public void testIsWinOther() {
     Board board = new Board();
-    board.setCell(Board.O,2);
-    board.setCell(Board.O,4);
-    board.setCell(Board.O,6);
+    board.setCell(Board.O, 2);
+    board.setCell(Board.O, 4);
+    board.setCell(Board.O, 6);
     board.draw();
     boolean result = board.isWin(Board.O);
     assertEquals(result, true);
@@ -82,12 +82,12 @@ public class BoardTests {
   @Test
   public void testLen() {
     Board board = new Board();
-    board.setCell(Board.O,2);
-    board.setCell(Board.O,4);
-    board.setCell(Board.O,6);
+    board.setCell(Board.O, 2);
+    board.setCell(Board.O, 4);
+    board.setCell(Board.O, 6);
     board.draw();
     int result = board.getLen();
-    assertEquals(result,9 - 3);
+    assertEquals(result, 9 - 3);
   }
 
   @Test
@@ -98,7 +98,7 @@ public class BoardTests {
     }
     board.draw();
     int result = board.getLen();
-    assertEquals(result,0);
+    assertEquals(result, 0);
   }
 
   @Test
@@ -109,6 +109,6 @@ public class BoardTests {
     }
     board.draw();
     int result = board.getLen();
-    assertEquals(result,0);
+    assertEquals(result, 0);
   }
 }

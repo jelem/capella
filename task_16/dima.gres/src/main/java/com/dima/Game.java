@@ -33,7 +33,7 @@ public class Game {
   }
 
   private void initialize(int step, char ch) {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "UTF-8");
     int answer = scanner.nextInt();
     while (!validSelect(answer)) {
       MessageBox.errorWho();
@@ -42,27 +42,30 @@ public class Game {
     switch (answer) {
       case HUMAN:
         if (step == 1) {
-          player1 = FabricPlayer.Human(ch);
+          player1 = FabricPlayer.human(ch);
         } else {
-          player2 = FabricPlayer.Human(ch);
+          player2 = FabricPlayer.human(ch);
         }
         break;
 
-        case EASY:
-          if (step == 1) {
-            player1 = FabricPlayer.Easy(ch);
-          } else {
-            player2 = FabricPlayer.Easy(ch);
-          }
+      case EASY:
+        if (step == 1) {
+          player1 = FabricPlayer.easy(ch);
+        } else {
+          player2 = FabricPlayer.easy(ch);
+        }
         break;
 
-        case MEDIUME:
-          if (step == 1) {
-            player1 = FabricPlayer.Middle(ch);
-          } else {
-            player2 = FabricPlayer.Middle(ch);
-          }
-          break;
+      case MEDIUME:
+        if (step == 1) {
+          player1 = FabricPlayer.middle(ch);
+        } else {
+          player2 = FabricPlayer.middle(ch);
+        }
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -86,7 +89,7 @@ public class Game {
     current = current == player1 ? player2 : player1;
   }
 
-  public void Over() {
+  public void over() {
     board.draw();
     MessageBox.congratulations(result);
   }

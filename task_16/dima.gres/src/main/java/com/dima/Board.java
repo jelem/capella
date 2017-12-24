@@ -140,9 +140,9 @@ public class Board {
 
   private boolean thisRow(char ch, int id) {
     for (int i = 0; i < size; i++) {
-     if (field[id][i] != ch) {
-       return false;
-     }
+      if (field[id][i] != ch) {
+        return false;
+      }
     }
     return true;
   }

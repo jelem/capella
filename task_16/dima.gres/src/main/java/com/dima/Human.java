@@ -9,7 +9,7 @@ public class Human extends Player {
 
   @Override
   public void makeMove(Board board) {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "UTF-8");
     MessageBox.input(this.getThisChar());
     int index = scanner.nextInt();
     while (!board.isValidCoord(index)) {

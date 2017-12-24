@@ -1,6 +1,7 @@
 package com.dima;
 
-public class MiddleList extends EasyList implements AdvanceList{
+public class MiddleList extends EasyList implements AdvanceList {
+
   private Board buffer;
 
   public MiddleList() {
@@ -11,18 +12,18 @@ public class MiddleList extends EasyList implements AdvanceList{
 
   @Override
   public int evaluate(Board board, char ch, int index) {
-    char enemy = ch == Board.X ? Board.O : Board.X;
+    final char enemy = ch == Board.X ? Board.O : Board.X;
     Board.copy(buffer, board, Board.CLASSIC);
     buffer.setCell(ch, index);
-    if(buffer.isWin(ch)) {
+    if (buffer.isWin(ch)) {
       return 10;
     }
     Board.copy(buffer, board, Board.CLASSIC);
     buffer.setCell(enemy, index);
-    if(buffer.isWin(enemy)) {
+    if (buffer.isWin(enemy)) {
       return 5;
     }
-    return  0;
+    return 0;
   }
 
   @Override

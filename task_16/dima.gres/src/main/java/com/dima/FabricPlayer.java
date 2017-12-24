@@ -1,15 +1,15 @@
 package com.dima;
 
 public class FabricPlayer {
-  public static Player Human(char ch) {
+  public static Player human(char ch) {
     return new Human(ch);
   }
 
-  public static Player Easy(char ch) {
+  public static Player easy(char ch) {
     return new EasyComputer(ch);
   }
 
-  public static Player Middle(char ch) {
+  public static Player middle(char ch) {
     return new MiddleComputer(ch);
   }
 }
