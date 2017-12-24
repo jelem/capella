@@ -1,7 +1,5 @@
 package ua.pp.darknsoft;
 
-import java.util.Iterator;
-
 public class Main {
 
   public static void main(String[] args) {
@@ -21,12 +19,9 @@ public class Main {
     ctm.add(5, "test");
     ctm.add(5, "test");
 
-    Iterator iterator = ctm.iterator();
-
     for (String str : ctm) {
       System.out.println(str);
     }
-
   }
 
 }

@@ -168,6 +168,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 
     @Override
     public Object next() {
+      if (current >= size) {
+        throw new NoSuchElementException();
+      }
       return array[current--];
     }
   }
