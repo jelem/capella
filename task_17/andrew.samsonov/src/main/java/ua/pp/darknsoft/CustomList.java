@@ -1,6 +1,8 @@
 package ua.pp.darknsoft;
 
-public interface CustomList<T> {
+import java.util.Iterator;
+
+public interface CustomList<T> extends Iterable<T> {
 
   int size();
 
@@ -24,5 +26,7 @@ public interface CustomList<T> {
   void set(int index, T element);
 
   int indexOf(T element);
+
+  Iterator<T> backwardIterator();
 
 }

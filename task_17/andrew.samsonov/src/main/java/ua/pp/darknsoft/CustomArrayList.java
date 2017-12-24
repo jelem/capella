@@ -1,5 +1,6 @@
 package ua.pp.darknsoft;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class CustomArrayList<T> implements CustomList<T> {
@@ -126,5 +127,48 @@ public class CustomArrayList<T> implements CustomList<T> {
     System.arraycopy(array, 0, newArray, 0, array.length);
     array = newArray;
     System.out.println("array.length: " + array.length);
+  }
+
+  public Iterator iterator() {
+    return new ListIterator();
+  }
+
+  @Override
+  public Iterator backwardIterator() {
+    return new BackwardIterator();
+  }
+
+  private class ListIterator implements Iterator {
+
+    private int current = 0;
+
+    @Override
+    public boolean hasNext() {
+      return current < size;
+    }
+
+    @Override
+    public Object next() {
+      if (current >= size) {
+        throw new NoSuchElementException();
+      }
+      T currentElement = array[current++];
+      return currentElement;
+    }
+  }
+
+  private class BackwardIterator implements Iterator {
+
+    private int current = size - 1;
+
+    @Override
+    public boolean hasNext() {
+      return current >= 0;
+    }
+
+    @Override
+    public Object next() {
+      return array[current--];
+    }
   }
 }
