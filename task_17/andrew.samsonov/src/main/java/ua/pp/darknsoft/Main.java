@@ -23,8 +23,7 @@ public class Main {
 
     Iterator iterator = ctm.iterator();
 
-    for (String str : ctm
-        ) {
+    for (String str : ctm) {
       System.out.println(str);
     }
 
