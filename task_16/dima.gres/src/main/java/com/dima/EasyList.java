@@ -100,11 +100,6 @@ public class EasyList implements BaseList {
   }
 
   @Override
-  public int[] getArray() {
-    return array;
-  }
-
-  @Override
   public int getSize() {
     return size;
   }
@@ -117,5 +112,11 @@ public class EasyList implements BaseList {
   @Override
   public void setLen(int len) {
     this.len = len;
+  }
+
+  public void copyIntArrToBuffer(int[] buffer) {
+    for (int i = 0; i < size; i++) {
+      buffer[i] = array[i];
+    }
   }
 }

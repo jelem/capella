@@ -17,8 +17,10 @@ public class MiddleComputer extends Player {
     char[][] buf = new char[Board.CLASSIC][Board.CLASSIC];
     board.copyFieldToArray(buf);
     list.fill(buf);
-    int max = list.max(board, list.getArray(), getThisChar());
-    int index = list.generateMaxRandom(board, list.getArray(), getThisChar(), max);
+    int[] buffer = new int[Board.CLASSIC * Board.CLASSIC];
+    list.copyIntArrToBuffer(buffer);
+    int max = list.max(board, buffer, getThisChar());
+    int index = list.generateMaxRandom(board, buffer, getThisChar(), max);
     board.setCell(getThisChar(), index);
   }
 

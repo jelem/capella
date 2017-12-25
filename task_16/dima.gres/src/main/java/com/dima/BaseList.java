@@ -22,11 +22,11 @@ public interface BaseList {
 
   int getLen();
 
-  int[] getArray();
-
   int getSize();
 
   void setSize(int size);
   
   void setLen(int len);
+
+  void copyIntArrToBuffer(int[] buffer);
 }
