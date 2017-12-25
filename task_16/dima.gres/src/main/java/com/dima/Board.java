@@ -12,10 +12,6 @@ public class Board {
   private int row;
   private int col;
 
-  public char[][] getField() {
-    return field;
-  }
-
   public int getLen() {
     return len;
   }
@@ -57,7 +53,7 @@ public class Board {
   public static void copy(Board to, Board from, int len) {
     for (int i = 0; i < len; i++) {
       for (int j = 0; j < len; j++) {
-        to.getField()[i][j] = from.getField()[i][j];
+        to.field[i][j] = from.field[i][j];
       }
     }
   }

@@ -14,7 +14,9 @@ public class MiddleComputer extends Player {
 
   @Override
   public void makeMove(Board board) {
-    list.fill(board.getField());
+    char[][] buf = new char[Board.CLASSIC][Board.CLASSIC];
+    board.copyFieldToArray(buf);
+    list.fill(buf);
     int max = list.max(board, list.getArray(), getThisChar());
     int index = list.generateMaxRandom(board, list.getArray(), getThisChar(), max);
     board.setCell(getThisChar(), index);
