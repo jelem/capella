@@ -10,7 +10,9 @@ public class EasyComputer extends Player {
 
   @Override
   public void makeMove(Board board) {
-    list.fill(board.getField());
+    char[][] buf = new char[Board.CLASSIC][Board.CLASSIC];
+    board.copyFieldToArray(buf);
+    list.fill(buf);
     int random = list.createRandom();
     int index = list.get(random);
     board.setCell(getThisChar(), index);

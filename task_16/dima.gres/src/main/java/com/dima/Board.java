@@ -146,4 +146,12 @@ public class Board {
     }
     return true;
   }
+
+  public void copyFieldToArray(char[][] buf) {
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        buf[i][j] = field[i][j];
+      }
+    }
+  }
 }
