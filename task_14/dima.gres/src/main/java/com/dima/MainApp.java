@@ -52,7 +52,7 @@ public class MainApp {
 
   public static void inputCoordinates(int[] coords, char[][] field) {
     System.out.println("Input coords(row coll): ");
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "UTF-8");
     coords[0] = scanner.nextInt();
     coords[1] = scanner.nextInt();
   }
