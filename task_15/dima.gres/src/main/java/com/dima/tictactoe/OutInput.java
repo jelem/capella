@@ -61,7 +61,7 @@ public class OutInput {
   }
 
   public void setNamePlayer(Player player) {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "UTF-8");
     String name = scanner.next();
     player.setName(name);
   }
