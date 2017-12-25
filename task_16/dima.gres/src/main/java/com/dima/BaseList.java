@@ -5,7 +5,7 @@ public interface BaseList {
   void fill(char[][] array);
   
   public static int createRandom(int maxBorder) {
-    return (int) Math.ceil(Math.random() * maxBorder);
+    return (int) Math.floor(Math.random() * maxBorder);
   }
 
   int createRandom();
