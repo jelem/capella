@@ -32,7 +32,8 @@ public class BoardTests {
     board.setCell(Board.X, 1);
     board.setCell(Board.X, 2);
     board.draw();
-    boolean result = board.isWin(Board.X);
+    boolean actual = board.isWin(Board.X);
+    assertEquals(true, actual);
   }
 
   @Test
