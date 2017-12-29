@@ -49,7 +49,8 @@ public class StackTest {
     do {
       ch = stack.pop();
       System.out.print(ch);
-    } while (ch != 'a');
+    }
+    while (ch != 'a');
 
     System.out.println();
   }

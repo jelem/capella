@@ -3,9 +3,10 @@ package com.dima.stack;
 import java.util.NoSuchElementException;
 
 public class MyStack implements CustomeStack {
-  public final static int LOW = 10;
-  public final static int AVERAGE = 20;
-  public final static int BIG = 50;
+
+  public static final int LOW = 10;
+  public static final int AVERAGE = 20;
+  public static final int BIG = 50;
 
   private int size;
   private char[] array;
@@ -102,7 +103,7 @@ public class MyStack implements CustomeStack {
       max = ch;
       maximus[pomax++] = ch;
     }
-   }
+  }
 
   public boolean isEmpty() {
     return current == 0;
