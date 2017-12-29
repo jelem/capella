@@ -10,8 +10,8 @@ public class BoardTests {
   @Test
   public void testFull1() {
     Board board = new Board();
-    boolean result = board.isFull();
-    assertEquals(result, false);
+    boolean expected = board.isFull();
+    assertEquals(expected, false);
   }
 
   @Test
@@ -21,8 +21,8 @@ public class BoardTests {
       board.setCell(Board.X, i);
     }
     board.draw();
-    boolean result = board.isFull();
-    assertEquals(result, false);
+    boolean expected = board.isFull();
+    assertEquals(expected, false);
   }
 
   @Test
@@ -32,7 +32,8 @@ public class BoardTests {
     board.setCell(Board.X, 1);
     board.setCell(Board.X, 2);
     board.draw();
-    boolean result = board.isWin(Board.X);
+    boolean expected = board.isWin(Board.X);
+    assertEquals(expected, true);
   }
 
   @Test
@@ -42,8 +43,8 @@ public class BoardTests {
     board.setCell(Board.O, 1);
     board.setCell(Board.X, 2);
     board.draw();
-    boolean result = board.isWin(Board.X);
-    assertEquals(result, false);
+    boolean expected = board.isWin(Board.X);
+    assertEquals(expected, false);
   }
 
   @Test
@@ -53,8 +54,8 @@ public class BoardTests {
     board.setCell(Board.O, 3);
     board.setCell(Board.O, 6);
     board.draw();
-    boolean result = board.isWin(Board.O);
-    assertEquals(result, true);
+    boolean expected = board.isWin(Board.O);
+    assertEquals(expected, true);
   }
 
   @Test
@@ -64,8 +65,8 @@ public class BoardTests {
     board.setCell(Board.O, 4);
     board.setCell(Board.O, 8);
     board.draw();
-    boolean result = board.isWin(Board.O);
-    assertEquals(result, true);
+    boolean expected = board.isWin(Board.O);
+    assertEquals(expected, true);
   }
 
   @Test
@@ -75,8 +76,8 @@ public class BoardTests {
     board.setCell(Board.O, 4);
     board.setCell(Board.O, 6);
     board.draw();
-    boolean result = board.isWin(Board.O);
-    assertEquals(result, true);
+    boolean expected = board.isWin(Board.O);
+    assertEquals(expected, true);
   }
 
   @Test
@@ -86,8 +87,8 @@ public class BoardTests {
     board.setCell(Board.O, 4);
     board.setCell(Board.O, 6);
     board.draw();
-    int result = board.getLen();
-    assertEquals(result, 9 - 3);
+    int expected = board.getLen();
+    assertEquals(expected, 9 - 3);
   }
 
   @Test
@@ -97,8 +98,8 @@ public class BoardTests {
       board.setCell(Board.X, i);
     }
     board.draw();
-    int result = board.getLen();
-    assertEquals(result, 0);
+    int expected = board.getLen();
+    assertEquals(expected, 0);
   }
 
   @Test
@@ -108,7 +109,7 @@ public class BoardTests {
       board.setCell(Board.X, i);
     }
     board.draw();
-    int result = board.getLen();
-    assertEquals(result, 0);
+    int expected = board.getLen();
+    assertEquals(expected, 0);
   }
 }
