@@ -1,4 +1,4 @@
-package com.dima;
+package com.dima.list;
 
 import org.junit.Test;
 

@@ -19,8 +19,11 @@ public class MyStack implements CustomeStack {
 
   public MyStack(int size) {
     current = 0;
+    pomax = pomin = 0;
     this.size = size;
     array = new char[size];
+    minimals = new char[size];
+    maximus = new char[size];
   }
 
   public MyStack() {
@@ -55,11 +58,13 @@ public class MyStack implements CustomeStack {
 
   private void eraseMinMax(char tmp) {
     if (tmp <= min) {
-      min = minimals[--pomin];
+      --pomin;
+      min = pomin > 0 ? minimals[pomin - 1] : minimals[0];
     }
 
     if (tmp >= max) {
-      max = maximus[++pomax];
+      --pomax;
+      max = pomin > 0 ? maximus[pomax - 1] : maximus[0];
     }
   }
 
@@ -73,11 +78,17 @@ public class MyStack implements CustomeStack {
 
   @Override
   public char max() {
+    if (current == 0) {
+      throw  new NoSuchElementException("...Stack is Empty...");
+    }
     return max;
   }
 
   @Override
   public char min() {
+    if (current == 0) {
+      throw  new NoSuchElementException("...Stack is Empty...");
+    }
     return min;
   }
 
