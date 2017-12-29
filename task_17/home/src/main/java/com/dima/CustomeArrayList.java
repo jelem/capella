@@ -2,7 +2,7 @@ package com.dima;
 
 import java.util.Iterator;
 
-public interface CustomeList {
+public interface CustomeArrayList {
   int size();
 
   boolean isEmpty();
