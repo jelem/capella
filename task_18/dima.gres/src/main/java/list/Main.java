@@ -1,4 +1,6 @@
-package com.dima;
+package list;
+
+import list.MyList;
 
 import java.util.Iterator;
 

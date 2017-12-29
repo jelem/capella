@@ -1,4 +1,4 @@
-package com.dima;
+package list;
 
 import java.util.Iterator;
 
@@ -245,7 +245,6 @@ public class MyList implements CustomeList {
       int index = indexes[itteration];
       String tmp = array[index];
       eraseInIndexes(itteration);
-      draw();
       return tmp;
     }
 
