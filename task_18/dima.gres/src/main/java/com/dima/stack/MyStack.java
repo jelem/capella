@@ -103,4 +103,8 @@ public class MyStack implements CustomeStack {
       maximus[pomax++] = ch;
     }
    }
+
+  public boolean isEmpty() {
+    return current == 0;
+  }
 }
