@@ -131,6 +131,7 @@ public class MyList implements CustomeList {
 
   @Override
   public Iterator ahead() {
+    ahead.setIteration();
     return ahead;
   }
 
@@ -142,6 +143,7 @@ public class MyList implements CustomeList {
 
   @Override
   public Iterator random() {
+    random.setIteration();
     return random;
   }
 
@@ -149,6 +151,10 @@ public class MyList implements CustomeList {
     for (int i = 0; i < array.length; i++) {
       buffer[i] = array[i];
     }
+  }
+
+  public int getCurrent() {
+    return current;
   }
 
   private class ListIterator implements Iterator {
@@ -174,6 +180,10 @@ public class MyList implements CustomeList {
         throw new NoSuchElementException("...No such element exception..");
       }
       return array[iterration++];
+    }
+
+    public void setIteration() {
+      iterration = 0;
     }
   }
 
@@ -218,7 +228,7 @@ public class MyList implements CustomeList {
     }
 
     private void setIteration() {
-      len = size;
+      len = current;
       for (int i = 0; i < len; i++) {
         indexes[i] = i;
       }
@@ -232,8 +242,11 @@ public class MyList implements CustomeList {
     @Override
     public Object next() {
       int itteration = randomGenerate();
+      int index = indexes[itteration];
+      String tmp = array[index];
       eraseInIndexes(itteration);
-      return array[itteration];
+      draw();
+      return tmp;
     }
 
     private void eraseInIndexes(int index) {
@@ -243,8 +256,16 @@ public class MyList implements CustomeList {
       }
     }
 
-    private int randomGenerate() {
+    private void draw() {
+      for (int i = 0; i < len; i++) {
+        System.out.print(indexes[i] + " # ");
+      }
+      System.out.println();
+    }
+
+    public int randomGenerate() {
       return (int) Math.floor(Math.random() * len);
     }
   }
+
 }
