@@ -28,4 +28,6 @@ public interface CustomeList {
   Iterator ahead();
 
   Iterator backward();
+
+  Iterator random();
 }

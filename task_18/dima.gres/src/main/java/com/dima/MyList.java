@@ -11,6 +11,7 @@ public class MyList implements CustomeList {
   private String[] array;
   private ListIterator ahead;
   private BackwardIterator back;
+  private RandomeIterator random;
 
   public MyList(int capasity) {
     this.size = capasity;
@@ -18,6 +19,7 @@ public class MyList implements CustomeList {
     array = new String[size];
     ahead = new ListIterator();
     back = new BackwardIterator();
+    random = new RandomeIterator();
   }
 
   public MyList() {
@@ -138,6 +140,11 @@ public class MyList implements CustomeList {
     return back;
   }
 
+  @Override
+  public Iterator random() {
+    return random;
+  }
+
   private void copyToFrom(String[] buffer, String[] array) {
     for (int i = 0; i < array.length; i++) {
       buffer[i] = array[i];
@@ -197,6 +204,47 @@ public class MyList implements CustomeList {
         throw new NoSuchElementException("..No such element..");
       }
       return array[--iterration];
+    }
+  }
+
+  private class RandomeIterator implements Iterator {
+
+    private int[] indexes;
+    private int len;
+
+    public RandomeIterator() {
+      indexes = new int[size];
+      setIteration();
+    }
+
+    private void setIteration() {
+      len = size;
+      for (int i = 0; i < len; i++) {
+        indexes[i] = i;
+      }
+    }
+
+    @Override
+    public boolean hasNext() {
+      return len != 0;
+    }
+
+    @Override
+    public Object next() {
+      int itteration = randomGenerate();
+      eraseInIndexes(itteration);
+      return array[itteration];
+    }
+
+    private void eraseInIndexes(int index) {
+      len--;
+      for (int i = index; i < len; i++) {
+        indexes[i] = indexes[i + 1];
+      }
+    }
+
+    private int randomGenerate() {
+      return (int) Math.floor(Math.random() * len);
     }
   }
 }
