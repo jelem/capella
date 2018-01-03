@@ -2,10 +2,11 @@ package com.lev;
 
 import java.util.Random;
 
-public class AIHard extends Player{
+public class AIHard extends Player {
 
   private String name;
   private char symbol;
+  private int moves;
 
   public AIHard(String name, char symbol) {
     this.name = name;
@@ -19,10 +20,85 @@ public class AIHard extends Player{
 
     System.out.print("Now, " + this.name + " is moving:");
     boolean isFilled = false;
+
+    int oxAxis = 0;
+    int oyAxis = 0;
+    Human human = new Human(getName(), getSymbol());
+    char[][] field = Board.getField();
     while (!isFilled) {
-      int xAxis = random.nextInt(max - min + 1) + min;
-      int yAxis = random.nextInt(max - min + 1) + min;
-      isFilled = board.fillCell(xAxis, yAxis, this.symbol);
+      for (int i = 0; i < field.length; i++) {
+        if (field[i][i] == human.getSymbol()) {
+          moves++;
+        }
+      }
+      if (moves == 2) {
+        for (int i = 0; i < field.length; i++) {
+          if (field[i][i] == ' ') {
+            oxAxis = i;
+            oyAxis = i;
+            i = field.length;
+          }
+        }
+      }
+      moves = 0;
+
+      for (int i = field.length - 1; i >= 0; i--) {
+        if (field[field.length - i - 1][i] == human.getSymbol()) {
+          moves++;
+        }
+      }
+      if (moves == 2) {
+        for (int i = field.length - 1; i >= 0; i--) {
+          if (field[field.length - i - 1][i] == ' ') {
+            oxAxis = field.length - i - 1;
+            oyAxis = i;
+            i = -1;
+          }
+        }
+      }
+      moves = 0;
+
+      for (int i = 0; i < field.length; i++) {
+        for (int j = 0; j < field.length; j++) {
+          if (field[i][j] == human.getSymbol()) {
+          moves++;
+        }
+      }
+      if (moves == 2) {
+        for (int j = 0; j < field.length; j++) {
+          if (field[i][j] == ' ') {
+            oxAxis = i;
+            oyAxis = j;
+            j = field.length;
+          }
+        }
+      }
+        moves = 0;
+      }
+
+      for (int i = 0; i < field.length; i++) {
+        for (char[] aField : field) {
+          if (aField[i] == human.getSymbol()) {
+            moves++;
+          }
+        }
+        if (moves == 2) {
+          for (int j = 0; j < field.length; j++) {
+            if (field[j][i] == ' ') {
+              oxAxis = i;
+              oyAxis = j;
+              j = field.length;
+            }
+          }
+        }
+        moves = 0;
+      }
+
+      if (moves == 0 || moves == 1) {
+        oxAxis = random.nextInt(max - min + 1) + min;
+        oyAxis = random.nextInt(max - min + 1) + min;
+      }
+      isFilled = board.fillCell(oxAxis, oyAxis, this.symbol);
       System.out.println();
     }
   }

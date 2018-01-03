@@ -13,15 +13,15 @@ public class Human extends Player {
   }
 
   public void makeMove(Board board) {
-    System.out.println("Makes move: " + this.name);
+    System.out.println("Your turn");
     Scanner sc = new Scanner(System.in);
     boolean isFilled = false;
     while (!isFilled) {
       System.out.println("Enter coords (x,y), where x,y can be 1-3: ");
       String[] arr = sc.next().split(",");
-      int xAxis = Integer.parseInt(arr[0]);
-      int yAxis = Integer.parseInt(arr[1]);
-      isFilled = board.fillCell(xAxis, yAxis, this.symbol);
+      int oxAxis = Integer.parseInt(arr[0]);
+      int oyAxis = Integer.parseInt(arr[1]);
+      isFilled = board.fillCell(oxAxis, oyAxis, this.symbol);
     }
   }
 
@@ -30,6 +30,6 @@ public class Human extends Player {
   }
 
   public char getSymbol() {
-    return symbol;
+    return this.symbol;
   }
 }

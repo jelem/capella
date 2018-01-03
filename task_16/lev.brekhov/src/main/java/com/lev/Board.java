@@ -4,6 +4,10 @@ public class Board {
 
   private static char[][] field = new char[3][3];
 
+  public static char[][] getField() {
+    return field;
+  }
+
   public Board() {
     fillBoard(field);
   }
@@ -16,9 +20,9 @@ public class Board {
     }
   }
 
-  public boolean fillCell(int xAxis, int yAxis, char value) {
-    if (field[xAxis - 1][yAxis - 1] == ' ') {
-      field[--xAxis][--yAxis] = value;
+  public boolean fillCell(int oxAxis, int oyAxis, char value) {
+    if (field[oxAxis - 1][oyAxis - 1] == ' ') {
+      field[--oxAxis][--oyAxis] = value;
       return true;
     }
     return false;
@@ -63,4 +67,6 @@ public class Board {
     }
     return true;
   }
+
+
 }
