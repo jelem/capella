@@ -30,7 +30,7 @@ public class CustomArrayList<T> implements CustomList<T> {
   @Override
   public boolean contains(T element) {
     for (int i = 0; i < size; i++) {
-      if (array[i] == element) {
+      if (array[i].equals(element)) {
         return true;
       }
     }
@@ -64,7 +64,7 @@ public class CustomArrayList<T> implements CustomList<T> {
   @Override
   public boolean remove(T element) {
     for (int i = 0; i < size; i++) {
-      if (array[i] == element) {
+      if (array[i].equals(element)) {
         for (int j = i; j < size; j++) {
           array[j] = array[j + 1];
         }
@@ -148,7 +148,7 @@ public class CustomArrayList<T> implements CustomList<T> {
     }
 
     @Override
-    public Object next() {
+    public T next() {
       if (current >= size) {
         throw new NoSuchElementException();
       }
@@ -167,7 +167,7 @@ public class CustomArrayList<T> implements CustomList<T> {
     }
 
     @Override
-    public Object next() {
+    public T next() {
       if (current >= size) {
         throw new NoSuchElementException();
       }
