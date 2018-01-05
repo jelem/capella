@@ -68,6 +68,7 @@ public class CustomArrayList<T> implements CustomList<T> {
         for (int j = i; j < size; j++) {
           array[j] = array[j + 1];
         }
+        array[size] = null;
         size--;
         return true;
       }
@@ -84,6 +85,7 @@ public class CustomArrayList<T> implements CustomList<T> {
     for (int j = index; j < size; j++) {
       array[j] = array[j + 1];
     }
+    array[size] = null;
     size--;
     return tmp;
   }
