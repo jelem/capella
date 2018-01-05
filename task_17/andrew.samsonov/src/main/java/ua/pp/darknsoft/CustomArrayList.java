@@ -81,7 +81,7 @@ public class CustomArrayList<T> implements CustomList<T> {
     if (index >= size || index < 0) {
       throw new NoSuchElementException("Wrong index");
     }
-    T tmp = array[index];
+    final T tmp = array[index];
     for (int j = index; j < size; j++) {
       array[j] = array[j + 1];
     }
