@@ -7,24 +7,25 @@ public class SequenceMember {
   }
 
   //Сложность экспоненциальная (плохо)
-  public static int sequenceMemberFunctional(int n) {
-    if (n <= 3) {
+  public static int sequenceMemberFunctional(int numberOfMember) {
+    if (numberOfMember <= 3) {
       return 1;
     }
 
-    return sequenceMemberFunctional(n - 1) + sequenceMemberFunctional(n - 2)
-        + sequenceMemberFunctional(n - 3);
+    return sequenceMemberFunctional(numberOfMember - 1)
+        + sequenceMemberFunctional(numberOfMember - 2)
+        + sequenceMemberFunctional(numberOfMember - 3);
 
   }
 
   //Сложность линейная (приемлемо)
-  public static int sequenceMemberIterative(int n) {
+  public static int sequenceMemberIterative(int numberOfMember) {
     int number1 = 1;
     int number2 = 1;
     int number3 = 1;
     int numberSum = 1;
 
-    for (int i = 3; i < n; i++) {
+    for (int i = 3; i < numberOfMember; i++) {
       numberSum = number1 + number2 + number3;
       number1 = number2;
       number2 = number3;
