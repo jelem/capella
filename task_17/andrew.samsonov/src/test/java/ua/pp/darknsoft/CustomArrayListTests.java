@@ -4,8 +4,9 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import java.util.NoSuchElementException;
 import org.junit.Test;
+
+import java.util.NoSuchElementException;
 
 public class CustomArrayListTests {
 
