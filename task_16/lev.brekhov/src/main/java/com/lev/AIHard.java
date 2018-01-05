@@ -94,7 +94,7 @@ public class AIHard extends Player {
         moves = 0;
       }
 
-      if (moves == 0 || moves == 1) {
+      if (moves != 2) {
         oxAxis = random.nextInt(max - min + 1) + min;
         oyAxis = random.nextInt(max - min + 1) + min;
       }
