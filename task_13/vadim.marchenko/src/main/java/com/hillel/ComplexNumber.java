@@ -10,7 +10,7 @@ public class ComplexNumber {
     this.secondNumber = secondNumber;
   }
 
-  public ComplexNumber addition (ComplexNumber number) {
+  public ComplexNumber addition(ComplexNumber number) {
     double first = firstNumber + number.firstNumber;
     double second = secondNumber + number.secondNumber;
     return new ComplexNumber(first, second);
