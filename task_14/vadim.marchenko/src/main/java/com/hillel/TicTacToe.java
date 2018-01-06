@@ -16,7 +16,8 @@ public class TicTacToe {
       do {
         printBoard();
         coords = inputCoordinates();
-      } while (!validateCoordinates(coords));
+      }
+      while (!validateCoordinates(coords));
       makeMove(field, coords, currentPlayer);
       currentPlayer = switchCurrentPlayer(currentPlayer);
     }
@@ -60,44 +61,44 @@ public class TicTacToe {
 
   private static boolean isPlayerWon() {
     char player = currentPlayer == 'O' ? 'X' : 'O';
-    if (field[0][0] == player &&
-        field[0][1] == player &&
-        field[0][2] == player) {
+    if (field[0][0] == player
+        && field[0][1] == player
+        && field[0][2] == player) {
       return true;
     }
-    if (field[1][0] == player &&
-        field[1][1] == player &&
-        field[1][2] == player) {
+    if (field[1][0] == player
+        && field[1][1] == player
+        && field[1][2] == player) {
       return true;
     }
-    if (field[2][0] == player &&
-        field[2][1] == player &&
-        field[2][2] == player) {
+    if (field[2][0] == player
+        && field[2][1] == player
+        && field[2][2] == player) {
       return true;
     }
-    if (field[0][0] == player &&
-        field[1][0] == player &&
-        field[2][0] == player) {
+    if (field[0][0] == player
+        && field[1][0] == player
+        && field[2][0] == player) {
       return true;
     }
-    if (field[0][1] == player &&
-        field[1][1] == player &&
-        field[2][1] == player) {
+    if (field[0][1] == player
+        && field[1][1] == player
+        && field[2][1] == player) {
       return true;
     }
-    if (field[0][2] == player &&
-        field[1][2] == player &&
-        field[2][2] == player) {
+    if (field[0][2] == player
+        && field[1][2] == player
+        && field[2][2] == player) {
       return true;
     }
-    if (field[0][0] == player &&
-        field[1][1] == player &&
-        field[2][2] == player) {
+    if (field[0][0] == player
+        && field[1][1] == player
+        && field[2][2] == player) {
       return true;
     }
-    if (field[0][2] == player &&
-        field[1][1] == player &&
-        field[2][0] == player) {
+    if (field[0][2] == player
+        && field[1][1] == player
+        && field[2][0] == player) {
       return true;
     }
     return false;
