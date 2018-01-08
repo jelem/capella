@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 public class MyLinkedList implements CustomeLinkedList, Iterable {
   private Node begin;
   private Node end;
+  private Node looper = null;
 
   public MyLinkedList() {
     end = begin = null;
@@ -89,11 +90,21 @@ public class MyLinkedList implements CustomeLinkedList, Iterable {
 
   @Override
   public void introduceCycle(int index) {
-
+    Node current = begin;
+    while (index > 0 && current != null) {
+      index--;
+      current = current.next;
+    }
+    if (current == null) {
+      throw new NoSuchElementException("...elemnt is not found...");
+    }
+    looper = end;
+    end = current;
+    end.next = begin;
   }
 
   @Override
   public boolean hasCycle() {
-    return false;
+    return looper != null;
   }
 }
