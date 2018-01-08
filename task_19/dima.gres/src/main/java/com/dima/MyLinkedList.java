@@ -21,6 +21,19 @@ public class MyLinkedList implements CustomeLinkedList {
     }
   }
 
+  private class AheadIterator implements Iterator {
+
+    @Override
+    public boolean hasNext() {
+      return false;
+    }
+
+    @Override
+    public Object next() {
+      return null;
+    }
+  }
+
   @Override
   public void add(int element) {
     Node current = new Node(element, null);
@@ -74,6 +87,6 @@ public class MyLinkedList implements CustomeLinkedList {
 
   @Override
   public Iterator ahead() {
-    return null;
+    return new AheadIterator();
   }
 }
