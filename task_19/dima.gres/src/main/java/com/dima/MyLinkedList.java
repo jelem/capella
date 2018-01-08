@@ -1,6 +1,7 @@
 package com.dima;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyLinkedList implements CustomeLinkedList {
   private Node begin;
@@ -32,12 +33,20 @@ public class MyLinkedList implements CustomeLinkedList {
 
   @Override
   public int poll() {
-    return 0;
+    if (begin == null) {
+      throw new NoSuchElementException("...elemnt is not found...");
+    }
+    int tmp = begin.value;
+    begin = begin.next;
+    return tmp;
   }
 
   @Override
   public int peek() {
-    return 0;
+    if (begin == null) {
+      throw new NoSuchElementException("...elemnt is not found...");
+    }
+    return begin.value;
   }
 
   @Override
