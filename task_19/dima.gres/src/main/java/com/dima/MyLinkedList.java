@@ -51,7 +51,15 @@ public class MyLinkedList implements CustomeLinkedList {
 
   @Override
   public int get(int index) {
-    return 0;
+    Node current = begin;
+    while (index > 0 && current != null) {
+      index--;
+      current = current.next;
+    }
+    if (current == null) {
+      throw new NoSuchElementException("...elemnt is not found...");
+    }
+    return current.value;
   }
 
   @Override
