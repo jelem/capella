@@ -41,6 +41,9 @@ public class MyLinkedList implements CustomeLinkedList, Iterable {
 
     @Override
     public Object next() {
+      if (current == null) {
+        throw new NoSuchElementException("...elemnt is not found...");
+      }
       int tmp = current.value;
       current = current.next;
       return tmp;
