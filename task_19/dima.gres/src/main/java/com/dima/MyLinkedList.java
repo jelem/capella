@@ -22,15 +22,22 @@ public class MyLinkedList implements CustomeLinkedList {
   }
 
   private class AheadIterator implements Iterator {
+    Node current;
+
+    public AheadIterator() {
+      current = begin;
+    }
 
     @Override
     public boolean hasNext() {
-      return false;
+      return current != null;
     }
 
     @Override
     public Object next() {
-      return null;
+      int tmp = current.value;
+      current = current.next;
+      return tmp;
     }
   }
 
