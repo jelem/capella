@@ -3,12 +3,17 @@ package com.dima;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MyLinkedList implements CustomeLinkedList {
+public class MyLinkedList implements CustomeLinkedList, Iterable {
   private Node begin;
   private Node end;
 
   public MyLinkedList() {
     end = begin = null;
+  }
+
+  @Override
+  public Iterator iterator() {
+    return new AheadIterator();
   }
 
   private class Node {
@@ -90,10 +95,5 @@ public class MyLinkedList implements CustomeLinkedList {
   @Override
   public boolean hasCycle() {
     return false;
-  }
-
-  @Override
-  public Iterator ahead() {
-    return new AheadIterator();
   }
 }

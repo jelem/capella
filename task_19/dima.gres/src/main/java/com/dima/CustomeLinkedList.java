@@ -15,6 +15,4 @@ public interface CustomeLinkedList {
   void introduceCycle(int index);
 
   boolean hasCycle();
-
-  Iterator ahead();
 }

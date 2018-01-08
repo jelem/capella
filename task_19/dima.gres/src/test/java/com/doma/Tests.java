@@ -39,13 +39,13 @@ public class Tests {
     list.add(1);
     list.add(2);
     list.add(3);
-    Iterator iterator = list.ahead();
+    Iterator iterator = list.iterator();
     while (iterator.hasNext()) {
       System.out.print(iterator.next() + " ");
     }
     System.out.println();
     list.add(777);
-    iterator = list.ahead();
+    iterator = list.iterator();
     while (iterator.hasNext()) {
       System.out.print(iterator.next() + " ");
     }
