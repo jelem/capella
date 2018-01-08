@@ -3,6 +3,16 @@ package com.dima;
 import java.util.Iterator;
 
 public class MyLinkedList implements CustomeLinkedList {
+  private class Node {
+    int value;
+    Node next;
+
+    public Node(int value, Node next) {
+      this.value = value;
+      this.next = next;
+    }
+  }
+
   @Override
   public void add(int element) {
 
