@@ -12,13 +12,13 @@ public class TicTacToe {
     fillBoard(field);
 
     while (!gameFinished()) {
-      String coords;
+      String coordinates;
       do {
         printBoard();
-        coords = inputCoordinates();
+        coordinates = inputCoordinates();
       }
-      while (!validateCoordinates(coords));
-      makeMove(field, coords, currentPlayer);
+      while (!validateCoordinates(coordinates));
+      makeMove(field, coordinates, currentPlayer);
       currentPlayer = switchCurrentPlayer(currentPlayer);
     }
 
