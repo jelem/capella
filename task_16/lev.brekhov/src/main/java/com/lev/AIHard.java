@@ -14,6 +14,10 @@ public class AIHard extends Player {
   }
 
   public void makeMove(Board board) {
+    char playerSymbol = 'X';
+    if (symbol == 'X') {
+      playerSymbol = 'O';
+    }
     int min = 1;
     int max = 3;
     Random random = new Random();
@@ -23,11 +27,11 @@ public class AIHard extends Player {
 
     int oxAxis = 0;
     int oyAxis = 0;
-    Human human = new Human(getName(), getSymbol());
+//    Human human = new Human(getName(), getSymbol());
     char[][] field = Board.getField();
     while (!isFilled) {
       for (int i = 0; i < field.length; i++) {
-        if (field[i][i] == human.getSymbol()) {
+        if (field[i][i] == playerSymbol) {
           moves++;
         }
       }
@@ -43,7 +47,7 @@ public class AIHard extends Player {
       moves = 0;
 
       for (int i = field.length - 1; i >= 0; i--) {
-        if (field[field.length - i - 1][i] == human.getSymbol()) {
+        if (field[field.length - i - 1][i] == playerSymbol) {
           moves++;
         }
       }
@@ -60,7 +64,7 @@ public class AIHard extends Player {
 
       for (int i = 0; i < field.length; i++) {
         for (int j = 0; j < field.length; j++) {
-          if (field[i][j] == human.getSymbol()) {
+          if (field[i][j] == playerSymbol) {
           moves++;
         }
       }
@@ -78,7 +82,7 @@ public class AIHard extends Player {
 
       for (int i = 0; i < field.length; i++) {
         for (char[] aField : field) {
-          if (aField[i] == human.getSymbol()) {
+          if (aField[i] == playerSymbol) {
             moves++;
           }
         }
