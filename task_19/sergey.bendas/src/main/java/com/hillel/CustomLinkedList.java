@@ -84,9 +84,14 @@ public class CustomLinkedList implements Iterable {
     return false;
   }
 
-
-
-  //Травис ругается на этот код
+  private boolean isInList(Node current, ArrayList<Node> arrayList) {
+    for (Node node : arrayList) {
+      if (current == node) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   public boolean hasCycle2() {
     //этот метод должен определить есть ли цикл в списке
@@ -98,25 +103,13 @@ public class CustomLinkedList implements Iterable {
   }
 
   private boolean goToEnd(Node node) {
-    if (node != null) {
-      return goToEnd(node.next);
-    }
-    return false;
+    return node != null && goToEnd(node.next);
   }
 
 
   @Override
   public Iterator iterator() {
     return new LinkedListIterator();
-  }
-
-  private boolean isInList(Node current, ArrayList<Node> arrayList) {
-    for (Node node : arrayList) {
-      if (current == node) {
-        return true;
-      }
-    }
-    return false;
   }
 
   //добавьте итератор
