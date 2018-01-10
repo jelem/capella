@@ -84,6 +84,32 @@ public class CustomLinkedList implements Iterable {
     return false;
   }
 
+
+
+  //Травис ругается на этот код
+
+  public boolean hasCycle2() {
+    //этот метод должен определить есть ли цикл в списке
+    try {
+      return goToEnd(first);
+    } catch (StackOverflowError error) {
+      return true;
+    }
+  }
+
+  private boolean goToEnd(Node node) {
+    if (node != null) {
+      return goToEnd(node.next);
+    }
+    return false;
+  }
+
+
+  @Override
+  public Iterator iterator() {
+    return new LinkedListIterator();
+  }
+
   private boolean isInList(Node current, ArrayList<Node> arrayList) {
     for (Node node : arrayList) {
       if (current == node) {
@@ -91,35 +117,6 @@ public class CustomLinkedList implements Iterable {
       }
     }
     return false;
-  }
-
-  /*
-
-  Травис ругается на этот код
-
-  public boolean hasCycle() {
-    //этот метод должен определить есть ли цикл в списке
-    try {
-      goToEnd();
-    } catch (StackOverflowError error) {
-      return true;
-    }
-    return false;
-  }
-
-  private void goToEnd() {
-    goNext(first);
-  }
-
-  private void goNext(Node node) {
-    if (node != null) {
-      goNext(node);
-    }
-  }
-*/
-  @Override
-  public Iterator iterator() {
-    return new LinkedListIterator();
   }
 
   //добавьте итератор

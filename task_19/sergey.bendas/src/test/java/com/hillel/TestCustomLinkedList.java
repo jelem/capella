@@ -36,10 +36,15 @@ public class TestCustomLinkedList {
     list.add(2);
     list.add(32);
     list.add(15);
+
     boolean result1 = list.hasCycle();
+    assertThat(result1, is(false));
+    result1 = list.hasCycle2();
     assertThat(result1, is(false));
     list.introduceCycle(1);
     result1 = list.hasCycle();
+    assertThat(result1, is(true));
+    result1 = list.hasCycle2();
     assertThat(result1, is(true));
   }
 }
