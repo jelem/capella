@@ -20,11 +20,11 @@ public class AIHard extends Player {
 
     System.out.print("Now, " + this.name + " is moving:");
     boolean isFilled = false;
-
     int oxAxis = 0;
     int oyAxis = 0;
     Human human = new Human(getName(), getSymbol());
     char[][] field = Board.getField();
+
     while (!isFilled) {
       for (int i = 0; i < field.length; i++) {
         if (field[i][i] == human.getSymbol()) {
@@ -70,11 +70,11 @@ public class AIHard extends Player {
             oxAxis = i;
             oyAxis = j;
             j = field.length;
+            }
           }
         }
       }
-        moves = 0;
-      }
+      moves = 0;
 
       for (int i = 0; i < field.length; i++) {
         for (char[] aField : field) {
@@ -91,8 +91,8 @@ public class AIHard extends Player {
             }
           }
         }
-        moves = 0;
       }
+      moves = 0;
 
       if (moves != 2) {
         oxAxis = random.nextInt(max - min + 1) + min;

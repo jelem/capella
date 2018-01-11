@@ -58,9 +58,9 @@ public class Board {
   }
 
   public boolean isFilled() {
-    for (int i = 0; i < field.length; i++) {
+    for (char[] aField : field) {
       for (int j = 0; j < field.length; j++) {
-        if (field[i][j] == ' ') {
+        if (aField[j] == ' ') {
           return false;
         }
       }

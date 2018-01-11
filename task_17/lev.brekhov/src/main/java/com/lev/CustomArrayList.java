@@ -1,6 +1,9 @@
 package com.lev;
 
-public class CustomArrayList implements CustomList{
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class CustomArrayList implements CustomList {
 
   private static final int BASE_SIZE = 10;
   private String[] array;
@@ -36,13 +39,22 @@ public class CustomArrayList implements CustomList{
 
   @Override
   public void add(String element) {
-    array[size + 1] = element;
+    if (size > array.length) {
+      resizeArray();
+    }
+    array[size] = element;
     size++;
+  }
+
+  private void resizeArray() {
+    String[] arr = new String[array.length * 2];
+    System.arraycopy(array, 0, arr, 0, size);
+    array = arr;
   }
 
   @Override
   public void add(int index, String element) {
-    for (int i = index; i < array.length; i++) {
+    for (int i = index; i < size; i++) {
       array[i + 1] = array[i];
     }
     array[index] = element;
@@ -53,9 +65,8 @@ public class CustomArrayList implements CustomList{
   public boolean remove(String element) {
     for (int i = 0; i < array.length; i++) {
       if (array[i].equals(element)) {
-        for (int j = i; j < size; j++) {
-          array[j] = array[j + 1];
-        }
+        System.arraycopy(array, i + 1, array, i, size - i);
+        size--;
         return true;
       }
     }
@@ -65,10 +76,9 @@ public class CustomArrayList implements CustomList{
   @Override
   public String remove(int index) {
     String element = array[index];
-    for (int i = index; i < array.length; i++) {
-      array[i] = array[i + 1];
-    }
-    return "removed " + element;
+    System.arraycopy(array, index + 1, array, index, size - index);
+    size--;
+    return "Removed " + element;
   }
 
   @Override
@@ -94,5 +104,51 @@ public class CustomArrayList implements CustomList{
       }
     }
     return 0;
+  }
+
+  @Override
+  public Iterator iterator() {
+    return new ListIterator();
+  }
+
+  public Iterator backwardIterator() {
+    return new BackwardListIterator();
+  }
+
+  private class ListIterator implements Iterator {
+
+    private int current;
+
+    ListIterator() {
+      current = 0;
+    }
+
+    @Override
+    public boolean hasNext() {
+      return current < size;
+    }
+
+    @Override
+    public Object next() {
+      if (current >= size) {
+        throw new NoSuchElementException();
+      }
+      return array[current++];
+    }
+  }
+
+  private class BackwardListIterator implements Iterator {
+
+    private int current = size - 1;
+
+    @Override
+    public boolean hasNext() {
+      return current >= 0;
+    }
+
+    @Override
+    public Object next() {
+      return array[current--];
+    }
   }
 }

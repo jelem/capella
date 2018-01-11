@@ -1,6 +1,8 @@
 package com.lev;
 
-public interface CustomList {
+import java.util.Iterator;
+
+public interface CustomList extends Iterable {
   int size();
   boolean isEmpty();
   boolean contains(String element);
@@ -12,4 +14,5 @@ public interface CustomList {
   String get(int index);
   void set(int index, String element);
   int indexOf(String element);
+  Iterator backwardIterator();
 }
