@@ -16,9 +16,9 @@ public class Board {
     }
   }
 
-  public boolean fillCell(int x, int y, char value) {
-    if (field[x - 1][y - 1] == ' ') {
-      field[--x][--y] = value;
+  public boolean fillCell(int oxAxis, int oyAxis, char value) {
+    if (field[oxAxis - 1][oyAxis - 1] == ' ') {
+      field[--oxAxis][--oyAxis] = value;
       return true;
     }
     return false;
@@ -54,9 +54,9 @@ public class Board {
   }
 
   public boolean isFilled() {
-    for (int i = 0; i < field.length; i++) {
+    for (char[] aField : field) {
       for (int j = 0; j < field.length; j++) {
-        if (field[i][j] == ' ') {
+        if (aField[j] == ' ') {
           return false;
         }
       }
