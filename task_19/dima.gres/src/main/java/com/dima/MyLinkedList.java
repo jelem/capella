@@ -17,7 +17,7 @@ public class MyLinkedList implements CustomeLinkedList, Iterable {
     return new AheadIterator();
   }
 
-  private class Node {
+  private static class Node {
     int value;
     Node next;
 
