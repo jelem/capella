@@ -18,12 +18,12 @@ public class City {
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (o == null || this.getClass() != o.getClass()) {
+  public boolean equals(Object obj) {
+    if (obj == null || this.getClass() != obj.getClass()) {
       return false;
     }
 
-    City tmp = (City) o;
+    City tmp = (City) obj;
     if (!this.country.equals(tmp.country) || !this.district.equals(tmp.district)
         || this.country == null || tmp.country == null
         || this.district == null || tmp.district == null) {
@@ -34,9 +34,13 @@ public class City {
 
   @Override
   public String toString() {
-    return "City{" +
-        "country='" + country + '\'' +
-        ", district='" + district + '\'' +
-        '}';
+    return "City{"
+        + "country='"
+        + country
+        + '\''
+        + ", district='"
+        + district
+        + '\''
+        + '}';
   }
 }
