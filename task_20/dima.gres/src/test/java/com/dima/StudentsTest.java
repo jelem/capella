@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class StudentsTest {
@@ -35,6 +36,30 @@ public class StudentsTest {
     System.out.println("******************************************************************************\n");
 
     Collections.sort(students, new District());
+    System.out.println(students);
+  }
+
+  @Test
+  public void ageInvertSort() {
+    add();
+
+    System.out.println(students);
+    System.out.println("******************************************************************************\n");
+
+    Collections.sort(students, new Comparator<Student>() {
+      @Override
+      public int compare(Student student, Student t1) {
+        if (student.getAge() > t1.getAge()) {
+          return -1;
+        }
+
+        if (student.getAge() < t1.getAge()) {
+          return 1;
+        }
+
+        return 0;
+      }
+    });
     System.out.println(students);
   }
 }
