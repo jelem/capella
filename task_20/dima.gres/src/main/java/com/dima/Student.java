@@ -22,4 +22,14 @@ public class Student {
   public City getCity() {
     return city;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || this.getClass() != o.getClass()) {
+      return false;
+    }
+
+    Student tmp = (Student) o;
+    return false;
+  }
 }

@@ -22,4 +22,20 @@ public class City {
   public int getPopulation() {
     return population;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || this.getClass() != o.getClass()) {
+      return false;
+    }
+
+    City tmp = (City) o;
+    if (!this.country.equals(tmp.country) || !this.district.equals(tmp.district)
+        || this.population != tmp.population || this.country == null
+        || tmp.country == null || this.district == null
+        || tmp.district == null) {
+      return false;
+    }
+    return true;
+  }
 }
