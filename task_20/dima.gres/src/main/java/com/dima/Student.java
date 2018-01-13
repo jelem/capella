@@ -1,6 +1,6 @@
 package com.dima;
 
-public class Student {
+public class Student implements Comparable<Student>{
   private String name;
   private int age;
   private City city;
@@ -30,6 +30,32 @@ public class Student {
     }
 
     Student tmp = (Student) o;
-    return false;
+    if (!this.city.equals(tmp.city) || this.city == null || tmp.city == null
+        || !this.name.equals(tmp.name) || this.name == null || tmp.name == null
+        || this.age != tmp.age) {
+      return false;
+    }
+    return true;
+  }
+
+  @Override
+  public String toString() {
+    return "Student{" +
+        "name='" + name + '\'' +
+        ", age=" + age +
+        ", city=" + city +
+        '}' + '\n';
+  }
+
+  @Override
+  public int compareTo(Student student) {
+    if (this.name.compareTo(student.name) < 0) {
+      return -1;
+    }
+
+    if (this.name.compareTo(student.name) > 0) {
+      return 1;
+    }
+    return 0;
   }
 }
