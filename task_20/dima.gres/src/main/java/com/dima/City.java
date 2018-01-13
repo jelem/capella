@@ -19,7 +19,8 @@ public class City {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    assert false : "hashCode not designed";
+    return 42;
   }
 
   @Override
