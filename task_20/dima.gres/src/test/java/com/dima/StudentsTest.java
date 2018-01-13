@@ -1,13 +1,17 @@
 package com.dima;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Main {
+public class StudentsTest {
+  List<Student> students = new ArrayList<>();
 
-  public static void main(String[] args) {
-    List <Student> students = new ArrayList<>();
+  @Test
+  public void defaultSort() {
+
     students.add(new Student("Max", 21, new City("Ukraine", "Charkow")));
     students.add(new Student("Alex", 23, new City("Ukraine", "Odessa")));
     students.add(new Student("Katia", 22, new City("Ukraine", "Lviv")));
@@ -19,5 +23,6 @@ public class Main {
     Collections.sort(students);
 
     System.out.println(students);
+
   }
 }
