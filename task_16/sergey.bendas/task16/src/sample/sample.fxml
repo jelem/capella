@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+  <children>
+    <Pane layoutX="200.0" layoutY="38.0" prefHeight="300.0" prefWidth="300.0">
+      <children>
+        <Button id="button11" fx:id="btn11" disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#btn11Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button12" fx:id="btn12" disable="true" focusTraversable="false" layoutX="100.0" mnemonicParsing="false" onAction="#btn12Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button13" fx:id="btn13" disable="true" focusTraversable="false" layoutX="200.0" mnemonicParsing="false" onAction="#btn13Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button21" fx:id="btn21" disable="true" focusTraversable="false" layoutY="100.0" mnemonicParsing="false" onAction="#btn21Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button22" fx:id="btn22" disable="true" focusTraversable="false" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" onAction="#btn22Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button23" fx:id="btn23" disable="true" focusTraversable="false" layoutX="200.0" layoutY="100.0" mnemonicParsing="false" onAction="#btn23Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button31" fx:id="btn31" disable="true" focusTraversable="false" layoutY="200.0" mnemonicParsing="false" onAction="#btn31Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button32" fx:id="btn32" disable="true" focusTraversable="false" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#btn32Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+        <Button id="button33" fx:id="btn33" disable="true" focusTraversable="false" layoutX="200.0" layoutY="200.0" mnemonicParsing="false" onAction="#btn33Click" prefHeight="100.0" prefWidth="100.0" text=" " />
+      </children></Pane>
+    <Pane layoutY="38.0" prefHeight="300.0" prefWidth="200.0">
+      <children>
+        <ChoiceBox id="player1" fx:id="player1Choice" layoutX="26.0" layoutY="33.0" prefWidth="150.0" />
+        <ChoiceBox id="player2" fx:id="player2Choice" layoutX="26.0" layoutY="93.0" prefWidth="150.0" />
+        <Label layoutX="25.0" layoutY="14.0" text="Player1" />
+        <Label layoutX="25.0" layoutY="74.0" text="Player2" />
+        <Label layoutX="165.0" layoutY="14.0" text="X" />
+        <Label layoutX="164.0" layoutY="74.0" text="O" />
+        <Button fx:id="btnStart" layoutX="58.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnStartClick" prefHeight="29.0" prefWidth="85.0" text="Start" />
+      </children>
+    </Pane>
+      <Label fx:id="label1" layoutX="302.0" layoutY="14.0" text=" " />
+  </children>
+</Pane>
