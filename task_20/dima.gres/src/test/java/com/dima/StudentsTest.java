@@ -62,4 +62,15 @@ public class StudentsTest {
     });
     System.out.println(students);
   }
+
+  @Test
+  public void ageSort() {
+    add();
+
+    System.out.println(students);
+    System.out.println("******************************************************************************\n");
+
+    Collections.sort(students, (o1, o2) -> Integer.compare(o1.getAge(), o2.getAge()));
+    System.out.println(students);
+  }
 }
