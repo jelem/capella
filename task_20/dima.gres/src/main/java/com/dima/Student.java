@@ -30,8 +30,9 @@ public class Student implements Comparable<Student> {
     }
 
     Student tmp = (Student) obj;
-    if (!this.city.equals(tmp.city) || this.city == null || tmp.city == null
-        || !this.name.equals(tmp.name) || this.name == null || tmp.name == null
+    if (this.city == null || tmp.city == null
+        || this.name == null || tmp.name == null
+        || !this.city.equals(tmp.city) || !this.name.equals(tmp.name)
         || this.age != tmp.age) {
       return false;
     }

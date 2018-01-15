@@ -30,9 +30,10 @@ public class City {
     }
 
     City tmp = (City) obj;
-    if (!this.country.equals(tmp.country) || !this.district.equals(tmp.district)
-        || this.country == null || tmp.country == null
-        || this.district == null || tmp.district == null) {
+    if ( this.country == null || tmp.country == null
+        || this.district == null || tmp.district == null
+        || !this.country.equals(tmp.country) || !this.district.equals(tmp.district)
+        ) {
       return false;
     }
     return true;
