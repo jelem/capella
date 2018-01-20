@@ -27,26 +27,22 @@ public class Main {
     list.add(st3);
     System.out.println("###################### Natural ordering NAME ############################");
     Collections.sort(list);
-    for (Student adr : list
-        ) {
+    for (Student adr : list) {
       System.out.println(adr);
     }
     System.out.println("######################### Sort By Age ##################################");
     Collections.sort(list, new SortByAge());
-    for (Student adr : list
-        ) {
+    for (Student adr : list) {
       System.out.println(adr);
     }
     System.out.println("#################### Sort By Age REVERSE ###############################");
     Collections.sort(list, new SortByAgeReverse());
-    for (Student adr : list
-        ) {
+    for (Student adr : list) {
       System.out.println(adr);
     }
     System.out.println("######################### Sort By Address ###############################");
     Collections.sort(list, new SortByAddress());
-    for (Student adr : list
-        ) {
+    for (Student adr : list) {
       System.out.println(adr);
     }
     System.out.println("###################### Sort by Name REVERSE #############################");
@@ -56,8 +52,7 @@ public class Main {
         return o2.getName().compareTo(o1.getName());
       }
     });
-    for (Student adr : list
-        ) {
+    for (Student adr : list) {
       System.out.println(adr);
     }
 
