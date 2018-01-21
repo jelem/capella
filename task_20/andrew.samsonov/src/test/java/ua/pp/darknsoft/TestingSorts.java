@@ -5,12 +5,12 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import ua.pp.darknsoft.strategy.SortByAddress;
+import ua.pp.darknsoft.strategy.SortByAge;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import ua.pp.darknsoft.strategy.SortByAddress;
-import ua.pp.darknsoft.strategy.SortByAge;
 
 public class TestingSorts {
 

@@ -1,13 +1,13 @@
 package ua.pp.darknsoft;
 
+import ua.pp.darknsoft.strategy.SortByAddress;
+import ua.pp.darknsoft.strategy.SortByAge;
+import ua.pp.darknsoft.strategy.SortByAgeReverse;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import ua.pp.darknsoft.strategy.SortByAddress;
-import ua.pp.darknsoft.strategy.SortByAge;
-import ua.pp.darknsoft.strategy.SortByAgeReverse;
 
 public class Main {
 

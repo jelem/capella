@@ -1,10 +1,11 @@
 package ua.pp.darknsoft.strategy;
 
-import java.util.Comparator;
-
 import ua.pp.darknsoft.Student;
 
-public class SortByAge implements Comparator<Student> {
+import java.io.Serializable;
+import java.util.Comparator;
+
+public class SortByAge implements Comparator<Student>, Serializable {
 
   @Override
   public int compare(Student o1, Student o2) {
