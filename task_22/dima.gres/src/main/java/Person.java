@@ -1,5 +1,5 @@
 public class Person {
-  private final static int Alpha = 'A';
+  private static final int Alpha = 'A';
   private String name;
   private String surname;
   private int age;
