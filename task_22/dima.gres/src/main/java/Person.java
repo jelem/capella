@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Person {
   private static final int Alpha = 'A';
   private String name;
@@ -47,5 +49,23 @@ public class Person {
     return age;
   }
 
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+    if (!(object instanceof Person)) {
+      return false;
+    }
+    Person person = (Person) object;
+    return getAge() == person.getAge()
+        && Objects.equals(getName(), person.getName())
+        && Objects.equals(getSurname(), person.getSurname());
+  }
 
+  @Override
+  public int hashCode() {
+    char firstLitera = getSurname().charAt(0);
+    return firstLitera - Alpha;
+  }
 }
