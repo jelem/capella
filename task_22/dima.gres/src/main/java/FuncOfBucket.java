@@ -1,7 +1,7 @@
 public interface FuncOfBucket {
 
-  void put(Person key, int nummer);
+  void put(Person key, String nummer);
 
-  int get(Person key);
+  String get(Person key);
 
 }
