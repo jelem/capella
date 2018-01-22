@@ -10,5 +10,11 @@ public class TestPerson {
         .age(43).build();
 
     System.out.println((char) (oleg.hashCode() + 'A') );
+    Person oleshka = new Person.Builder()
+        .name("Olegik junior")
+        .surname("timosenko")
+        .age(43).build();
+
+    System.out.println((char) (oleg.hashCode() + 'a') );
   }
 }
