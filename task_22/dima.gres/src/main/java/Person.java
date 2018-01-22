@@ -3,6 +3,10 @@ import java.util.Objects;
 public class Person {
   public static final int Alpha = 'A';
   public static final int alpha = 'a';
+
+  public static final int Zet = 'Z';
+  public static final int zet = 'z';
+
   private String name;
   private String surname;
   private int age;
@@ -67,7 +71,7 @@ public class Person {
   @Override
   public int hashCode() {
     char firstLitera = getSurname().charAt(0);
-    return firstLitera >= 'A' && firstLitera <= 'Z' ? firstLitera - Alpha : firstLitera - alpha;
+    return firstLitera >= Alpha && firstLitera <= Zet ? firstLitera - Alpha : firstLitera - alpha;
   }
 
   @Override
