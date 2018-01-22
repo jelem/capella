@@ -33,7 +33,14 @@ public class Main {
     bucket.put(max, "442");
     bucket.put(alla, "103");
     bucket.put(masha, "232");
-    
 
+    Person oleg = new Person.Builder()
+        .name("Oleg")
+        .surname("Polishchuk")
+        .age(46)
+        .build();
+
+    System.out.println(bucket.get(max));
+    System.out.println(bucket.get(oleg));
   }
 }
