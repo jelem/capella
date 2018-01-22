@@ -71,5 +71,4 @@ public class Bucket implements FuncOfBucket {
       this.next = null;
     }
   }
-
 }
