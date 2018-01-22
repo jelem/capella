@@ -69,4 +69,13 @@ public class Person {
     char firstLitera = getSurname().charAt(0);
     return firstLitera >= 'A' && firstLitera <= 'Z' ? firstLitera - Alpha : firstLitera - alpha;
   }
+
+  @Override
+  public String toString() {
+    return "Person{" +
+        "name='" + name + '\'' +
+        ", surname='" + surname + '\'' +
+        ", age=" + age +
+        '}';
+  }
 }
