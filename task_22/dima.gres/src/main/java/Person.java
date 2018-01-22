@@ -1,7 +1,8 @@
 import java.util.Objects;
 
 public class Person {
-  private static final int Alpha = 'A';
+  public static final int Alpha = 'A';
+  public static final int alpha = 'a';
   private String name;
   private String surname;
   private int age;
@@ -66,6 +67,6 @@ public class Person {
   @Override
   public int hashCode() {
     char firstLitera = getSurname().charAt(0);
-    return firstLitera - Alpha;
+    return firstLitera >= 'A' && firstLitera <= 'Z' ? firstLitera - Alpha : firstLitera - alpha;
   }
 }
