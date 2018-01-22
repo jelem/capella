@@ -58,7 +58,7 @@ public class Bucket implements FuncOfBucket {
     }
 
   }
-
+  
   private static class Node {
     private Person key;
     private String value;
