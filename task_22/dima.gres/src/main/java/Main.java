@@ -33,12 +33,7 @@ public class Main {
     bucket.put(max, "442");
     bucket.put(alla, "103");
     bucket.put(masha, "232");
-
-    Iterator iterator = bucket.iterator();
-
-    while ( iterator.hasNext() ) {
-      System.out.println(iterator.next());
-    }
+    
 
   }
 }
