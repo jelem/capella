@@ -58,10 +58,9 @@ public class Bucket implements FuncOfBucket {
 
       tmp = tmp.next;
     }
-
   }
 
-  private static class Node implements Iterable{
+  private static class Node {
     private Person key;
     private String value;
     private Node next;
@@ -70,30 +69,6 @@ public class Bucket implements FuncOfBucket {
       this.key = key;
       this.value = value;
       this.next = null;
-    }
-
-    private class aheadIterator implements Iterator {
-      private Node current;
-
-      public aheadIterator() {
-        this.current = current;
-      }
-
-      @Override
-      public boolean hasNext() {
-        return current.next != null;
-      }
-      @Override
-      public Object next() {
-        String value = current.value;
-        current = current.next;
-        return value;
-      }
-    }
-
-    @Override
-    public Iterator iterator() {
-      return new aheadIterator();
     }
   }
 
