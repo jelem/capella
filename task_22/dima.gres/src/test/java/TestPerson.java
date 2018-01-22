@@ -26,18 +26,13 @@ public class TestPerson {
         .surname("Ceban")
         .age(45)
         .build();
+    
 
-    Person john = new Person.Builder()
-        .name("John")
-        .surname("Murphy")
-        .age(51)
-        .build();
+    System.out.println(bucket.get(max));
 
-    Person oxana = new Person.Builder()
-        .name("Oxana")
-        .surname("Naumova")
-        .age(32)
-        .build();
+    bucket.put(max, "007");
+
+    System.out.println(bucket.get(max));
 
     Person masha = new Person.Builder()
         .name("Masha")
@@ -45,11 +40,6 @@ public class TestPerson {
         .age(47)
         .build();
 
-    System.out.println(bucket.get(max));
-
-    bucket.put(max, "007");
-
-    System.out.println(bucket.get(max));
     System.out.println(bucket.get(masha));
 
   }
