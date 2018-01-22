@@ -15,6 +15,6 @@ public class TestPerson {
         .surname("timosenko")
         .age(43).build();
 
-    System.out.println((char) (oleg.hashCode() + 'a') );
+    System.out.println((char) (oleshka.hashCode() + 'a') );
   }
 }
