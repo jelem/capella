@@ -78,7 +78,7 @@ public class Bucket implements FuncOfBucket, Iterable {
     }
 
     @Override
-    public Object next() {
+    public Object next() throws NoSuchElementException{
 
       while ( current == null && index < SIZE ) {
         if (current == null && index < SIZE) {

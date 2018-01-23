@@ -1,5 +1,8 @@
 package hotel;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class Main {
 
   public static void main(String[] args) {
@@ -34,13 +37,14 @@ public class Main {
     bucket.put(alla, "103");
     bucket.put(masha, "232");
 
-    Person oleg = new Person.Builder()
-        .name("Oleg")
-        .surname("Polishchuk")
-        .age(46)
-        .build();
+    Iterator iterator = bucket.iterator();
+    while (iterator.hasNext()) {
+      try {
+        System.out.println(iterator.next());
+      } catch (NoSuchElementException exception) {
+        System.out.println("end");
+      }
 
-    System.out.println(bucket.get(max));
-    System.out.println(bucket.get(oleg));
+    }
   }
 }
