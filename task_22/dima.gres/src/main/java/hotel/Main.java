@@ -1,4 +1,4 @@
-import java.util.Iterator;
+package hotel;
 
 public class Main {
 

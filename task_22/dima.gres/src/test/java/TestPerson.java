@@ -1,3 +1,5 @@
+import hotel.Bucket;
+import hotel.Person;
 import org.junit.Test;
 
 public class TestPerson {

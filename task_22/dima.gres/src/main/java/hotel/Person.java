@@ -1,3 +1,5 @@
+package hotel;
+
 import java.util.Objects;
 
 public class Person {
