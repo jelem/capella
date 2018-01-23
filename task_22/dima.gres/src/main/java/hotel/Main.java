@@ -46,5 +46,15 @@ public class Main {
       }
 
     }
+
+    Person agent007 = new Person.Builder()
+        .name("secret name")
+        .surname("secret surname")
+        .age(0)
+        .build();
+
+    System.out.println(bucket.get(max));
+    System.out.println(bucket.get(masha));
+    System.out.println(bucket.get(agent007));
   }
 }
