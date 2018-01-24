@@ -7,12 +7,8 @@ public class Main {
     Pasenger max = new Pasenger("Max", "Ceban", 700);
 
     try {
-      RailwayStation railwayStation = new RailwayStation();
       Express toKyiv = new Express(1, "Odessa to Kyiv");
       Express toLviv = new Express(1, "Odessa to Lviv");
-
-      railwayStation.add(toKyiv);
-      railwayStation.add(toLviv);
 
       lev.byTicket(toKyiv, 0, 7, OdessaKyiv.KOTOWSK.getCost());
       max.byTicket(toLviv,0, 12,OdessaLviv.TERNOPYL.getCost());
