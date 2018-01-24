@@ -52,8 +52,14 @@ public class Ticket {
 
   @Override
   public boolean equals(Object object) {
-    if (this == object) return true;
-    if (!(object instanceof Ticket)) return false;
+    if (this == object) {
+      return true;
+    }
+
+    if (!(object instanceof Ticket)) {
+      return false;
+    }
+    
     Ticket ticket = (Ticket) object;
     return getNumberOfVagon() == ticket.getNumberOfVagon()
         && getNumerOfPlace() == ticket.getNumerOfPlace()
