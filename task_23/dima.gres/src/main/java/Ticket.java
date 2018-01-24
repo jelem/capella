@@ -10,16 +10,25 @@ public class Ticket {
   private int numerOfPlace;
   private boolean isEmptyPlace;
 
+  private Ticket() {
+    System.out.println("Ticket");
+  }
+
   public Ticket(int numerOfVagon, int numerOfPlace) throws NoNummerOfPlace {
+    System.out.println("Ticket int int");
     if (!isValidPlace(numerOfPlace)) {
       throw new NoNummerOfPlace("not valid nummer of place");
     }
+
     this.numberOfVagon = numerOfVagon;
     this.numerOfPlace = numerOfPlace;
     this.isEmptyPlace = true;
   }
 
-  public void set(Pasenger pasenger) {
+  public void set(Pasenger pasenger) throws NoFreePlace {
+    if (!isEmptyPlace) {
+      throw new NoFreePlace("This place is bussy.");
+    }
     nameOfPasenger = pasenger.getName();
     surnameOfPasenger = pasenger.getSurname();
     isEmptyPlace = false;
