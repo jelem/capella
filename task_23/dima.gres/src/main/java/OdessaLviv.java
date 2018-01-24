@@ -18,4 +18,8 @@ public enum OdessaLviv {
   OdessaLviv(int cost) {
     this.cost = cost;
   }
+
+  public int getCost() {
+    return cost;
+  }
 }

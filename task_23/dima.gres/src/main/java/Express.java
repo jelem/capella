@@ -46,13 +46,13 @@ public class Express {
     return tickets[vagon][place];
   }
 
-  public void setTickets(int vagon, int place, Pasenger pasenger) throws NoNummerOfPlace {
+  public void setTickets(int vagon, int place, Pasenger pasenger, int cost) throws NoNummerOfPlace {
     if (vagon < 0 || vagon >= quantiyOfVagones || place < 0 || place >= VAGONSPLACES) {
       throw new NoNummerOfPlace("not valid nummer of vagon or/and nummer of place");
     }
 
     try {
-      tickets[vagon][place].set(pasenger);
+      tickets[vagon][place].set(pasenger, cost);
     } catch (NoFreePlace noFreePlace) {
       noFreePlace.printStackTrace();
     } finally {

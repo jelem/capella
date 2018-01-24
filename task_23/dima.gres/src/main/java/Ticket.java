@@ -9,6 +9,15 @@ public class Ticket {
   private int numberOfVagon;
   private int numerOfPlace;
   private boolean isEmptyPlace;
+  private int cost;
+
+  public int getCost() {
+    return cost;
+  }
+
+  public void setCost(int cost) {
+    this.cost = cost;
+  }
 
   private Ticket() {
     System.out.println("Ticket");
@@ -24,12 +33,13 @@ public class Ticket {
     this.isEmptyPlace = true;
   }
 
-  public void set(Pasenger pasenger) throws NoFreePlace {
+  public void set(Pasenger pasenger, int cost) throws NoFreePlace {
     if (!isEmptyPlace) {
       throw new NoFreePlace("This place is bussy.");
     }
     nameOfPasenger = pasenger.getName();
     surnameOfPasenger = pasenger.getSurname();
+    this.cost = cost;
     isEmptyPlace = false;
   }
 
@@ -98,6 +108,8 @@ public class Ticket {
         + numberOfVagon
         + ", numerOfPlace = "
         + numerOfPlace
+        + ", cost = "
+        + cost
         + ", isEmptyPlace = "
         + isEmptyPlace
         + '}';
