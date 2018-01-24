@@ -2,10 +2,18 @@ public class Pasenger {
   private String name;
   private String surname;
   private Ticket ownTicket;
+  private int ownMoney;
 
-  public Pasenger(String name, String surname) {
+
+
+  public int getOwnMoney() {
+    return ownMoney;
+  }
+
+  public Pasenger(String name, String surname, int ownMoney) {
     this.name = name;
     this.surname = surname;
+    this.ownMoney = ownMoney;
     ownTicket = null;
   }
 

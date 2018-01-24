@@ -3,11 +3,12 @@ import java.util.ArrayList;
 public class Main {
 
   public static void main(String[] args) {
+
     try {
-      Express toKyiv = new Express(1, "Odessa to Kyiv");
       RailwayStation railwayStation = new RailwayStation();
+      Express toKyiv = new Express(1, "Odessa to Kyiv");
       railwayStation.add(toKyiv);
-      System.out.println( railwayStation.cassa(toKyiv).getTickets(0, 0) );
+      System.out.println( railwayStation.cassa(toKyiv).getTickets(0, 7) );
 
     } catch (NoNummerOfPlace noNummerOfPlace) {
       noNummerOfPlace.printStackTrace();

@@ -66,8 +66,12 @@ public class Express {
 
   @Override
   public boolean equals(Object object) {
-    if (this == object) return true;
-    if (!(object instanceof Express)) return false;
+    if (this == object) {
+      return true;
+    }
+    if (!(object instanceof Express)) {
+      return false;
+    }
     Express express = (Express) object;
     return Objects.equals(getFromTo(), express.getFromTo());
   }
