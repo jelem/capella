@@ -2,7 +2,6 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class Ticket {
-  public static final int QUANTITYOFPLACE = 36;
   public static final String FREE = "free";
 
   private String nameOfPasenger;
@@ -27,7 +26,7 @@ public class Ticket {
   }
 
   private boolean isValidPlace(int numerOfPlace) {
-    return numerOfPlace < QUANTITYOFPLACE;
+    return numerOfPlace < Express.VAGONSPLACES;
   }
 
   public String getNameOfPasenger() {
