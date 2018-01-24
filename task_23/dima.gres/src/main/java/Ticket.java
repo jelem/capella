@@ -15,7 +15,6 @@ public class Ticket {
   }
 
   public Ticket(int numerOfVagon, int numerOfPlace) throws NoNummerOfPlace {
-    System.out.println("Ticket int int");
     if (!isValidPlace(numerOfPlace)) {
       throw new NoNummerOfPlace("not valid nummer of place");
     }
@@ -84,5 +83,23 @@ public class Ticket {
         getNumberOfVagon(),
         getNumerOfPlace(),
         isEmptyPlace());
+  }
+
+  @Override
+  public String toString() {
+    return "Ticket{"
+        + "nameOfPasenger = '"
+        + nameOfPasenger
+        + '\''
+        + ", surnameOfPasenger = '"
+        + surnameOfPasenger
+        + '\''
+        + ", numberOfVagon = "
+        + numberOfVagon
+        + ", numerOfPlace = "
+        + numerOfPlace
+        + ", isEmptyPlace = "
+        + isEmptyPlace
+        + '}';
   }
 }
