@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in,"utf-8");
     System.out.println("Choose the game from: easy, hard, human");
     String complexity = scanner.next();
 

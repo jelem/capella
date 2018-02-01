@@ -3,7 +3,6 @@ package com.lev;
 public class Game {
 
   public static final char X = 'X';
-  public static final char O = 'O';
   private Board board;
   private Player player1;
   private Player player2;

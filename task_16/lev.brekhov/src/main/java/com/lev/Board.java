@@ -2,9 +2,9 @@ package com.lev;
 
 public class Board {
 
-  private static char[][] field = new char[3][3];
+  private char[][] field = new char[3][3];
 
-  public static char[][] getField() {
+  public char[][] getField() {
     return field;
   }
 
@@ -58,9 +58,9 @@ public class Board {
   }
 
   public boolean isFilled() {
-    for (char[] aField : field) {
+    for (char[] theField : field) {
       for (int j = 0; j < field.length; j++) {
-        if (aField[j] == ' ') {
+        if (theField[j] == ' ') {
           return false;
         }
       }

@@ -8,6 +8,7 @@ public class AI extends Player {
   private char symbol;
 
   public AI(String name, char symbol) {
+    super(name, symbol);
     this.name = name;
     this.symbol = symbol;
   }

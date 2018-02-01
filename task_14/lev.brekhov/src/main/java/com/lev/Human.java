@@ -8,13 +8,14 @@ public class Human extends Player {
   private char symbol;
 
   public Human(String name, char symbol) {
+    super(name, symbol);
     this.name = name;
     this.symbol = symbol;
   }
 
   public void makeMove(Board board) {
     System.out.println("Makes move: " + this.name);
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in,"utf-8");
     boolean isFilled = false;
     while (!isFilled) {
       System.out.println("Enter coords (x,y), where x,y can be 1-3: ");
@@ -26,7 +27,7 @@ public class Human extends Player {
   }
 
   public String getName() {
-    return this.name;
+    return name;
   }
 
   public char getSymbol() {

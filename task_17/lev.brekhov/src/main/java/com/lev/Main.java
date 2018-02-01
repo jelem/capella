@@ -8,7 +8,8 @@ public class Main {
     list.add("sec elem");
     list.add("third elem");
     list.add(2, "third elem");
-    list.contains("sec elem");
+
+    System.out.println(list.contains("sec elem"));
     System.out.println(list.get(2));
     System.out.println(list.indexOf("third elem"));
     list.set(2, "second elem");

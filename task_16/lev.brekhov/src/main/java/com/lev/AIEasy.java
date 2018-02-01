@@ -8,6 +8,7 @@ public class AIEasy extends Player {
   private char symbol;
 
   public AIEasy(String name, char symbol) {
+    super(name, symbol);
     this.name = name;
     this.symbol = symbol;
   }
