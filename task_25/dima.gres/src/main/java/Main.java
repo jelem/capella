@@ -1,8 +1,14 @@
 import java.sql.Connection;
+
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.sql.ResultSet;
+
+import java.sql.SQLException;
+
+import java.sql.Statement;
+
+
 
 public class Main {
 
@@ -10,8 +16,8 @@ public class Main {
     Connection connection = null;
 
     try {
-      connection = DriverManager.
-          getConnection("jdbc:mysql://localhost:3306/books_store?serverTimezone=UTC&useSSL=false",
+      connection = DriverManager
+          .getConnection("jdbc:mysql://localhost:3306/books_store?serverTimezone=UTC&useSSL=false",
           "root", "dima");
 
       System.out.println("\n\tLIST BOOKS WITH AUTHORS");
@@ -24,13 +30,13 @@ public class Main {
       printCustomersBooks(connection, "Nikita Morgunov");
       System.out.println("\n\tTOTAL COMPLECT WILLIAM SHAKESPEARE");
       printSummByAuthor(connection, "William Shakespeare");
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException exception) {
+      exception.printStackTrace();
     } finally {
       try {
         connection.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
+      } catch (SQLException exception) {
+        exception.printStackTrace();
       }
     }
 
@@ -50,25 +56,25 @@ public class Main {
         int age = resultSet.getInt("age");
         System.out.println(name + " " + age);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException exception) {
+      exception.printStackTrace();
     }  finally {
       try {
         assert resultSet != null;
         resultSet.close();
         statement.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
+      } catch (SQLException exception) {
+        exception.printStackTrace();
       }
 
     }
   }
 
   private static void printAllBooksWithAuthors(Connection connection) {
-    String sql = "select b.name, a.name" +
-        " from books b" +
-        " inner join authors a" +
-        " on b.author_id = a.id;";
+    String sql = "select b.name, a.name"
+        + " from books b"
+        + " inner join authors a"
+        + " on b.author_id = a.id;";
     Statement statement = null;
     ResultSet resultSet = null;
 
@@ -81,23 +87,23 @@ public class Main {
         String author = resultSet.getString("a.name");
         System.out.println(book + " ************ " + author);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException exception) {
+      exception.printStackTrace();
     }  finally {
       try {
         assert resultSet != null;
         resultSet.close();
         statement.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
+      } catch (SQLException exception) {
+        exception.printStackTrace();
       }
 
     }
   }
 
   private static void  printYoungAuthors(Connection connection) {
-    String sql = "select * from authors a " +
-        "where a.age <= 50;";
+    String sql = "select * from authors a "
+        + "where a.age <= 50;";
     Statement statement = null;
     ResultSet resultSet = null;
 
@@ -110,24 +116,24 @@ public class Main {
         int age = resultSet.getInt("a.age");
         System.out.println(name + " " + age);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException exception) {
+      exception.printStackTrace();
     }  finally {
       try {
         assert resultSet != null;
         resultSet.close();
         statement.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
+      } catch (SQLException exception) {
+        exception.printStackTrace();
       }
     }
   }
 
   private static void printExpensiveBooks(Connection connection) {
-    String sql = "select * from books b " +
-        "inner join authors a " +
-        "on b.author_id = a.id " +
-        "order by price desc limit 10;";
+    String sql = "select * from books b "
+        + "inner join authors a "
+        + "on b.author_id = a.id "
+        + "order by price desc limit 10;";
     Statement statement = null;
     ResultSet resultSet = null;
 
@@ -141,36 +147,36 @@ public class Main {
         int price = resultSet.getInt("b.price");
         System.out.println(book + " * " + author + " * " + price + " grn");
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException exception) {
+      exception.printStackTrace();
     }  finally {
       try {
         assert resultSet != null;
         resultSet.close();
         statement.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
+      } catch (SQLException exception) {
+        exception.printStackTrace();
       }
     }
   }
 
-  private static void printCustomersBooks(Connection connection, String customer_name) {
-    String sql = "select c.name, b.name, a.name, b.price\n" +
-        "from sells s\n" +
-        "inner join customers c\n" +
-        "on s.customer_id = c.id\n" +
-        "\n" +
-        "inner join books b\n" +
-        "on s.book_id = b.id\n" +
-        "\n" +
-        "inner join authors a\n" +
-        "on b.author_id = a.id\n" +
-        "\n" +
-        "where c.name = " +
-        "'" +
-        customer_name +
-        "'" +
-        ";";
+  private static void printCustomersBooks(Connection connection, String customerName) {
+    String sql = "select c.name, b.name, a.name, b.price\n"
+        + "from sells s\n"
+        + "inner join customers c\n"
+        + "on s.customer_id = c.id\n"
+        + "\n"
+        + "inner join books b\n"
+        + "on s.book_id = b.id\n"
+        + "\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "\n"
+        + "where c.name = "
+        + "'"
+        + customerName
+        + "'"
+        + ";";
     Statement statement = null;
     ResultSet resultSet = null;
 
@@ -184,27 +190,29 @@ public class Main {
         int price = resultSet.getInt("b.price");
         System.out.println(book + " * " + author + " * " + price + " grn");
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException exception) {
+      exception.printStackTrace();
     }  finally {
       try {
         assert resultSet != null;
         resultSet.close();
         statement.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
+      } catch (SQLException exception) {
+        exception.printStackTrace();
       }
     }
   }
 
   private static void printSummByAuthor(Connection connection, String author) {
-    String sql = "select a.name, sum(b.price) as sum\n" +
-        "from books b\n" +
-        "inner join authors a\n" +
-        "on b.author_id = a.id\n" +
-        "where a.name = " +
-        "'" + author + "'" +
-        "group by a.name;";
+    String sql = "select a.name, sum(b.price) as sum\n"
+        + "from books b\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "where a.name = "
+        + "'"
+        + author
+        + "'"
+        + "group by a.name;";
     Statement statement = null;
     ResultSet resultSet = null;
 
@@ -216,15 +224,15 @@ public class Main {
         int sum = resultSet.getInt("sum");
         System.out.println(author + " * " + sum + " grn");
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException exception) {
+      exception.printStackTrace();
     }  finally {
       try {
         assert resultSet != null;
         resultSet.close();
         statement.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
+      } catch (SQLException exception) {
+        exception.printStackTrace();
       }
     }
   }
