@@ -4,19 +4,21 @@ import ua.pp.darknsoft.entity.Book;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectBooksImpl implements SelectBooks{
+public class SelectBooksImpl implements SelectBooks {
 
   @Override
   public Book getBookById(int bookId) {
-    String sql = "SELECT * FROM books WHERE id = " + bookId;
-    try (Connection connection = DBStatic.getConnection()) {
-      List<Book> list = select(connection, sql);
+    String sql = "SELECT * FROM books WHERE id = ?";
+    try (Connection connection = DBStatic.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, bookId);
+      List<Book> list = select(statement);
       if (list.isEmpty()) {
         return new Book(0, "", 0, new BigDecimal(0.00));
       } else {
@@ -28,10 +30,9 @@ public class SelectBooksImpl implements SelectBooks{
     return null;
   }
 
-  private List<Book> select(Connection connection, String sql) {
+  private List<Book> select(PreparedStatement statement) {
     List<Book> list = new ArrayList<>();
-    try (Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql)) {
+    try (ResultSet resultSet = statement.executeQuery()) {
 
       while (resultSet.next()) {
         int id = resultSet.getInt("id");
@@ -40,7 +41,6 @@ public class SelectBooksImpl implements SelectBooks{
         BigDecimal price = resultSet.getBigDecimal("price");
         list.add(new Book(id, name, authorId, price));
       }
-
     } catch (SQLException ex) {
       ex.printStackTrace();
     }

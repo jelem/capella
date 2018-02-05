@@ -3,9 +3,9 @@ package ua.pp.darknsoft.jdbc;
 import ua.pp.darknsoft.entity.Consumer;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +13,11 @@ public class SelectConsumerImpl implements SelectConsumer {
 
   @Override
   public Consumer getConsumerById(int consumerId) {
-    String sql = "SELECT * FROM consumers WHERE id = " + consumerId;
-    try (Connection connection = DBStatic.getConnection()) {
-      List<Consumer> list = select(connection, sql);
+    String sql = "SELECT * FROM consumers WHERE id = ?";
+    try (Connection connection = DBStatic.getConnection(); PreparedStatement statement = connection
+        .prepareStatement(sql)) {
+      statement.setInt(1, consumerId);
+      List<Consumer> list = select(statement);
       if (list.isEmpty()) {
         return new Consumer(0, "", "", 0);
       } else {
@@ -37,11 +39,9 @@ public class SelectConsumerImpl implements SelectConsumer {
     return null;
   }
 
-  private List<Consumer> select(Connection connection, String sql) {
+  private List<Consumer> select(PreparedStatement statement) {
     List<Consumer> list = new ArrayList<>();
-    try (Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql)) {
-
+    try (ResultSet resultSet = statement.executeQuery()) {
       while (resultSet.next()) {
         int id = resultSet.getInt("id");
         String firstName = resultSet.getString("firstname");
@@ -49,7 +49,6 @@ public class SelectConsumerImpl implements SelectConsumer {
         int age = resultSet.getInt("age");
         list.add(new Consumer(id, firstName, lastName, age));
       }
-
     } catch (SQLException ex) {
       ex.printStackTrace();
     }

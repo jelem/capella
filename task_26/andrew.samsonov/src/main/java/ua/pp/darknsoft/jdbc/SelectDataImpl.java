@@ -6,10 +6,7 @@ import ua.pp.darknsoft.entity.Consumer;
 
 import java.util.List;
 
-/**
- * Created by Andrew on 05.02.2018.
- */
-public class SelectDataImpl implements SelectData{
+public class SelectDataImpl implements SelectData {
 
   @Override
   public List<Book> getAllBooks() {

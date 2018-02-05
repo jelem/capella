@@ -2,9 +2,6 @@ package ua.pp.darknsoft.entity;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Andrew on 05.02.2018.
- */
 public class Book {
 
   private int id;
