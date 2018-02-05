@@ -16,6 +16,22 @@ public class Book {
     this.price = price;
   }
 
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public int getAuthorId() {
+    return authorId;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {
@@ -57,4 +73,5 @@ public class Book {
         + ", price=" + price
         + '}';
   }
+
 }

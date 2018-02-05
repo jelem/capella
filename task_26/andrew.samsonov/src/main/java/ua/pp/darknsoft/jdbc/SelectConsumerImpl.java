@@ -14,7 +14,7 @@ public class SelectConsumerImpl implements SelectConsumer {
   @Override
   public Consumer getConsumerById(int consumerId) {
     String sql = "SELECT * FROM consumers WHERE id = ?";
-    try (Connection connection = DBStatic.getConnection(); PreparedStatement statement = connection
+    try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
         .prepareStatement(sql)) {
       statement.setInt(1, consumerId);
       List<Consumer> list = select(statement);

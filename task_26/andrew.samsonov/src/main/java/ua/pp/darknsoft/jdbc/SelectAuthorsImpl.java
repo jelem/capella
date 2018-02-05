@@ -14,7 +14,7 @@ public class SelectAuthorsImpl implements SelectAuthors {
 
   public Author getAuthorById(int authorId) {
     String sql = "SELECT * FROM authors WHERE id = ?";
-    try (Connection connection = DBStatic.getConnection(); PreparedStatement statement = connection
+    try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
         .prepareStatement(sql)) {
       statement.setInt(1, authorId);
       List<Author> list = select(statement);
