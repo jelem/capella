@@ -62,9 +62,10 @@ public class DataBase {
         + "LEFT JOIN authors a "
         + "ON b.author_id = a.id "
         + "WHERE c.customer_name = ? ;";
+    ResultSet resultSet = null;
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, name);
-      ResultSet resultSet = statement.executeQuery();
+      resultSet = statement.executeQuery();
       while (resultSet.next()) {
         int bookId = resultSet.getInt(B_ID);
         String bookName = resultSet.getString(B_NAME);
@@ -74,6 +75,14 @@ public class DataBase {
       }
     } catch (SQLException exception) {
       exception.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+      }
     }
     return books;
   }
@@ -148,9 +157,10 @@ public class DataBase {
         + "LEFT JOIN authors a "
         + "ON b.author_id = a.id "
         + "WHERE b.book_name = ? ;";
+    ResultSet resultSet = null;
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, bookName);
-      ResultSet resultSet = statement.executeQuery();
+      resultSet = statement.executeQuery();
       while (resultSet.next()) {
         int id = resultSet.getInt(B_ID);
         String name = resultSet.getString(B_NAME);
@@ -160,6 +170,14 @@ public class DataBase {
       }
     } catch (SQLException ex) {
       ex.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+      }
     }
     return books;
   }
@@ -169,9 +187,10 @@ public class DataBase {
     String sql = "SELECT * "
         + "FROM authors a "
         + "WHERE author_name = ? ;";
+    ResultSet resultSet = null;
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, authorName);
-      ResultSet resultSet = statement.executeQuery();
+      resultSet = statement.executeQuery();
       while (resultSet.next()) {
         int id = resultSet.getInt(A_ID);
         String name = resultSet.getString(A_NAME);
@@ -180,6 +199,14 @@ public class DataBase {
       }
     } catch (SQLException ex) {
       ex.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+      }
     }
     return authors;
   }
@@ -226,9 +253,10 @@ public class DataBase {
     String sql = "SELECT * "
         + "FROM customers c "
         + "WHERE c.customer_name = ? ;";
+    ResultSet resultSet = null;
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, customerName);
-      ResultSet resultSet = statement.executeQuery();
+      resultSet = statement.executeQuery();
       while (resultSet.next()) {
         int id = resultSet.getInt(C_ID);
         String name = resultSet.getString(C_NAME);
@@ -237,6 +265,14 @@ public class DataBase {
       }
     } catch (SQLException ex) {
       ex.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+      }
     }
     return customers;
   }
@@ -284,10 +320,11 @@ public class DataBase {
         + "FROM authors a "
         + "WHERE a.author_name = ? "
         + "AND a.date_of_birth = ? ;";
+    ResultSet resultSet = null;
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, authorName);
       statement.setString(2, authorBirthday);
-      ResultSet resultSet = statement.executeQuery();
+      resultSet = statement.executeQuery();
       while (resultSet.next()) {
         int id = resultSet.getInt(A_ID);
         String name = resultSet.getString(A_NAME);
@@ -296,6 +333,14 @@ public class DataBase {
       }
     } catch (SQLException ex) {
       ex.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+      }
     }
     return authors;
   }
