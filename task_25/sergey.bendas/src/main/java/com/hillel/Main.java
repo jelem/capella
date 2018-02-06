@@ -2,6 +2,7 @@ package com.hillel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,8 +40,9 @@ public class Main {
     printTenExpensiveBooks(connection);
     System.out.println();
 
-    System.out.println("Books that Sergey Bendas have bought:");
-    printCustomerBooks(connection);
+    String name = "Сергей Бендас";
+    System.out.println("Books that " + name + " have bought:");
+    printCustomerBooks(connection, name);
     System.out.println();
 
     System.out.println("Total price of books of each author:");
@@ -68,17 +70,18 @@ public class Main {
     }
   }
 
-  private static void printCustomerBooks(Connection connection) {
+  private static void printCustomerBooks(Connection connection, String name) {
     String sql = "SELECT b.book_name "
         + "FROM customers c "
         + "INNER JOIN selling s "
         + "ON c.id = s.customer_id "
         + "INNER JOIN books b "
         + "ON s.book_id = b.id "
-        + "WHERE c.customer_name = 'Сергей Бендас'";
+        + "WHERE c.customer_name = ?";
 
-    try (Statement statement = connection.createStatement(); ResultSet resultSet = statement
-        .executeQuery(sql)) {
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setString(1, name);
+      ResultSet resultSet = statement.executeQuery();
       while (resultSet.next()) {
         String bookName = resultSet.getString("b.book_name");
         System.out.println(bookName);
