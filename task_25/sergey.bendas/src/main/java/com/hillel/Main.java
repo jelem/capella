@@ -78,15 +78,25 @@ public class Main {
         + "ON s.book_id = b.id "
         + "WHERE c.customer_name = ?";
 
+    ResultSet resultSet = null;
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
       statement.setString(1, name);
-      ResultSet resultSet = statement.executeQuery();
+      resultSet = statement.executeQuery();
       while (resultSet.next()) {
         String bookName = resultSet.getString("b.book_name");
         System.out.println(bookName);
       }
     } catch (Exception exception) {
       exception.printStackTrace();
+    } finally {
+      if (resultSet != null) {
+        try {
+          resultSet.close();
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+      }
+
     }
   }
 
