@@ -19,6 +19,13 @@ public class BookStore {
 
     printBooksSAuthors(connection);
 
+    Author shevchenko = new Author("Taras Shevchenko", 175);
+    Book heritage = new Book("Heritage", 123);
+    addAuthors(connection, shevchenko);
+    addBook(connection, heritage, shevchenko);
+
+    printBooksSAuthors(connection);
+
     connection.close();
   }
 
@@ -148,6 +155,11 @@ public class BookStore {
   }
 
   private static void addAuthors(Connection connection,Author author) throws SQLException {
+    if (isAuthorHistance(connection, author)) {
+      System.out.println("Author is exist");
+      return;
+    }
+
     String sql = "insert into authors (name, age)"
      + " values(?, ?);"
         ;
@@ -163,6 +175,11 @@ public class BookStore {
   }
 
   private static void addBook(Connection connection, Book book, Author author) throws SQLException {
+    if (isBookHistance(connection, book)) {
+      System.out.println("This book is already exist");
+      return;
+    }
+
     String sql = "insert into books (name, author_id, price)"
     + " values(?, ?, ?);"
         ;
@@ -178,5 +195,50 @@ public class BookStore {
     statement.executeUpdate();
 
     statement.close();
+  }
+
+  private static boolean isAuthorHistance(Connection connection,Author author) throws SQLException {
+    String sql = "select a.id from authors a"
+    + " where a.name = \'"
+        + author.getName()
+        + "\';"
+        ;
+
+    Statement statement = connection.createStatement();
+    ResultSet resultSet = statement.executeQuery(sql);
+
+    boolean result = false;
+
+    while (resultSet.next()) {
+      result = true;
+      break;
+    }
+
+    resultSet.close();
+    statement.close();
+
+    return result;
+  }
+
+  private static boolean isBookHistance(Connection connection, Book book) throws SQLException {
+    String sql = "select b.id from books b\n"
+        + "where b.name = \'"
+        + book.getName() + "\';"
+        ;
+
+    Statement statement = connection.createStatement();
+    ResultSet resultSet = statement.executeQuery(sql);
+
+    boolean result = false;
+
+    while (resultSet.next()) {
+      result = true;
+      break;
+    }
+
+    resultSet.close();
+    statement.close();
+
+    return result;
   }
 }
