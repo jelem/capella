@@ -4,6 +4,7 @@ import ua.pp.darknsoft.entity.Author;
 import ua.pp.darknsoft.entity.Book;
 import ua.pp.darknsoft.entity.Consumer;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface SelectData {
@@ -16,5 +17,5 @@ public interface SelectData {
 
   List<Book> getBooksByConsumer(Consumer consumer);
 
-  List<Book> getCollectionByAuthor(Author author);
+  BigDecimal calculateCollectionPriceByAuthor(Author author);
 }

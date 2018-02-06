@@ -17,7 +17,7 @@ public class SelectConsumerImpl implements SelectConsumer {
     try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
         .prepareStatement(sql)) {
       statement.setInt(1, consumerId);
-      List<Consumer> list = select(statement);
+      List<Consumer> list = DBUtil.selectConsumers(statement);
       if (list.isEmpty()) {
         return new Consumer(0, "", "", 0);
       } else {
@@ -31,27 +31,25 @@ public class SelectConsumerImpl implements SelectConsumer {
 
   @Override
   public List<Consumer> getConsumerByFirstName(String firstName) {
-    return null;
+    String sql = "SELECT * FROM consumers WHERE UPPER(firstname) = ?";
+    return getConsumersList(sql, firstName.toUpperCase());
   }
 
   @Override
   public List<Consumer> getConsumerByLastName(String lastName) {
-    return null;
+    String sql = "SELECT * FROM consumers WHERE UPPER(lastname) = ?";
+    return getConsumersList(sql, lastName.toUpperCase());
   }
 
-  private List<Consumer> select(PreparedStatement statement) {
-    List<Consumer> list = new ArrayList<>();
-    try (ResultSet resultSet = statement.executeQuery()) {
-      while (resultSet.next()) {
-        int id = resultSet.getInt("id");
-        String firstName = resultSet.getString("firstname");
-        String lastName = resultSet.getString("lastname");
-        int age = resultSet.getInt("age");
-        list.add(new Consumer(id, firstName, lastName, age));
-      }
-    } catch (SQLException ex) {
+  private List<Consumer> getConsumersList(String sql, String param) {
+    try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
+        .prepareStatement(sql)) {
+      statement.setString(1, param);
+      List<Consumer> list = DBUtil.selectConsumers(statement);
+      return list;
+    } catch (Exception ex) {
       ex.printStackTrace();
     }
-    return list;
+    return null;
   }
 }

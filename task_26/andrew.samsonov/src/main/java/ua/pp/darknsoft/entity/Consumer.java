@@ -1,8 +1,5 @@
 package ua.pp.darknsoft.entity;
 
-/**
- * Created by Andrew on 05.02.2018.
- */
 public class Consumer {
 
   private int id;
@@ -10,11 +7,15 @@ public class Consumer {
   private String lastName;
   private int age;
 
-  public Consumer(int id, String firstName, String lastName, int age) {
-    this.id = id;
+  public Consumer(String firstName, String lastName, int age) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.age = age;
+  }
+
+  public Consumer(int id, String firstName, String lastName, int age) {
+    this(firstName, lastName, age);
+    this.id = id;
   }
 
   @Override

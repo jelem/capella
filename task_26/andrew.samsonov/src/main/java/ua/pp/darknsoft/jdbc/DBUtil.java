@@ -3,6 +3,7 @@ package ua.pp.darknsoft.jdbc;
 import ua.pp.darknsoft.Main;
 import ua.pp.darknsoft.entity.Author;
 import ua.pp.darknsoft.entity.Book;
+import ua.pp.darknsoft.entity.Consumer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -47,6 +48,38 @@ public class DBUtil {
       ex.printStackTrace();
     }
     return listBooks;
+  }
+
+  public static List<Author> selectAuthors(PreparedStatement statement) {
+    List<Author> listAuthors = new ArrayList<>();
+    try (ResultSet resultSet = statement.executeQuery()) {
+      while (resultSet.next()) {
+        int id = resultSet.getInt("id");
+        String firstName = resultSet.getString("firstName");
+        String lastName = resultSet.getString("lastName");
+        int age = resultSet.getInt("age");
+        listAuthors.add(new Author(id, firstName, lastName, age));
+      }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    return listAuthors;
+  }
+
+  public static List<Consumer> selectConsumers(PreparedStatement statement) {
+    List<Consumer> listConsumers = new ArrayList<>();
+    try (ResultSet resultSet = statement.executeQuery()) {
+      while (resultSet.next()) {
+        int id = resultSet.getInt("id");
+        String firstName = resultSet.getString("firstName");
+        String lastName = resultSet.getString("lastName");
+        int age = resultSet.getInt("age");
+        listConsumers.add(new Consumer(id, firstName, lastName, age));
+      }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    return listConsumers;
   }
 
   public static void printFullBook(Book book) {

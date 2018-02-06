@@ -10,6 +10,6 @@ public interface SelectAuthors {
 
   List<Author> getAuthorsByFirstName(String firstName);
 
-  List<Author> getAuthorByLastName(String lastName);
+  List<Author> getAuthorsByLastName(String lastName);
 
 }

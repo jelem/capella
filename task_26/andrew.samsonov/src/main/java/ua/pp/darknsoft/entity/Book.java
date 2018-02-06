@@ -9,11 +9,15 @@ public class Book {
   private int authorId;
   private BigDecimal price;
 
-  public Book(int id, String name, int authorId, BigDecimal price) {
-    this.id = id;
+  public Book(String name, int authorId, BigDecimal price) {
     this.name = name;
     this.authorId = authorId;
     this.price = price;
+  }
+
+  public Book(int id, String name, int authorId, BigDecimal price) {
+    this(name, authorId, price);
+    this.id = id;
   }
 
   public int getId() {

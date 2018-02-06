@@ -4,8 +4,10 @@ import ua.pp.darknsoft.entity.Author;
 import ua.pp.darknsoft.entity.Book;
 import ua.pp.darknsoft.entity.Consumer;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -25,6 +27,14 @@ public class SelectDataImpl implements SelectData {
 
   @Override
   public List<Author> getAuthorsLessThanYears(int age) {
+    String sql = "SELECT * FROM authors WHERE age < ?";
+    try (Connection connection = DBUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql)) {
+      statement.setInt(1, age);
+      return DBUtil.selectAuthors(statement);
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
     return null;
   }
 
@@ -55,7 +65,21 @@ public class SelectDataImpl implements SelectData {
   }
 
   @Override
-  public List<Book> getCollectionByAuthor(Author author) {
+  public BigDecimal calculateCollectionPriceByAuthor(Author author) {
+    String sql = "SELECT sum(price) cost FROM books WHERE author_id = ? GROUP BY author_id";
+    try (Connection connection = DBUtil.getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);) {
+      statement.setInt(1, author.getId());
+      try (ResultSet resultSet = statement.executeQuery()) {
+        BigDecimal cost = null;
+        while (resultSet.next()) {
+          cost = resultSet.getBigDecimal("cost");
+        }
+        return cost;
+      }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
     return null;
   }
 
