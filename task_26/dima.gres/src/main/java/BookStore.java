@@ -17,12 +17,23 @@ public class BookStore {
 //    printCustomersBooks(connection, new Customer("Misha Khaminsky"));
 //    addAuthors(connection, new Author("Boris Pasternak", 123));
 
-    printBooksSAuthors(connection);
-
+//    printBooksSAuthors(connection);
+//
     Author shevchenko = new Author("Taras Shevchenko", 175);
-    Book heritage = new Book("Heritage", 123);
-    addAuthors(connection, shevchenko);
-    addBook(connection, heritage, shevchenko);
+    Book katerina = new Book("Katerina", 74);
+//    addAuthors(connection, shevchenko);
+    addBook(connection, katerina, shevchenko);
+//
+//    printBooksSAuthors(connection);
+//
+    Customer berzovsky = new Customer("Boris Berezovsky");
+//    addCustomer(connection, customer);
+
+//    addCells(connection, berzovsky, shevchenko, katerina);
+//
+//    printCustomersBooks(connection, berzovsky);
+
+//    deleteBook(connection, katerina);
 
     printBooksSAuthors(connection);
 
@@ -155,7 +166,7 @@ public class BookStore {
   }
 
   private static void addAuthors(Connection connection,Author author) throws SQLException {
-    if (isAuthorHistance(connection, author)) {
+    if (isAuthorExist(connection, author)) {
       System.out.println("Author is exist");
       return;
     }
@@ -174,10 +185,33 @@ public class BookStore {
     statement.close();
   }
 
+  private static void addCustomer(Connection connection, Customer customer) throws SQLException {
+    if (isCustomerExist(connection, customer)) {
+      System.out.println("We have this customer.");
+      return;
+    }
+
+    String sql = "insert into customers (name)\n"
+        + " values(?);"
+        ;
+
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+    preparedStatement.setString(1, customer.getName());
+
+    preparedStatement.executeUpdate();
+
+    preparedStatement.close();
+  }
+
   private static void addBook(Connection connection, Book book, Author author) throws SQLException {
-    if (isBookHistance(connection, book)) {
+    if (isBookExist(connection, book)) {
       System.out.println("This book is already exist");
       return;
+    }
+
+    if (!isAuthorExist(connection, author)) {
+      addAuthors(connection, author);
     }
 
     String sql = "insert into books (name, author_id, price)"
@@ -197,7 +231,28 @@ public class BookStore {
     statement.close();
   }
 
-  private static boolean isAuthorHistance(Connection connection,Author author) throws SQLException {
+  private static  void addCells(Connection connection, Customer customer, Author author, Book book) throws SQLException {
+    if (!isAuthorExist(connection ,author) || !isBookExist(connection, book)) {
+      System.out.println("Sorry " + "mr.s. " + customer.getName() + " the store hasn't this book");
+      return;
+    }
+
+    String sql = "insert into sells (customer_id, book_id)\n" +
+        "values(?, ?);"
+        ;
+
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+    preparedStatement.setInt(1, customer.getId(connection));
+
+    preparedStatement.setInt(2, book.getId(connection));
+
+    preparedStatement.executeUpdate();
+
+    preparedStatement.close();
+  }
+
+  private static boolean isAuthorExist(Connection connection,Author author) throws SQLException {
     String sql = "select a.id from authors a"
     + " where a.name = \'"
         + author.getName()
@@ -220,7 +275,7 @@ public class BookStore {
     return result;
   }
 
-  private static boolean isBookHistance(Connection connection, Book book) throws SQLException {
+  private static boolean isBookExist(Connection connection, Book book) throws SQLException {
     String sql = "select b.id from books b\n"
         + "where b.name = \'"
         + book.getName() + "\';"
@@ -240,5 +295,41 @@ public class BookStore {
     statement.close();
 
     return result;
+  }
+
+  private static boolean isCustomerExist(Connection connection ,Customer customer) throws SQLException {
+    String sql = "select c.id\n" +
+        "from customers c\n" +
+        "where c.name = \'"
+        + customer.getName()
+        + "\';"
+        ;
+
+    Statement statement = connection.createStatement();
+    ResultSet resultSet = statement.executeQuery(sql);
+
+    boolean result = false;
+
+    while (resultSet.next()) {
+      result = true;
+      break;
+    }
+
+    resultSet.close();
+    statement.close();
+
+    return result;
+  }
+
+  private static void deleteBook(Connection connection, Book book) throws SQLException {
+    String sql = "delete from books where name = \'"
+        + book.getName()
+        + "\';"
+        ;
+    Statement statement = connection.createStatement();
+
+    statement.execute(sql);
+
+    statement.close();
   }
 }
