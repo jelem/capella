@@ -12,8 +12,8 @@ public class Main {
 
     int numb = 1;
     for (Worker firme : firm) {
-      System.out.println("\nWorker # " + numb + ": " + firme.getName() +
-          ", " + firme.getZarplata() + " grn., age " + firme.getAge() );
+      System.out.print("\nWorker # " + numb + ": " + firme.getName() + ", ");
+      System.out.println(firme.getZarplata() + " grn., age " + firme.getAge() );
       firme.work();
       numb++;
     }
