@@ -1,37 +1,21 @@
 package ua.pp.darknsoft.jdbc;
 
-import ua.pp.darknsoft.Main;
 import ua.pp.darknsoft.entity.Author;
 import ua.pp.darknsoft.entity.Book;
+import ua.pp.darknsoft.entity.BookCollection;
 import ua.pp.darknsoft.entity.Consumer;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class DBUtil {
 
   private DBUtil() {
-  }
-
-  public static Connection getConnection() throws SQLException {
-    Properties properties = new Properties();
-    try {
-      properties.load(Main.class.getClassLoader().getResourceAsStream("db.properties"));
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-    return DriverManager
-        .getConnection(properties.getProperty("url"),
-            properties.getProperty("username"),
-            properties.getProperty("password"));
+    throw new AssertionError();
   }
 
   public static List<Book> selectBooks(PreparedStatement statement) {
@@ -80,6 +64,27 @@ public class DBUtil {
       ex.printStackTrace();
     }
     return listConsumers;
+  }
+
+  public static List<BookCollection> selectBookCollections(PreparedStatement statement) {
+    List<BookCollection> listBookCollections = new ArrayList<>();
+    try (ResultSet resultSet = statement.executeQuery()) {
+      while (resultSet.next()) {
+        BigDecimal price = resultSet.getBigDecimal("cost");
+        int count = resultSet.getInt("count");
+        int authorId = resultSet.getInt("id");
+        String authorFirstName = resultSet.getString("firstName");
+        String authorLastName = resultSet.getString("lastName");
+        int authorAge = resultSet.getInt("age");
+
+        listBookCollections
+            .add(new BookCollection(price,
+                new Author(authorId, authorFirstName, authorLastName, authorAge), count));
+      }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
+    return listBookCollections;
   }
 
   public static void printFullBook(Book book) {

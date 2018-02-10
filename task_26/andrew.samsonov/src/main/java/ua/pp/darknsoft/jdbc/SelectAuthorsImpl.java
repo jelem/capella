@@ -2,7 +2,6 @@ package ua.pp.darknsoft.jdbc;
 
 import ua.pp.darknsoft.entity.Author;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class SelectAuthorsImpl implements SelectAuthors {
 
   public Author getAuthorById(int authorId) {
     String sql = "SELECT * FROM authors WHERE id = ?";
-    try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
+    try (PreparedStatement statement = DBConnection.INSTANCE.getConnection()
         .prepareStatement(sql)) {
       statement.setInt(1, authorId);
       List<Author> list = DBUtil.selectAuthors(statement);
@@ -37,7 +36,7 @@ public class SelectAuthorsImpl implements SelectAuthors {
   }
 
   private List<Author> getAuthorsList(String sql, String param) {
-    try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
+    try (PreparedStatement statement = DBConnection.INSTANCE.getConnection()
         .prepareStatement(sql)) {
       statement.setString(1, param);
       List<Author> list = DBUtil.selectAuthors(statement);

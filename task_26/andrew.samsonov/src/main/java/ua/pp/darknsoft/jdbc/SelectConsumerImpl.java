@@ -2,11 +2,7 @@ package ua.pp.darknsoft.jdbc;
 
 import ua.pp.darknsoft.entity.Consumer;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SelectConsumerImpl implements SelectConsumer {
@@ -14,7 +10,7 @@ public class SelectConsumerImpl implements SelectConsumer {
   @Override
   public Consumer getConsumerById(int consumerId) {
     String sql = "SELECT * FROM consumers WHERE id = ?";
-    try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
+    try (PreparedStatement statement = DBConnection.INSTANCE.getConnection()
         .prepareStatement(sql)) {
       statement.setInt(1, consumerId);
       List<Consumer> list = DBUtil.selectConsumers(statement);
@@ -42,7 +38,7 @@ public class SelectConsumerImpl implements SelectConsumer {
   }
 
   private List<Consumer> getConsumersList(String sql, String param) {
-    try (Connection connection = DBUtil.getConnection(); PreparedStatement statement = connection
+    try (PreparedStatement statement = DBConnection.INSTANCE.getConnection()
         .prepareStatement(sql)) {
       statement.setString(1, param);
       List<Consumer> list = DBUtil.selectConsumers(statement);

@@ -2,8 +2,10 @@ package ua.pp.darknsoft;
 
 import ua.pp.darknsoft.entity.Author;
 import ua.pp.darknsoft.entity.Book;
+import ua.pp.darknsoft.entity.BookCollection;
 import ua.pp.darknsoft.entity.Consumer;
 import ua.pp.darknsoft.input.Console;
+import ua.pp.darknsoft.jdbc.DBConnection;
 import ua.pp.darknsoft.jdbc.DBUtil;
 import ua.pp.darknsoft.jdbc.InsertData;
 import ua.pp.darknsoft.jdbc.InsertDataImpl;
@@ -14,9 +16,12 @@ import ua.pp.darknsoft.jdbc.SelectConsumerImpl;
 import ua.pp.darknsoft.jdbc.SelectData;
 import ua.pp.darknsoft.jdbc.SelectDataImpl;
 
+import java.sql.SQLException;
+
 public class Main {
 
   public static void main(String[] args) {
+
     SelectConsumer selectConsumer = new SelectConsumerImpl();
     SelectAuthors selectAuthors = new SelectAuthorsImpl();
     final SelectData selectData = new SelectDataImpl();
@@ -49,11 +54,22 @@ public class Main {
 
     System.out.println("################## calculateCollectionPriceByAuthor #####################");
     Author author = selectAuthors.getAuthorById(3);
-    System.out.println("\t\t-=" + author.getFirstName() + " " + author.getLastName() + "=-");
-    System.out.println("Collection price: " + selectData.calculateCollectionPriceByAuthor(author));
+    System.out
+        .println("BookCollection price: " + selectData.calculateCollectionPriceByAuthor(author));
+
+    System.out.println("################## calculateCollectionPriceByAuthor #####################");
+    for (BookCollection bc : selectData.calculateCollectionPriceByAllAuthors()) {
+      System.out.println(bc);
+    }
 
     InsertData insertData = new InsertDataImpl();
     insertData.addConsumer(new Console().readConsumer());
+
+    try {
+      DBConnection.INSTANCE.getConnection().close();
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    }
 
   }
 }
