@@ -1,9 +1,4 @@
-package com.hillel.task_2;
-
-import com.hillel.task_1.Circle;
-import com.hillel.task_1.Figure;
-import com.hillel.task_1.Rectangle;
-import com.hillel.task_1.Square;
+package com.hillel.task2;
 
 public class Main {
 
@@ -17,7 +12,8 @@ public class Main {
 
     int numb = 1;
     for (Worker firme : firm) {
-      System.out.println("\nWorker # " + numb + ": " + firme.getName() + ", " + firme.getZarplata() + " grn., age " + firme.getAge() );
+      System.out.println("\nWorker # " + numb + ": " + firme.getName() +
+          ", " + firme.getZarplata() + " grn., age " + firme.getAge() );
       firme.work();
       numb++;
     }

@@ -1,4 +1,4 @@
-package com.hillel.task_2;
+package com.hillel.task2;
 
 public class Tester extends Worker {
 

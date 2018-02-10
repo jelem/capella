@@ -1,4 +1,4 @@
-package com.hillel.task_1;
+package com.hillel.task1;
 
 public class Main {
 

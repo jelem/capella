@@ -1,6 +1,6 @@
-package com.hillel.task_2;
+package com.hillel.task2;
 
-public class Boss extends Worker{
+public class Boss extends Worker {
 
   public Boss(String name, int zarplata, int age) {
     super(name, zarplata, age);

@@ -1,6 +1,6 @@
-package com.hillel.task_1;
+package com.hillel.task1;
 
-public class Circle extends Figure{
+public class Circle extends Figure {
 
   private int radius;
 
