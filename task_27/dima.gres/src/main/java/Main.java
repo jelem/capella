@@ -74,20 +74,30 @@ public class Main {
   }
 
   public  static  void writeStudents(String location, ArrayList<Student> students) {
+    final String begin = "<students>";
+    final String end = "\n</students>";
+
+
     File file = new File(location);
 
     try (FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+
+      bufferedWriter.write(begin);
 
       for (Student student : students) {
         String Lastname = student.getLastname();
         String Firsttname = student.getFirstname();
         int Age = student.getAge();
 
-        bufferedWriter.write(Lastname + " ");
-        bufferedWriter.write(Firsttname + " ");
-        bufferedWriter.write(Age + "\n");
+        bufferedWriter.write(String.valueOf(student));
       }
+
+      bufferedWriter.write(end);
+
+      bufferedWriter.close();
+
+      fileWriter.close();
 
     } catch (IOException ex) {
       ex.printStackTrace();

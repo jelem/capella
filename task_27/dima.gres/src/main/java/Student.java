@@ -39,10 +39,10 @@ public class Student {
 
   @Override
   public String toString() {
-    return "Student{" +
-        "lastname='" + lastname + '\'' +
-        ", firstname='" + firstname + '\'' +
-        ", age=" + age +
-        '}';
+    return "\n\t<student>" +
+        "\n\t\t<lastname>" + lastname + "</lastname>" +
+        "\n\t\t<firstname>" + firstname + "</firstname>" +
+        "\n\t\t<age>" + age + "</age>"
+        + "\n\t</student>";
   }
 }
