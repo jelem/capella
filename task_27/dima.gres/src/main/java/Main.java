@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -9,13 +6,15 @@ public class Main {
   public static void main(String[] args) {
     String locStudents = "/home/dima/projects/java/task_27/dima.gres/src/main/resources/students.txt" ;
 
+    String xmlStudents = "/home/dima/projects/java/task_27/dima.gres/src/main/resources/students_out.xml" ;
+
     ArrayList<Student> students =  readStudents(locStudents);
 
     for (Student student:students) {
       System.out.println(student);
     }
 
-    
+    writeStudents(xmlStudents, students);
   }
 
   public static ArrayList<Student> readStudents(String location) {
@@ -61,6 +60,10 @@ public class Main {
 
       students.add(current);
 
+      fileReader.close();
+
+      bufferedReader.close();
+
       return students;
 
     } catch (IOException ex) {
@@ -68,5 +71,26 @@ public class Main {
     }
 
     return null;
+  }
+
+  public  static  void writeStudents(String location, ArrayList<Student> students) {
+    File file = new File(location);
+
+    try (FileWriter fileWriter = new FileWriter(file);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+
+      for (Student student : students) {
+        String Lastname = student.getLastname();
+        String Firsttname = student.getFirstname();
+        int Age = student.getAge();
+
+        bufferedWriter.write(Lastname + " ");
+        bufferedWriter.write(Firsttname + " ");
+        bufferedWriter.write(Age + "\n");
+      }
+
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
   }
 }
