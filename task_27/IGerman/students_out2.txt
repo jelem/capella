@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<students>
+<student>
+<lastName>Ivanov</lastName>
+<firstName>Ivan</firstName>
+<age>20</age>
+</student>
+<student>
+<lastName>Petrov</lastName>
+<firstName>Petr</firstName>
+<age>21</age>
+</student>
+<student>
+<lastName>Sidorov</lastName>
+<firstName>Roman</firstName>
+<age>22</age>
+</student>
+<student>
+<lastName>Belyy</lastName>
+<firstName>Denis</firstName>
+<age>23</age>
+</student>
+</students>
