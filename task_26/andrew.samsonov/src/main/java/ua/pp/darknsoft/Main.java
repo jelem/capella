@@ -66,7 +66,9 @@ public class Main {
     insertData.addConsumer(new Console().readConsumer());
 
     try {
-      DBConnection.INSTANCE.getConnection().close();
+      if (!DBConnection.INSTANCE.getConnection().isClosed()) {
+        DBConnection.INSTANCE.getConnection().close();
+      }
     } catch (SQLException ex) {
       ex.printStackTrace();
     }
