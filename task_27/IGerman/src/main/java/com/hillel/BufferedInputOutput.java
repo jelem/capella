@@ -2,11 +2,14 @@ package com.hillel;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Properties;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -14,7 +17,16 @@ import javax.xml.stream.XMLStreamWriter;
 public class BufferedInputOutput {
 
   public static void main(String[] args) {
-    String file = "E:\\projects\\jelem\\capella\\task_27\\IGerman\\fileTask_27.txt";
+    Properties properties = new Properties();
+    String file = null;
+    try {
+      properties
+          .load(BufferedInputOutput.class.getClassLoader().getResourceAsStream("properties"));
+
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+    file = properties.getProperty("in");
 
     BufferedInputOutput bufferedInputOutput = new BufferedInputOutput();
     ArrayList<Student> students = bufferedInputOutput.readFromFile(file);
@@ -35,7 +47,8 @@ public class BufferedInputOutput {
 
     ArrayList<String> tempList = new ArrayList<>();
 
-    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+    try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+        new FileInputStream(file), "UTF-8"))) {
       while (bufferedReader.ready()) {
 
         String[] tempAr = bufferedReader.readLine().trim().split(" ");
@@ -44,10 +57,10 @@ public class BufferedInputOutput {
           tempList.add(tempAr[1]);
         }
       }
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
+    } catch (FileNotFoundException ex) {
+      ex.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
 
     String lastName = null;
@@ -66,7 +79,15 @@ public class BufferedInputOutput {
   }
 
   public void outputWriterOne(ArrayList<Student> students) {
-    String file = "E:\\projects\\jelem\\capella\\task_27\\IGerman\\students_out.txt";
+    Properties properties = new Properties();
+    String file = null;
+    try {
+      properties
+          .load(BufferedInputOutput.class.getClassLoader().getResourceAsStream("properties"));
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+    file = properties.getProperty("out1");
     BufferedWriter bufferedWriter = null;
 
     StringBuilder stringBuilder = new StringBuilder();
@@ -92,9 +113,11 @@ public class BufferedInputOutput {
     }
     stringBuilder.append(System.lineSeparator());
     stringBuilder.append("</students>");
-    
+
     try {
-      bufferedWriter = new BufferedWriter(new FileWriter(file));
+
+      bufferedWriter = new BufferedWriter(
+          new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
 
       bufferedWriter.write(stringBuilder.toString());
 
@@ -102,21 +125,34 @@ public class BufferedInputOutput {
       ex.printStackTrace();
     } finally {
       try {
-        bufferedWriter.flush();
-        bufferedWriter.close();
-      } catch (IOException e) {
-        e.printStackTrace();
+        if (bufferedWriter != null) {
+          bufferedWriter.flush();
+          bufferedWriter.close();
+        }
+      } catch (IOException ex) {
+        ex.printStackTrace();
       }
     }
   }
 
   public void outputWriterTwo(ArrayList<Student> students) {
-    String file = "E:\\projects\\jelem\\capella\\task_27\\IGerman\\students_out2.txt";
+
+    Properties properties = new Properties();
+    String file = null;
+    try {
+      properties
+          .load(BufferedInputOutput.class.getClassLoader().getResourceAsStream("properties"));
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+    file = properties.getProperty("out2");
     XMLOutputFactory outputFactory;
     XMLStreamWriter streamWriter = null;
     try {
       outputFactory = XMLOutputFactory.newInstance();
-      streamWriter = outputFactory.createXMLStreamWriter(new FileWriter(file));
+      streamWriter = outputFactory
+          .createXMLStreamWriter(
+              (new OutputStreamWriter(new FileOutputStream(file), "UTF-8")));
 
       streamWriter.writeStartDocument();
       streamWriter.writeCharacters(System.lineSeparator());
@@ -147,17 +183,21 @@ public class BufferedInputOutput {
       }
       streamWriter.writeEndElement();
       streamWriter.writeEndDocument();
+      streamWriter.flush();
+      streamWriter.close();
 
-    } catch (XMLStreamException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
+    } catch (XMLStreamException ex) {
+      ex.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     } finally {
       try {
-        streamWriter.flush();
-        streamWriter.close();
-      } catch (XMLStreamException e) {
-        e.printStackTrace();
+        if (streamWriter != null) {
+          // streamWriter.flush();
+          streamWriter.close();
+        }
+      } catch (XMLStreamException ex) {
+        ex.printStackTrace();
       }
     }
   }
