@@ -49,12 +49,17 @@ public class Main {
   public static Person deserializePerson(String path) throws IOException, ClassNotFoundException {
     FileInputStream fin = new FileInputStream(path);
     ObjectInputStream objectInputStream = new ObjectInputStream(fin);
-    return (Person) objectInputStream.readObject();
+    Person person = (Person) objectInputStream.readObject();
+    objectInputStream.close();
+    fin.close();
+    return person;
   }
 
   public static void serializePerson(Person person, String path) throws IOException {
     FileOutputStream fout = new FileOutputStream(path);
     ObjectOutputStream objectOutputStream = new ObjectOutputStream(fout);
     objectOutputStream.writeObject(person);
+    objectOutputStream.close();
+    fout.close();
   }
 }
