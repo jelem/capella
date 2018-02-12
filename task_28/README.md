@@ -3,11 +3,14 @@
    - lastname (String),
    - city (City),
    - personalData (PersonalData).  
+   
    Класс City:
    - name (String),
-   - country (Country).
+   - country (Country).  
+   
    Класс Country:
-   - name (String).
+   - name (String).  
+   
    Класс PersonalData:
    - passport (String),
    - address (String),
