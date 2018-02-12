@@ -230,7 +230,11 @@ public class CustomArrayList implements CustomList {
     @Override
     public Object next() {
       while (checkArray[current] != 0) {
+
         current = (int) (Math.random() * size);
+        if (current > size && current < 0) {
+          throw new NoSuchElementException();
+        }
       }
       count++;
       checkArray[current] = 'X';

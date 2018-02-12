@@ -111,13 +111,16 @@ public class CustomLinkedList implements Iterable {
     @Override
     public Object next() {
       int value = current.value;
+      if (current.next == null) {
+        throw new NoSuchElementException();
+      }
       current = current.next;
 
       return value;
     }
   }
 
-  private class Node {
+  private static class Node {
 
     int value;
     Node next;
