@@ -26,6 +26,8 @@ public class StudentTest {
       FileOutputStream fout = new FileOutputStream(path);
       ObjectOutputStream objectOutputStream = new ObjectOutputStream(fout);
       objectOutputStream.writeObject(student);
+      objectOutputStream.close();
+      fout.close();
     } catch (Exception ex) {
       ex.printStackTrace();
       assert false;
@@ -43,6 +45,8 @@ public class StudentTest {
       FileInputStream fin = new FileInputStream(path);
       ObjectInputStream objectInputStream = new ObjectInputStream(fin);
       student1 = (Student) objectInputStream.readObject();
+      objectInputStream.close();
+      fin.close();
     } catch (Exception ex) {
       ex.printStackTrace();
     }
