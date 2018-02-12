@@ -51,6 +51,11 @@ public class City implements Externalizable, Cloneable {
   public City() {
   }
 
+  public City(City city) {
+    name = city.name;
+    country = new Country(city.country);
+  }
+
   public String getName() {
 
     return name;
