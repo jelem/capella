@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class PersonalData {
   private String passport;
   private String adress;
@@ -21,7 +23,45 @@ public class PersonalData {
     this.passport = passport;
   }
 
+  @Override
+  public String toString() {
+    return "PersonalData{"
+        + "passport='"
+        + passport
+        + '\''
+        + ", adress='"
+        + adress
+        + '\''
+        + ", age="
+        + age
+        + '}'
+        ;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+
+    if (!(object instanceof PersonalData)) {
+      return false;
+    }
+
+    PersonalData that = (PersonalData) object;
+    return getAge() == that.getAge()
+        && Objects.equals(getPassport(), that.getPassport())
+        && Objects.equals(getAdress(), that.getAdress());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getPassport(), getAdress(), getAge());
+  }
+
   public String getAdress() {
+
     return adress;
   }
 

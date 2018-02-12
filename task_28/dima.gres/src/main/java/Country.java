@@ -38,7 +38,7 @@ public class Country {
     if (!(object instanceof Country)) {
       return false;
     }
-    
+
     Country country = (Country) object;
     return Objects.equals(getName(), country.getName());
   }
