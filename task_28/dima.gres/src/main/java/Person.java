@@ -55,6 +55,13 @@ public class Person implements Externalizable, Cloneable {
   public Person() {
   }
 
+  public Person(Person person) {
+    this.firstname = person.firstname;
+    this.laststname = person.laststname;
+    this.personalData = new PersonalData(person.personalData);
+    this.city = new City(person.city);
+  }
+
   public Person(String firstname, String laststname, City city, PersonalData personalData) {
     this.firstname = firstname;
     this.laststname = laststname;
