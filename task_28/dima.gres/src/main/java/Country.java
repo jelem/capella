@@ -5,6 +5,8 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 public class Country implements Externalizable, Cloneable {
+  private static final long serialVersionUID = -1;
+
   private String name;
 
   public Country() {

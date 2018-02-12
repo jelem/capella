@@ -5,6 +5,8 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 public class PersonalData implements Externalizable, Cloneable {
+  private static final long serialVersionUID = -1;
+
   private String passport;
   private String adress;
   private int  age;

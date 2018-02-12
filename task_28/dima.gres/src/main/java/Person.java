@@ -5,6 +5,8 @@ import java.io.ObjectOutput;
 import java.util.Objects;
 
 public class Person implements Externalizable, Cloneable {
+  private static final long serialVersionUID = -1;
+
   private String firstname;
   private String laststname;
   private City city;
