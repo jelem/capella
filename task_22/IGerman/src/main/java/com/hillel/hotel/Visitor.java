@@ -34,4 +34,13 @@ public class Visitor {
     return (int) lastName.charAt(0) - 65;
 
   }
+
+  @Override
+  public String toString() {
+    return "Visitor {"
+        + "firstName = '" + firstName + '\''
+        + ", lastName = '" + lastName + '\''
+        + ", age = " + age
+        + '}';
+  }
 }

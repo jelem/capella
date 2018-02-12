@@ -21,7 +21,7 @@ public class Main {
     map.put(smith, three);
     map.put(white, four);
 
-    System.out.println(map.get(white));
-    System.out.println(map.get(smith));
+    map.getInformation(white);
+    map.getInformation(smith);
   }
 }

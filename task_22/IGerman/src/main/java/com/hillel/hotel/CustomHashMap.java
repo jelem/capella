@@ -43,6 +43,13 @@ public class CustomHashMap {
     return current;
   }
 
+  public void getInformation(Visitor visitor) {
+    System.out.println(visitor.toString());
+    Node node = get(visitor);
+    Apartments apartments = node.value;
+    System.out.println(apartments.toString());
+    System.out.println();
+  }
 
   private static class Node {
 

@@ -32,4 +32,13 @@ public class Apartments {
   public int hashCode() {
     return Objects.hash(level, costPerNight, number);
   }
+
+  @Override
+  public String toString() {
+    return "Apartments {"
+        + "level = '" + level + '\''
+        + ", costPerNight = " + costPerNight
+        + ", number = " + number
+        + '}';
+  }
 }

@@ -23,7 +23,7 @@ public class RepeatsHashMap {
 
   private void put(char[] arrayLetters) {
     for (char letter : arrayLetters) {
-      Node node = new Node(letter, 1, null);
+      Node node = new Node(letter, 1);
       int index = (int) node.key - 65;
 
       if (charNodes[index] == null) {
@@ -39,12 +39,12 @@ public class RepeatsHashMap {
 
     char key;
     int value;
-    Node next;
 
-    Node(char key, int value, Node next) {
+
+    Node(char key, int value) {
       this.key = key;
       this.value = value;
-      this.next = next;
+
     }
   }
 }
