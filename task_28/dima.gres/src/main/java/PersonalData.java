@@ -14,6 +14,12 @@ public class PersonalData implements Externalizable, Cloneable {
   public PersonalData() {
   }
 
+  public PersonalData(PersonalData personalData) {
+    this.passport = personalData.passport;
+    this.adress = personalData.adress;
+    this.age = personalData.age;
+  }
+
   public PersonalData(String passport, String adress, int age) {
 
     this.passport = passport;
