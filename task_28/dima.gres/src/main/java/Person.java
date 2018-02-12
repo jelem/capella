@@ -1,8 +1,50 @@
+import java.util.Objects;
+
 public class Person {
   private String firstname;
   private String laststname;
   private City city;
   private PersonalData personalData;
+
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+
+    if (!(object instanceof Person)) {
+      return false;
+    }
+
+    Person person = (Person) object;
+    return Objects.equals(getFirstname(), person.getFirstname())
+        && Objects.equals(getLaststname(), person.getLaststname())
+        && Objects.equals(getCity(), person.getCity())
+        && Objects.equals(getPersonalData(), person.getPersonalData());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getFirstname(), getLaststname(), getCity(), getPersonalData());
+  }
+
+  @Override
+  public String toString() {
+    return "Person{"
+        + "firstname='"
+        + firstname
+        + '\''
+        + ", laststname='"
+        + laststname
+        + '\''
+        + ", city="
+        + city
+        + ", personalData="
+        + personalData
+        + '}'
+        ;
+  }
 
   public Person() {
   }
