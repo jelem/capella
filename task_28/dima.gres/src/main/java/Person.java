@@ -89,4 +89,11 @@ public class Person {
   public void setFirstname(String firstname) {
     this.firstname = firstname;
   }
+
+  protected Person clone() throws CloneNotSupportedException {
+    Person person = (Person) super.clone();
+    person.city = this.city.copyCity();
+    person.personalData = this.personalData.copyData();
+    return  person;
+  }
 }
