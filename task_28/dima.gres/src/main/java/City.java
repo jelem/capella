@@ -61,4 +61,9 @@ public class City {
   public void setCountry(Country country) {
     this.country = country;
   }
+
+  protected City copyCity() throws CloneNotSupportedException {
+
+    return (City) super.clone();
+  }
 }
