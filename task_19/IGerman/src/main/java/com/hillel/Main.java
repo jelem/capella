@@ -33,6 +33,6 @@ public class Main {
     for (Object element : list) {
       System.out.println(element);
     }
-    
+
   }
 }
