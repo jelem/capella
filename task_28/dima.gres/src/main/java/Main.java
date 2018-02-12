@@ -24,6 +24,10 @@ public class Main {
 
       objectOutputStream.writeObject(person);
 
+      objectOutputStream.close();
+
+      fileOutputStream.close();
+
     } catch (FileNotFoundException exc) {
       exc.printStackTrace();
     } catch (IOException exc) {
