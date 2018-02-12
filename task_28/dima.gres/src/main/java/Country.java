@@ -1,6 +1,10 @@
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Objects;
 
-public class Country {
+public class Country implements Externalizable, Cloneable {
   private String name;
 
   public Country() {
@@ -51,5 +55,15 @@ public class Country {
   public int hashCode() {
 
     return Objects.hash(getName());
+  }
+
+  @Override
+  public void writeExternal(ObjectOutput objectOutput) throws IOException {
+    objectOutput.writeObject(name);
+  }
+
+  @Override
+  public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
+    name = (String) objectInput.readObject();
   }
 }

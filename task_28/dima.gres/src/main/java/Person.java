@@ -1,6 +1,10 @@
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Externalizable, Cloneable {
   private String firstname;
   private String laststname;
   private City city;
@@ -90,10 +94,26 @@ public class Person {
     this.firstname = firstname;
   }
 
-  protected Person clone() throws CloneNotSupportedException {
+  protected Person copyPerson() throws CloneNotSupportedException {
     Person person = (Person) super.clone();
     person.city = this.city.copyCity();
     person.personalData = this.personalData.copyData();
     return  person;
+  }
+
+  @Override
+  public void writeExternal(ObjectOutput objectOutput) throws IOException {
+    objectOutput.writeObject(firstname);
+    objectOutput.writeObject(laststname);
+    objectOutput.writeObject(city);
+    objectOutput.writeObject(personalData);
+  }
+
+  @Override
+  public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
+    firstname =  (String) objectInput.readObject();
+    laststname =  (String) objectInput.readObject();
+    city =  (City) objectInput.readObject();
+    personalData =  (PersonalData) objectInput.readObject();
   }
 }
