@@ -16,6 +16,14 @@ public class CustomArrayList implements CustomList {
   public CustomArrayList(int capacity) {
     array = new String[capacity];
   }
+  
+  private void resizeArray() {
+    String[] array1 = new String[array.length * 2];
+    for (int i = 0; i < array.length; i++) {
+      array1[i] = array[i];
+    }
+    array = array1;
+  }
 
   @Override
   public int size() {
@@ -33,7 +41,8 @@ public class CustomArrayList implements CustomList {
       if (array[i].equals(element)) {
         return true;
       }
-    } return false;
+    } 
+    return false;
   }
 
   @Override
@@ -45,14 +54,6 @@ public class CustomArrayList implements CustomList {
     size++;
   }
 
-  private void resizeArray() {
-    String[] array1 = new String[array.length * 2];
-    for (int i = 0; i < array.length; i++) {
-      array1[i] = array[i];
-    }
-    array = array1;
-  }
-
   @Override
   public void add(int index, String element) {
     if (index >= size || index < 0) {
@@ -62,7 +63,7 @@ public class CustomArrayList implements CustomList {
       resizeArray();
     }
     for (int i = index; i < size; i++) {
-      array[i+1] = array[i];
+      array[i + 1] = array[i];
     }
     array[index] = element;
     size++;
@@ -85,12 +86,12 @@ public class CustomArrayList implements CustomList {
 
   @Override
   public String remove(int index) {
+    String elem = array[index];
     if (index >= size || index < 0) {
       throw new NoSuchElementException("Wrong index");
     }
-    String elem = array[index];
     for (int i = index; i < size; i++) {
-      array[i] = array[i+1];
+      array[i] = array[i + 1];
     }
     array[size] = null;
     size--;
