@@ -29,6 +29,10 @@ public class Country {
         + '}';
   }
 
+  protected Country copyCountry() throws CloneNotSupportedException {
+    return (Country) super.clone();
+  }
+
   @Override
   public boolean equals(Object object) {
     if (this == object) {

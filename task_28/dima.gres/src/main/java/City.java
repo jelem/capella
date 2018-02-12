@@ -63,7 +63,8 @@ public class City {
   }
 
   protected City copyCity() throws CloneNotSupportedException {
-
-    return (City) super.clone();
+    City newCity = (City) super.clone();
+    newCity.country = this.country.copyCountry();
+    return newCity;
   }
 }
