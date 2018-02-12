@@ -1,18 +1,31 @@
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Properties;
+
 
 public class Main {
 
-  public static void main(String[] args) throws CloneNotSupportedException {
+  public static void main(String[] args) throws CloneNotSupportedException, IOException {
+    Properties properties = new Properties();
+    properties.load(Main.class.getResourceAsStream("/file.properties"));
+
+    String location = properties.getProperty("location");
+
     Person person1 = new Person("John",
         "Murphy",
         new City("Odessa",
             new Country("Ukraine")),
         new PersonalData("KK-32-16-17", "st.Malovskogo 32, r.33", 47));
 
-    Person person2 = person1.copyPerson();
+
+
+    serialazePerson(person1, location);
+
+    Person person2 = deserialaze(location);
 
     System.out.println(person1);
     System.out.println(person2);
@@ -33,5 +46,24 @@ public class Main {
     } catch (IOException exc) {
       exc.printStackTrace();
     }
+  }
+
+  public static Person deserialaze(String location) {
+
+    try (FileInputStream fileInputStream = new FileInputStream(location);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
+
+      return (Person) objectInputStream.readObject();
+
+    } catch (FileNotFoundException exc) {
+      exc.printStackTrace();
+    } catch (IOException exc) {
+      exc.printStackTrace();
+    } catch (ClassNotFoundException exc) {
+      exc.printStackTrace();
+    }
+
+
+    return null;
   }
 }
