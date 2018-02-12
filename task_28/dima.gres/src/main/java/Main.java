@@ -1,3 +1,8 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class Main {
 
   public static void main(String[] args) throws CloneNotSupportedException {
@@ -11,5 +16,18 @@ public class Main {
 
     System.out.println(person1);
     System.out.println(person2);
+  }
+
+  public static void serialazePerson(Person person, String location) {
+    try (FileOutputStream fileOutputStream = new FileOutputStream(location);
+         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+
+      objectOutputStream.writeObject(person);
+
+    } catch (FileNotFoundException exc) {
+      exc.printStackTrace();
+    } catch (IOException exc) {
+      exc.printStackTrace();
+    }
   }
 }
