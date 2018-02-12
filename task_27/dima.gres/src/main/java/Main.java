@@ -1,5 +1,12 @@
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class Main {
 
@@ -18,10 +25,10 @@ public class Main {
   }
 
   public static ArrayList<Student> readStudents(String location) {
-    final int LAST_NAME = 0;
-    final int FIRST_NAME = 1;
-    final int AGE = 2;
-    final int SPACE = 3;
+    final int LastName = 0;
+    final int FirstName = 1;
+    final int Age = 2;
+    final int Space = 3;
 
     ArrayList<Student> students = new ArrayList<>();
     File file = new File(location);
@@ -37,21 +44,24 @@ public class Main {
         counter %= 4;
 
         switch (counter) {
-          case LAST_NAME:
+          case LastName:
             current = new Student();
             current.setLastname(line);
             break;
 
-          case FIRST_NAME:
+          case FirstName:
             current.setFirstname(line);
             break;
 
-          case AGE:
+          case Age:
             current.setAge(Integer.parseInt(line));
             break;
 
-          case SPACE:
+          case Space:
             students.add(current);
+            break;
+
+          default:
             break;
         }
 
@@ -86,10 +96,6 @@ public class Main {
       bufferedWriter.write(begin);
 
       for (Student student : students) {
-        String Lastname = student.getLastname();
-        String Firsttname = student.getFirstname();
-        int Age = student.getAge();
-
         bufferedWriter.write(String.valueOf(student));
       }
 

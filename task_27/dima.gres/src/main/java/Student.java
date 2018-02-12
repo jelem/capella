@@ -39,10 +39,17 @@ public class Student {
 
   @Override
   public String toString() {
-    return "\n\t<student>" +
-        "\n\t\t<lastname>" + lastname + "</lastname>" +
-        "\n\t\t<firstname>" + firstname + "</firstname>" +
-        "\n\t\t<age>" + age + "</age>"
-        + "\n\t</student>";
+    return "\n\t<student>"
+        + "\n\t\t<lastname>"
+        + lastname
+        + "</lastname>"
+        + "\n\t\t<firstname>"
+        + firstname
+        + "</firstname>"
+        + "\n\t\t<age>"
+        + age
+        + "</age>"
+        + "\n\t</student>"
+        ;
   }
 }
