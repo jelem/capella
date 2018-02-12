@@ -12,6 +12,10 @@ public class Country implements Externalizable, Cloneable {
   public Country() {
   }
 
+  public Country(Country country) {
+    this.name = country.name;
+  }
+
   public String getName() {
 
     return name;
