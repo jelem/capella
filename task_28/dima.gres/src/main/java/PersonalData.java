@@ -76,4 +76,8 @@ public class PersonalData {
   public void setAge(int age) {
     this.age = age;
   }
+
+  protected PersonalData clone() throws CloneNotSupportedException {
+    return  (PersonalData) super.clone();
+  }
 }
