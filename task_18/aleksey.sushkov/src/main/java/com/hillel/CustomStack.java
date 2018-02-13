@@ -27,7 +27,7 @@ public class CustomStack {
     return arr.length;
   }
 
-  public boolean IsEmpty() {
+  public boolean isEmpty() {
     return (curr == 0);
   }
 
@@ -35,7 +35,7 @@ public class CustomStack {
     if (curr >= arr.length) {
       throw new StackOverflowError();
     }
-    if (IsEmpty()) {
+    if (isEmpty()) {
       max = elem;
       min = elem;
     }
@@ -51,37 +51,34 @@ public class CustomStack {
   }
 
   public int pop() {
-    if (IsEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
     int popelem = arr[curr];
     curr--;
     min = minarr[curr];
-    max = maxarr[curr];
     return popelem;
   }
 
   public int peek() {
-    if (IsEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
     return arr[curr - 1];
   }
 
   public int min() {
-    if (IsEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
     return min;
   }
 
   public int max() {
-    if (IsEmpty()) {
+    if (isEmpty()) {
       throw new EmptyStackException();
     }
     return max;
   }
-
-
 
 }
