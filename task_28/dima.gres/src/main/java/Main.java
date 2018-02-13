@@ -31,6 +31,17 @@ public class Main {
 
     System.out.println(student1);
     System.out.println(student2);
+
+    Person person1 = new Person("John", "Murphy",
+        new City("New York", new Country("USA")),
+        new PersonalData("RVX 101231779", "st.Long Beach 123/45", 34));
+
+    serialazeObject(person1, location);
+
+    Person person2 = (Person) deserialaze(location);
+
+    System.out.println(person1);
+    System.out.println(person2);
   }
 
   public static void serialazeObject(Object object, String location) {
