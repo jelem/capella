@@ -12,19 +12,25 @@ public class Main {
   public static void main(String[] args) throws CloneNotSupportedException, IOException {
 
     Properties properties = new Properties();
-    properties.load(Main.class.getResourceAsStream("/cipher.properties"));
-
 
     properties.load(Main.class.getResourceAsStream("/file.properties"));
+
     String location = properties.getProperty("location");
 
+    properties.load(Main.class.getResourceAsStream("/cipher.properties"));
+
+    int mov = Integer.parseInt(properties.getProperty("mov"));
+
     Student student1 = new Student("John Murphy", 34, "abxyz");
+
+    student1.setMov(mov);
 
     serialazeObject(student1, location);
 
     Student student2 = (Student) deserialaze(location);
-    System.out.println(student2);
 
+    System.out.println(student1);
+    System.out.println(student2);
   }
 
   public static void serialazeObject(Object object, String location) {

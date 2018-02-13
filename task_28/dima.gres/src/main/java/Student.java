@@ -3,13 +3,26 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.Objects;
+import java.util.Properties;
 
 public class Student implements Externalizable {
   private static final long serialVersionUID = -1;
 
+  private static final int ABC = 'z' - 'a' + 1;
+
   private String name;
   private int age;
   private String password;
+
+  private int mov;
+
+  public int getMov() {
+    return mov;
+  }
+
+  public void setMov(int mov) {
+    this.mov = mov;
+  }
 
   public Student() {
   }
@@ -66,9 +79,14 @@ public class Student implements Externalizable {
 
   @Override
   public void writeExternal(ObjectOutput objectOutput) throws IOException {
+
     objectOutput.writeObject(name);
     objectOutput.writeInt(age);
-    objectOutput.writeObject(password);
+
+    String encode = encode(password);
+    objectOutput.writeObject(encode);
+
+    objectOutput.writeInt(mov);
   }
 
   @Override
@@ -76,6 +94,7 @@ public class Student implements Externalizable {
     name = (String) objectInput.readObject();
     age = objectInput.readInt();
     password = (String) objectInput.readObject();
+    mov = objectInput.readInt();
   }
 
   @Override
@@ -91,5 +110,37 @@ public class Student implements Externalizable {
         + '\''
         + '}'
         ;
+  }
+
+  public String encode(String string) {
+    StringBuilder stringBuilder = new StringBuilder();
+
+    if (mov < 0) {
+      mov = (-mov) % ABC;
+      mov = -mov;
+    } else {
+      mov = mov % ABC;
+    }
+
+    for (int i = 0; i < string.length(); ++i) {
+      char ch = string.charAt(i);
+      char enchar = (char) (ch + mov);
+      if (mov >= 0)  {
+        if (enchar <= 'z') {
+          ch = enchar;
+        } else {
+          ch = (char) ('a' + enchar % 'z' - 1);
+        }
+      } else {
+        if (enchar >= 'a') {
+          ch = enchar;
+        } else {
+          ch = (char) ('z' - 'a' + enchar + 1);
+        }
+      }
+      stringBuilder.append(ch);
+    }
+
+    return stringBuilder.toString();
   }
 }
