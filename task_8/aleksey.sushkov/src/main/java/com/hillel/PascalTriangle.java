@@ -25,8 +25,7 @@ public class PascalTriangle {
       arr[i] = new int [i + 1];
       arr[i][0] = 1;
       System.out.print(arr[i][0] + " ");
-      for (int j = 1; j < i; j++)
-      {
+      for (int j = 1; j < i; j++) {
         arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
         System.out.print(arr[i][j] + " ");
       }
