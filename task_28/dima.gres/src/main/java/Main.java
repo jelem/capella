@@ -10,10 +10,6 @@ import java.util.Properties;
 public class Main {
 
   public static void main(String[] args) throws CloneNotSupportedException, IOException {
-    Properties properties = new Properties();
-    properties.load(Main.class.getResourceAsStream("/file.properties"));
-
-    String location = properties.getProperty("location");
 
     Person person1 = new Person("John",
         "Murphy",
@@ -21,13 +17,10 @@ public class Main {
             new Country("Ukraine")),
         new PersonalData("KK-32-16-17", "st.Malovskogo 32, r.33", 47));
 
-
-
-    serialazePerson(person1, location);
-
-    Person person2 = deserialaze(location);
+    Person person2 = new Person(person1);
 
     System.out.println(person1);
+
     System.out.println(person2);
   }
 
