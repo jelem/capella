@@ -9,7 +9,7 @@ public class SpiralArray {
     int size = 0;
     System.out.println("Enter size of array:");
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "UTF-8");
     size = scanner.nextInt();
     int[][] arr = new int[size][size];
 
