@@ -14,8 +14,6 @@ public interface CustomList {
   
   boolean remove(String element);
   
-  String remove(int index);
-  
   void clear();
   
   String get(int index);
