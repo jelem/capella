@@ -55,8 +55,8 @@ public class CustomStack {
       throw new EmptyStackException();
     }
     int popelem = arr[curr];
-    curr--;
-    min = minarr[curr];
+    min = minarr[curr - 1];
+    max = maxarr[curr - 1];
     return popelem;
   }
 
