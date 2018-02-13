@@ -1,9 +1,9 @@
 package com.hillel;
 
-import java.util.Objects;
 import java.util.Comparator;
+import java.util.Objects;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
 
   private String name;
   private int age;
