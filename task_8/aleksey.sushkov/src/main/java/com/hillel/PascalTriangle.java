@@ -10,7 +10,7 @@ public class PascalTriangle {
     int rows = 0;
     System.out.println("Enter number of rows:");
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "UTF-8");
     rows = scanner.nextInt();
 
     int [][] arr = new int [rows][];
