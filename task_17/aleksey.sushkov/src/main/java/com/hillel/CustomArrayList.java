@@ -7,7 +7,6 @@ public class CustomArrayList implements CustomList {
   private static final int BASE_SIZE = 10;
   private String[] array;
   private int size;
-  private int index;
 
   public CustomArrayList() {
     array = new String[BASE_SIZE];
