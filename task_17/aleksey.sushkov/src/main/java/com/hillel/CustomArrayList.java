@@ -85,20 +85,6 @@ public class CustomArrayList implements CustomList {
   }
 
   @Override
-  public String remove(int index) {
-    String elem = array[index];
-    if (index >= size || index < 0) {
-      throw new NoSuchElementException("Wrong index");
-    }
-    for (int i = index; i < size; i++) {
-      array[i] = array[i + 1];
-    }
-    array[size] = null;
-    size--;
-    return elem;
-  }
-
-  @Override
   public void clear() {
     for (int i = 0; i < size; i++) {
       array[i] = null;
