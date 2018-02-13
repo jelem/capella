@@ -77,4 +77,19 @@ public class Student implements Externalizable {
     age = objectInput.readInt();
     password = (String) objectInput.readObject();
   }
+
+  @Override
+  public String toString() {
+    return "Student{"
+        + "name='"
+        + name
+        + '\''
+        + ", age="
+        + age
+        + ", password='"
+        + password
+        + '\''
+        + '}'
+        ;
+  }
 }
