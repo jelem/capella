@@ -13,7 +13,6 @@ public class Student implements Externalizable {
   private String name;
   private int age;
   private String password;
-
   private int mov;
 
   public int getMov() {
@@ -83,18 +82,55 @@ public class Student implements Externalizable {
     objectOutput.writeObject(name);
     objectOutput.writeInt(age);
 
+    objectOutput.writeInt(mov);
     String encode = encode(password);
     objectOutput.writeObject(encode);
 
-    objectOutput.writeInt(mov);
+
   }
 
   @Override
   public void readExternal(ObjectInput objectInput) throws IOException, ClassNotFoundException {
     name = (String) objectInput.readObject();
     age = objectInput.readInt();
-    password = (String) objectInput.readObject();
     mov = objectInput.readInt();
+    String encode = (String) objectInput.readObject();
+    System.out.println("###" + encode);
+    password = decode(encode);
+
+  }
+
+  private String decode(String string) {
+    StringBuilder stringBuilder = new StringBuilder();
+
+    if (mov < 0) {
+      mov = (-mov) % ABC;
+      mov = -mov;
+    } else {
+      mov = mov % ABC;
+    }
+
+    for (int i = 0; i < string.length(); ++i) {
+      char ch = string.charAt(i);
+      char enchar = (char) (ch - mov);
+      if (mov >= 0)  {
+        if (enchar >= 'a') {
+          ch = enchar;
+        } else {
+          ch = (char) ('z' - 'a' + enchar + 1);
+        }
+      } else {
+        if (enchar <= 'z') {
+          ch = enchar;
+        } else {
+          ch = (char) ('a' + enchar % 'z' - 1);
+        }
+      }
+      stringBuilder.append(ch);
+    }
+
+
+    return stringBuilder.toString();
   }
 
   @Override
@@ -108,6 +144,8 @@ public class Student implements Externalizable {
         + ", password='"
         + password
         + '\''
+        + ", mov="
+        + mov
         + '}'
         ;
   }
