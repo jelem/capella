@@ -11,24 +11,27 @@ public class Main {
 
   public static void main(String[] args) throws CloneNotSupportedException, IOException {
 
-    Person person1 = new Person("John",
-        "Murphy",
-        new City("Odessa",
-            new Country("Ukraine")),
-        new PersonalData("KK-32-16-17", "st.Malovskogo 32, r.33", 47));
+    Properties properties = new Properties();
+    properties.load(Main.class.getResourceAsStream("/cipher.properties"));
 
-    Person person2 = new Person(person1);
 
-    System.out.println(person1);
+    properties.load(Main.class.getResourceAsStream("/file.properties"));
+    String location = properties.getProperty("location");
 
-    System.out.println(person2);
+    Student student1 = new Student("John Murphy", 34, "abxyz");
+
+    serialazeObject(student1, location);
+
+    Student student2 = (Student) deserialaze(location);
+    System.out.println(student2);
+
   }
 
-  public static void serialazePerson(Person person, String location) {
+  public static void serialazeObject(Object object, String location) {
     try (FileOutputStream fileOutputStream = new FileOutputStream(location);
          ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
-      objectOutputStream.writeObject(person);
+      objectOutputStream.writeObject(object);
 
       objectOutputStream.close();
 
@@ -41,12 +44,12 @@ public class Main {
     }
   }
 
-  public static Person deserialaze(String location) {
+  public static Object deserialaze(String location) {
 
     try (FileInputStream fileInputStream = new FileInputStream(location);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
 
-      return (Person) objectInputStream.readObject();
+      return objectInputStream.readObject();
 
     } catch (FileNotFoundException exc) {
       exc.printStackTrace();
