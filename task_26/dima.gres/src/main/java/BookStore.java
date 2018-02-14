@@ -1,5 +1,12 @@
 import java.io.IOException;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import java.util.Properties;
 
 public class BookStore {
@@ -8,32 +15,21 @@ public class BookStore {
     Properties properties = new Properties();
     properties.load(BookStore.class.getResourceAsStream("/db.properties"));
 
-    Connection connection = DriverManager.
-        getConnection(properties.getProperty("url"),
+    Connection connection = DriverManager
+        .getConnection(properties.getProperty("url"),
             properties.getProperty("user"),
-            properties.getProperty("password"))
+            properties.getProperty("password")
+        )
         ;
 
-//    printCustomersBooks(connection, new Customer("Misha Khaminsky"));
-//    addAuthors(connection, new Author("Boris Pasternak", 123));
 
-//    printBooksSAuthors(connection);
-//
     Author shevchenko = new Author("Taras Shevchenko", 175);
     Book katerina = new Book("Katerina", 74);
-//    addAuthors(connection, shevchenko);
+
     addBook(connection, katerina, shevchenko);
-//
-//    printBooksSAuthors(connection);
-//
+
     Customer berzovsky = new Customer("Boris Berezovsky");
-//    addCustomer(connection, customer);
 
-//    addCells(connection, berzovsky, shevchenko, katerina);
-//
-//    printCustomersBooks(connection, berzovsky);
-
-//    deleteBook(connection, katerina);
 
     printBooksSAuthors(connection);
 
@@ -41,11 +37,11 @@ public class BookStore {
   }
 
   private static void printBooksSAuthors(Connection connection) throws SQLException {
-    String sql = "select a.name, b.name\n" +
-        "from books b\n" +
-        "inner join authors a\n" +
-        "on b.author_id = a.id\n" +
-        "order by a.name;";
+    String sql = "select a.name, b.name\n"
+        + "from books b\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "order by a.name;";
 
     Statement statement = connection.createStatement();
     ResultSet resultSet = statement.executeQuery(sql);
@@ -66,9 +62,9 @@ public class BookStore {
   }
 
   private static void printYoungAuthors(Connection connection) throws SQLException {
-    String sql = "select a.name, a.age\n" +
-        "from authors a\n" +
-        "where a.age < 50;" ;
+    String sql = "select a.name, a.age\n"
+        + "from authors a\n"
+        + "where a.age < 50;" ;
 
     Statement statement = connection.createStatement();
     ResultSet resultSet = statement.executeQuery(sql);
@@ -86,11 +82,13 @@ public class BookStore {
   }
 
   private static void printExpensiveBooks(Connection connection) throws SQLException {
-    String sql = "select a.name ,b.name, b.price\n" +
-        "from books b\n" +
-        "inner join authors a\n" +
-        "on b.author_id = a.id\n" +
-        "order by b.price desc;";
+    String sql = "select a.name ,b.name, b.price\n"
+        + "from books b\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "order by b.price desc;"
+        ;
+
     Statement statement = connection.createStatement();
     ResultSet resultSet = statement.executeQuery(sql);
 
@@ -109,19 +107,21 @@ public class BookStore {
   }
 
   private static void printCustomersBooks(Connection connection, Customer customer) throws SQLException {
-    String sql = "select s.id, c.name, a.name, b.name\n" +
-        "from sells s\n" +
-        "inner join customers c\n" +
-        "on s.customer_id = c.id\n" +
-        "\n" +
-        "inner join books b\n" +
-        "on s.book_id = b.id\n" +
-        "\n" +
-        "inner join authors a\n" +
-        "on b.author_id = a.id\n" +
-        "\n" +
-        "where c.name = \'" + customer.getName() + "\'" +
-        ";"
+    String sql = "select s.id, c.name, a.name, b.name\n"
+        + "from sells s\n"
+        + "inner join customers c\n"
+        + "on s.customer_id = c.id\n"
+        + "\n"
+        + "inner join books b\n"
+        + "on s.book_id = b.id\n"
+        + "\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "\n"
+        + "where c.name = \'"
+        + customer.getName()
+        + "\'"
+        + ";"
         ;
 
     Statement statement = connection.createStatement();
@@ -143,11 +143,11 @@ public class BookStore {
   }
 
   private  static  void printGroupByAuthors(Connection connection) throws SQLException {
-    String sql = "select a.name, sum(b.price) as summ\n" +
-        "from books b\n" +
-        "inner join authors a\n" +
-        "on b.author_id = a.id\n" +
-        "group by a.name;"
+    String sql = "select a.name, sum(b.price) as summ\n"
+        + "from books b\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "group by a.name;"
         ;
 
     Statement statement = connection.createStatement();
@@ -172,7 +172,7 @@ public class BookStore {
     }
 
     String sql = "insert into authors (name, age)"
-     + " values(?, ?);"
+        + " values(?, ?);"
         ;
 
     PreparedStatement statement = connection.prepareStatement(sql);
@@ -215,7 +215,7 @@ public class BookStore {
     }
 
     String sql = "insert into books (name, author_id, price)"
-    + " values(?, ?, ?);"
+        + " values(?, ?, ?);"
         ;
 
     PreparedStatement statement = connection.prepareStatement(sql);
@@ -231,14 +231,16 @@ public class BookStore {
     statement.close();
   }
 
-  private static  void addCells(Connection connection, Customer customer, Author author, Book book) throws SQLException {
+  private static  void addCells(Connection connection, Customer customer,
+                                Author author, Book book) throws SQLException {
+
     if (!isAuthorExist(connection ,author) || !isBookExist(connection, book)) {
       System.out.println("Sorry " + "mr.s. " + customer.getName() + " the store hasn't this book");
       return;
     }
 
-    String sql = "insert into sells (customer_id, book_id)\n" +
-        "values(?, ?);"
+    String sql = "insert into sells (customer_id, book_id)\n"
+        + "values(?, ?);"
         ;
 
     PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -254,7 +256,7 @@ public class BookStore {
 
   private static boolean isAuthorExist(Connection connection,Author author) throws SQLException {
     String sql = "select a.id from authors a"
-    + " where a.name = \'"
+        + " where a.name = \'"
         + author.getName()
         + "\';"
         ;
@@ -298,9 +300,9 @@ public class BookStore {
   }
 
   private static boolean isCustomerExist(Connection connection ,Customer customer) throws SQLException {
-    String sql = "select c.id\n" +
-        "from customers c\n" +
-        "where c.name = \'"
+    String sql = "select c.id\n"
+        + "from customers c\n"
+        + "where c.name = \'"
         + customer.getName()
         + "\';"
         ;

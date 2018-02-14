@@ -33,7 +33,9 @@ public class Author {
 
   public int getId(Connection connection) throws SQLException {
     String sql = "select a.id from authors a\n"
-    + " where a.name = \'" + name + "\';"
+        + " where a.name = \'"
+        + name
+        + "\';"
         ;
 
     Statement statement = connection.createStatement();
