@@ -28,9 +28,6 @@ public class BookStore {
 
     addBook(connection, katerina, shevchenko);
 
-    Customer berzovsky = new Customer("Boris Berezovsky");
-
-
     printBooksSAuthors(connection);
 
     connection.close();
