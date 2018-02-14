@@ -31,22 +31,25 @@ public class Book {
     this.price = price;
   }
 
-  public int getId(Connection connection) throws SQLException {
+  public int getId(Connection connection) {
     String sql = "select b.id from books b\n"
         + " where b.name = \'" + name + "\';"
         ;
 
-    Statement statement = connection.createStatement();
-    ResultSet resultSet = statement.executeQuery(sql);
-
     int id = -1;
 
-    while (resultSet.next()) {
-      id = resultSet.getInt("b.id");
-    }
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(sql);) {
 
-    resultSet.close();
-    statement.close();
+      while (resultSet.next()) {
+        id = resultSet.getInt("b.id");
+      }
+
+      resultSet.close();
+      statement.close();
+    } catch (SQLException exc) {
+      exc.printStackTrace();
+    }
 
     return id;
   }

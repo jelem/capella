@@ -21,24 +21,30 @@ public class Customer {
     this.name = name;
   }
 
-  public int getId(Connection connection) throws SQLException {
+  public int getId(Connection connection) {
     String sql = "select c.id from customers c\n"
         + " where c.name = \'" + name + "\';"
         ;
 
-    Statement statement = connection.createStatement();
-    ResultSet resultSet = statement.executeQuery(sql);
-
     int id = -1;
 
-    while (resultSet.next()) {
-      id = resultSet.getInt("c.id");
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(sql);) {
+
+      while (resultSet.next()) {
+        id = resultSet.getInt("c.id");
+      }
+
+      resultSet.close();
+      statement.close();
+
+    } catch (SQLException exc) {
+      exc.printStackTrace();
+    } finally {
+
+      return id;
+      
     }
-
-    resultSet.close();
-    statement.close();
-
-    return id;
   }
 
   @Override

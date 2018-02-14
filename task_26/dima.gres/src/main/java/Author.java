@@ -31,24 +31,31 @@ public class Author {
     return age;
   }
 
-  public int getId(Connection connection) throws SQLException {
+  public int getId(Connection connection) {
     String sql = "select a.id from authors a\n"
         + " where a.name = \'"
         + name
         + "\';"
         ;
 
-    Statement statement = connection.createStatement();
-    ResultSet resultSet = statement.executeQuery(sql);
-
     int id = -1;
 
-    while (resultSet.next()) {
-      id = resultSet.getInt("a.id");
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(sql);) {
+
+      while (resultSet.next()) {
+        id = resultSet.getInt("a.id");
+      }
+
+      resultSet.close();
+      statement.close();
+
+    } catch (SQLException exc) {
+      exc.printStackTrace();
+
     }
 
-    resultSet.close();
-    statement.close();
+
 
     return id;
   }
