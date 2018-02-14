@@ -2,18 +2,29 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 
 public class Main {
 
-  public static void main(String[] args) {
-    String locStudents = "/home/dima/projects/java/task_27/dima.gres/src/main/resources/students.txt" ;
+  public static void main(String[] args) throws IOException {
+    Properties properties = new Properties();
+    properties.load(Main.class.getResourceAsStream("/locations.properties"));
 
-    String xmlStudents = "/home/dima/projects/java/task_27/dima.gres/src/main/resources/students_out.xml" ;
+    String locStudents = properties.getProperty("locStudents") ;
+
+    String xmlStudents = properties.getProperty("xmlStudents") ;
 
     ArrayList<Student> students =  readStudents(locStudents);
 
@@ -33,8 +44,8 @@ public class Main {
     ArrayList<Student> students = new ArrayList<>();
     File file = new File(location);
 
-    try (FileReader fileReader = new FileReader(file);
-         BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+    try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+        new FileInputStream(file), "UTF-8"))) {
 
       String line;
       int counter = 0;
@@ -70,8 +81,6 @@ public class Main {
 
       students.add(current);
 
-      fileReader.close();
-
       bufferedReader.close();
 
       return students;
@@ -90,8 +99,9 @@ public class Main {
 
     File file = new File(location);
 
-    try (FileWriter fileWriter = new FileWriter(file);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+    try (FileOutputStream fileOutputStream = new FileOutputStream(file);
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
+        BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter)) {
 
       bufferedWriter.write(begin);
 
@@ -103,7 +113,9 @@ public class Main {
 
       bufferedWriter.close();
 
-      fileWriter.close();
+      outputStreamWriter.close();
+
+      fileOutputStream.close();
 
     } catch (IOException ex) {
       ex.printStackTrace();
