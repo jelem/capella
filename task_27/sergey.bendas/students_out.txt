@@ -1,0 +1,31 @@
+<students>
+  <student>
+    <lastname>Ivanov</lastname>
+    <fistname>Ivan</firstname>
+    <age>20</age>
+  </student>
+  <student>
+    <lastname>Petrov</lastname>
+    <fistname>Petya</firstname>
+    <age>18</age>
+  </student>
+  <student>
+    <lastname>Bond</lastname>
+    <fistname>James</firstname>
+    <age>30</age>
+  </student>
+  <student>
+    <lastname>Musk</lastname>
+    <fistname>Elon</firstname>
+    <age>46</age>
+  </student>
+  <student>
+    <lastname>Jobs</lastname>
+    <fistname>Steve</firstname>
+  </student>
+  <student>
+    <lastname>Campos Rodriguez</lastname>
+    <fistname>Antonio</firstname>
+    <age>30</age>
+  </student>
+</students>
