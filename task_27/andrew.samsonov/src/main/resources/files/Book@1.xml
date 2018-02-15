@@ -1,0 +1,8 @@
+<Books>
+	<Book>
+		<name>Old warriors</name>
+		<authorName>Sandro Kun Jr</authorName>
+		<available>true</available>
+		<price>324</price>
+	</Book>
+</Books>
