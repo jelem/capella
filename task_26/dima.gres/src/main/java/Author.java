@@ -32,7 +32,8 @@ public class Author {
   }
 
   public int getId(Connection connection) {
-    String sql = "select a.id from authors a\n"
+    final String sql =
+        "select a.id from authors a\n"
         + " where a.name = \'"
         + name
         + "\';"
@@ -51,11 +52,10 @@ public class Author {
       statement.close();
 
     } catch (SQLException exc) {
+
       exc.printStackTrace();
 
     }
-
-
 
     return id;
   }

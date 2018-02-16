@@ -34,11 +34,13 @@ public class BookStore {
   }
 
   private static void printBooksSAuthors(Connection connection) {
-    String sql = "select a.name, b.name\n"
+    final String sql =
+        "select a.name, b.name\n"
         + "from books b\n"
         + "inner join authors a\n"
         + "on b.author_id = a.id\n"
-        + "order by a.name;";
+        + "order by a.name;"
+        ;
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(sql);) {
