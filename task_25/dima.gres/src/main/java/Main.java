@@ -33,7 +33,9 @@ public class Main {
 
       connection = DriverManager.getConnection(location, user, password);
 
+      Admin admin = new Admin();
 
+      admin.getAuthors(connection);
 
       connection.close();
 

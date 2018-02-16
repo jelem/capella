@@ -22,8 +22,13 @@ public class Admin {
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTAUTHORS)) {
 
+      int count = 0;
+
       while (resultSet.next()) {
-        System.out.println("###");
+        authors.put(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
+            resultSet.getInt("a.id")), count++);
+
+        
       }
 
     } catch (SQLException exc) {
@@ -31,7 +36,7 @@ public class Admin {
       exc.printStackTrace();
 
     }
-    
+
     return authors;
   }
 }
