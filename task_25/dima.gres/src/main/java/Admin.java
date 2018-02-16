@@ -7,7 +7,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Admin {
+
   HashSet<Author> authors;
+
+  private static final String SELECTCUSTOMERS = "select c.id, c.name\n"
+      + "from customers c\n"
+      + ";"
+      ;
 
   private static final String SELECTAUTHORS = "select a.id, a.name, a.age\n"
       + "from authors a\n"
