@@ -8,7 +8,8 @@ import java.util.Set;
 
 public class Admin {
 
-  HashSet<Author> authors;
+  private HashSet<Author> authors;
+  private HashSet<Customer> customers;
 
   private static final String SELECTCUSTOMERS = "select c.id, c.name\n"
       + "from customers c\n"
@@ -22,6 +23,7 @@ public class Admin {
 
   public Admin() {
     this.authors  = new HashSet<>();
+    this.customers = new HashSet<>();
   }
 
   public HashSet<Author> getAuthors(Connection connection) {
@@ -49,5 +51,29 @@ public class Admin {
     }
 
     return authors;
+  }
+
+  public HashSet<Customer> getCustomers(Connection connection) {
+
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(SELECTCUSTOMERS)) {
+
+      while (resultSet.next()) {
+
+        customers.add(new Customer(1, "Senior") );
+
+      }
+
+      resultSet.close();
+
+      statement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
+    return customers;
   }
 }

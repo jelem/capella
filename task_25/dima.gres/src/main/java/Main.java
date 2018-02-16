@@ -41,8 +41,14 @@ public class Main {
 
       HashSet<Author> authors = admin.getAuthors(connection);
 
+      HashSet<Customer> customers = admin.getCustomers(connection);
+
       for (Author author : authors) {
         System.out.println(author);
+      }
+
+      for (Customer customer : customers) {
+        System.out.println(customer);
       }
 
       connection.close();
