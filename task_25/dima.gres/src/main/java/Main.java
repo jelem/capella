@@ -19,6 +19,7 @@ public class Main {
 
   public static void main(String[] args) {
 
+
     Properties properties = null;
     Connection connection = null;
 
@@ -31,6 +32,8 @@ public class Main {
       String password = properties.getProperty("password");
 
       connection = DriverManager.getConnection(location, user, password);
+
+
 
       connection.close();
 
