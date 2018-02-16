@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 import java.sql.Statement;
 
+import java.util.HashMap;
 import java.util.Properties;
 
 public class Main {
@@ -36,6 +37,8 @@ public class Main {
       Admin admin = new Admin();
 
       admin.getAuthors(connection);
+
+
 
       connection.close();
 
