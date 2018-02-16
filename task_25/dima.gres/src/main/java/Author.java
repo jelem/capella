@@ -1,6 +1,6 @@
+import java.util.Objects;
 
 public class Author {
-  public static final int NOFOUND = -1;
 
   private int id;
   private String name;
@@ -24,5 +24,25 @@ public class Author {
     return age;
   }
 
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
 
+    if (!(object instanceof Author)) {
+      return false;
+    }
+
+    Author author = (Author) object;
+    return getId() == author.getId()
+        && getAge() == author.getAge()
+        && Objects.equals(getName(), author.getName());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getId(), getName(), getAge());
+  }
 }
