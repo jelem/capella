@@ -12,11 +12,6 @@ public class Admin {
 
   private Connection connection;
 
-  private HashSet<Author> authors;
-  private HashSet<Customer> customers;
-  private HashSet<Book> books;
-  private HashSet<Sell> sells;
-
   private static final String SELECTCUSTOMERS = "select c.id, c.name\n"
       + "from customers c\n"
       + ";"
@@ -37,114 +32,42 @@ public class Admin {
       + ";"
       ;
 
+  private static final String BOOKSAUTHORS = "select a.id, a.name, a.age, b.id, b.author_id, b.name, b.price\n"
+      + "from books b\n"
+      + "inner join authors a\n"
+      + "on b.author_id = a.id\n"
+      + "order by a.name;"
+      ;
+
   public Admin(Connection connection) {
     this.connection = connection;
-
-    this.authors  = new HashSet<>();
-    this.customers = new HashSet<>();
-    this.books = new HashSet<>();
-    this.sells = new HashSet<>();
-
-    setAuthors();
-    setBooks();
-    setCustomers();
-    setSells();
   }
 
-  private void setAuthors() {
+
+  public void printBooksAuthors() {
+    Book book = new Book();
+    Author author = new Author();
 
     try (Statement statement = connection.createStatement();
-         ResultSet resultSet = statement.executeQuery(SELECTAUTHORS)) {
-
-      int count = 0;
+         ResultSet resultSet = statement.executeQuery(BOOKSAUTHORS)) {
 
       while (resultSet.next()) {
+        author.setId(resultSet.getInt("a.id"));
+        author.setName(resultSet.getString("a.name"));
+        author.setAge(resultSet.getInt("a.age"));
 
-        authors.add(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
-            resultSet.getInt("a.id")));
+        book.setId(resultSet.getInt("b.id"));
+        book.setAuthorId(resultSet.getInt("b.author_id"));
+        book.setName(resultSet.getString("b.name"));
+        book.setPrice(resultSet.getDouble("b.price"));
 
+        System.out.println(author + " -> " + book);
       }
-
-      resultSet.close();
-
-      statement.close();
 
     } catch (SQLException exc) {
 
       exc.printStackTrace();
 
     }
-  }
-
-  private void setCustomers() {
-
-    try (Statement statement = connection.createStatement();
-         ResultSet resultSet = statement.executeQuery(SELECTCUSTOMERS)) {
-
-      while (resultSet.next()) {
-
-        customers.add(new Customer(resultSet.getInt("c.id"),
-            resultSet.getString("c.name")));
-
-      }
-
-      resultSet.close();
-
-      statement.close();
-
-    } catch (SQLException exc) {
-
-      exc.printStackTrace();
-
-    }
-  }
-
-  private void setBooks() {
-
-    try (Statement statement = connection.createStatement();
-         ResultSet resultSet = statement.executeQuery(SELECTBOOKS)) {
-
-      while (resultSet.next()) {
-        books.add(new Book(resultSet.getInt("b.id"), resultSet.getInt("b.author_id"),
-            resultSet.getString("b.name"), resultSet.getDouble("b.price")));
-      }
-
-      resultSet.close();
-
-      statement.close();
-
-    } catch (SQLException exc) {
-
-      exc.printStackTrace();
-
-    }
-  }
-
-  private void setSells() {
-
-    try (Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(SELECTSELLS)) {
-
-      while (resultSet.next()) {
-
-        sells.add(new Sell(resultSet.getInt("s.id"), resultSet.getInt("s.customer_id"),
-            resultSet.getInt("s.book_id")));
-
-      }
-
-      resultSet.close();
-
-      statement.close();
-
-    } catch (SQLException exc) {
-
-      exc.printStackTrace();
-
-    }
-  }
-
-  void printBooksAuthors() {
-
-
   }
 }

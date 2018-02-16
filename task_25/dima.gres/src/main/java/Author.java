@@ -6,6 +6,22 @@ public class Author {
   private String name;
   private int age;
 
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public Author(){
+
+  }
+
   public Author(String name, int age, int id) {
     this.name = name;
     this.age = age;

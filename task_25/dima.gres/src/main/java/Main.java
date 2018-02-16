@@ -41,6 +41,8 @@ public class Main {
 
       admin.printBooksAuthors();
 
+      admin.printBooksAuthors();
+
       connection.close();
 
     } catch (IOException | SQLException ex) {

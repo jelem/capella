@@ -7,6 +7,9 @@ public class Book {
   private String name;
   private double price;
 
+  public Book(){
+  }
+
   public Book(int id, int authorId, String name, double price) {
     this.id = id;
     this.authorId = authorId;

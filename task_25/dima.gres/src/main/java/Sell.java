@@ -6,6 +6,9 @@ public class Sell {
   private int customerId;
   private int bookId;
 
+  public Sell(){
+  }
+
   public Sell(int id, int customerId, int bookId) {
     this.id = id;
     this.customerId = customerId;
