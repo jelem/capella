@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 
 public class Admin {
@@ -12,7 +17,21 @@ public class Admin {
     this.authors  = new HashMap<>();
   }
 
-  public HashMap<Author, Integer> getAuthors() {
+  public HashMap<Author, Integer> getAuthors(Connection connection) {
+
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(SELECTAUTHORS)) {
+
+      while (resultSet.next()) {
+        System.out.println("###");
+      }
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+    
     return authors;
   }
 }
