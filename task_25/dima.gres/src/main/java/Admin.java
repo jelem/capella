@@ -25,10 +25,11 @@ public class Admin {
       int count = 0;
 
       while (resultSet.next()) {
+
         authors.put(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
             resultSet.getInt("a.id")), count++);
 
-        
+
       }
 
     } catch (SQLException exc) {

@@ -45,4 +45,18 @@ public class Author {
 
     return Objects.hash(getId(), getName(), getAge());
   }
+
+  @Override
+  public String toString() {
+    return "Author{"
+        + "id="
+        + id
+        + ", name='"
+        + name
+        + '\''
+        + ", age="
+        + age
+        + '}'
+        ;
+  }
 }
