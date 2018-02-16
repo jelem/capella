@@ -39,6 +39,16 @@ public class Admin {
       + "order by a.name;"
       ;
 
+  private static final String AUTHORSLESS50 = "select a.id, a.name, a.age\n"
+      + "from authors a\n"
+      + "where a.age < 50\n"
+      + "order by a.name;"
+      ;
+
+  private void printBorder() {
+    System.out.println(". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .");
+  }
+
   public Admin(Connection connection) {
     this.connection = connection;
   }
@@ -63,6 +73,40 @@ public class Admin {
 
         System.out.println(author + " -> " + book);
       }
+
+      printBorder();
+
+      resultSet.close();
+
+      statement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+  }
+
+  public void printYoungAuthors() {
+
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(AUTHORSLESS50)) {
+
+      Author author = new Author();
+
+      while (resultSet.next()) {
+        author.setId(resultSet.getInt("a.id"));
+        author.setName(resultSet.getString("a.name"));
+        author.setAge(resultSet.getInt("a.age"));
+
+        System.out.println(author);
+      }
+
+      printBorder();
+
+      resultSet.close();
+
+      statement.close();
 
     } catch (SQLException exc) {
 

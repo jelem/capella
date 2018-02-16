@@ -41,7 +41,9 @@ public class Main {
 
       admin.printBooksAuthors();
 
-      admin.printBooksAuthors();
+      admin.printYoungAuthors();
+
+
 
       connection.close();
 
