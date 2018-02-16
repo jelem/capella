@@ -37,7 +37,9 @@ public class Main {
 
       connection = DriverManager.getConnection(location, user, password);
 
-      
+      Admin admin = new Admin(connection);
+
+      admin.printBooksAuthors();
 
       connection.close();
 

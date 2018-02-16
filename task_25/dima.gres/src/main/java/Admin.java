@@ -5,16 +5,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Admin {
 
   private Connection connection;
 
-  private HashMap<Author, Integer> authors;
-  private HashMap<Customer, Integer> customers;
-  private HashMap<Book, Integer> books;
-  private HashMap<Sell, Integer> sells;
+  private HashSet<Author> authors;
+  private HashSet<Customer> customers;
+  private HashSet<Book> books;
+  private HashSet<Sell> sells;
 
   private static final String SELECTCUSTOMERS = "select c.id, c.name\n"
       + "from customers c\n"
@@ -39,10 +40,10 @@ public class Admin {
   public Admin(Connection connection) {
     this.connection = connection;
 
-    this.authors  = new HashMap<>();
-    this.customers = new HashMap<>();
-    this.books = new HashMap<>();
-    this.sells = new HashMap<>();
+    this.authors  = new HashSet<>();
+    this.customers = new HashSet<>();
+    this.books = new HashSet<>();
+    this.sells = new HashSet<>();
 
     setAuthors();
     setBooks();
@@ -59,8 +60,8 @@ public class Admin {
 
       while (resultSet.next()) {
 
-        authors.put(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
-            resultSet.getInt("a.id")), resultSet.getInt("a.id"));
+        authors.add(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
+            resultSet.getInt("a.id")));
 
       }
 
@@ -82,8 +83,8 @@ public class Admin {
 
       while (resultSet.next()) {
 
-        customers.put(new Customer(resultSet.getInt("c.id"),
-            resultSet.getString("c.name")), resultSet.getInt("c.id"));
+        customers.add(new Customer(resultSet.getInt("c.id"),
+            resultSet.getString("c.name")));
 
       }
 
@@ -104,8 +105,8 @@ public class Admin {
          ResultSet resultSet = statement.executeQuery(SELECTBOOKS)) {
 
       while (resultSet.next()) {
-        books.put(new Book(resultSet.getInt("b.id"), resultSet.getInt("b.author_id"),
-            resultSet.getString("b.name"), resultSet.getDouble("b.price")), resultSet.getInt("b.id"));
+        books.add(new Book(resultSet.getInt("b.id"), resultSet.getInt("b.author_id"),
+            resultSet.getString("b.name"), resultSet.getDouble("b.price")));
       }
 
       resultSet.close();
@@ -126,8 +127,8 @@ public class Admin {
 
       while (resultSet.next()) {
 
-        sells.put(new Sell(resultSet.getInt("s.id"), resultSet.getInt("s.customer_id"),
-            resultSet.getInt("s.book_id")), resultSet.getInt("s.id"));
+        sells.add(new Sell(resultSet.getInt("s.id"), resultSet.getInt("s.customer_id"),
+            resultSet.getInt("s.book_id")));
 
       }
 
@@ -140,5 +141,10 @@ public class Admin {
       exc.printStackTrace();
 
     }
+  }
+
+  void printBooksAuthors() {
+
+
   }
 }
