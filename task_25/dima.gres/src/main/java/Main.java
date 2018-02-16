@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Properties;
 
 public class Main {
@@ -36,9 +37,11 @@ public class Main {
 
       Admin admin = new Admin();
 
-      admin.getAuthors(connection);
+      HashSet<Author> authors = (HashSet<Author>) admin.getAuthors(connection);
 
-
+      for (Author author : authors) {
+        System.out.println(author);
+      }
 
       connection.close();
 
