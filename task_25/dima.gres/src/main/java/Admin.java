@@ -11,6 +11,7 @@ public class Admin {
   private HashSet<Author> authors;
   private HashSet<Customer> customers;
   private HashSet<Book> books;
+  private HashSet<Sell> sells;
 
   private static final String SELECTCUSTOMERS = "select c.id, c.name\n"
       + "from customers c\n"
@@ -27,10 +28,16 @@ public class Admin {
       + ";"
       ;
 
+  private static final String SELECTSELLS = "select s.id, s.customer_id, s.book_id\n"
+      + "from sells s\n"
+      + ";"
+      ;
+
   public Admin() {
     this.authors  = new HashSet<>();
     this.customers = new HashSet<>();
     this.books = new HashSet<>();
+    this.sells = new HashSet<>();
   }
 
   public HashSet<Author> getAuthors(Connection connection) {
@@ -105,5 +112,26 @@ public class Admin {
     }
 
     return books;
+  }
+
+  public HashSet<Sell> getSells(Connection connection) {
+
+    try (Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(SELECTSELLS)) {
+
+      while (resultSet.next()) {
+
+        sells.add(new Sell(resultSet.getInt("s.id"), resultSet.getInt("s.customer_id"),
+            resultSet.getInt("s.book_id")));
+
+      }
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
+    return sells;
   }
 }

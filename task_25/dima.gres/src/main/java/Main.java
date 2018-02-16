@@ -39,21 +39,17 @@ public class Main {
 
       Admin admin = new Admin();
 
-      HashSet<Book> books = admin.getBooks(connection);
+      HashSet<Sell> sells = admin.getSells(connection);
 
-      for (Book book : books) {
-        System.out.println(book);
+      for (Sell sell : sells) {
+        System.out.println(sell);
       }
 
       connection.close();
 
-    } catch (IOException ioex) {
+    } catch (IOException | SQLException ex) {
 
-      ioex.printStackTrace();
-
-    } catch (SQLException sqlex) {
-
-      sqlex.printStackTrace();
+      ex.printStackTrace();
 
     }
 
