@@ -69,4 +69,20 @@ public class Book {
 
     return Objects.hash(getId(), getAuthorId(), getName(), getPrice());
   }
+
+  @Override
+  public String toString() {
+    return "Book{"
+        + "id="
+        + id
+        + ", authorId="
+        + authorId
+        + ", name='"
+        + name
+        + '\''
+        + ", price="
+        + price
+        + '}'
+        ;
+  }
 }
