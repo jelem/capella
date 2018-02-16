@@ -19,19 +19,30 @@ public class Main {
 
   public static void main(String[] args) {
 
-
+    Properties properties = null;
+    Connection connection = null;
 
     try {
-      Properties properties = new Properties();
+      properties = new Properties();
       properties.load(Main.class.getResourceAsStream(locPropertie));
 
-    } catch (IOException exc) {
+      String location = properties.getProperty("location");
+      String user = properties.getProperty("user");
+      String password = properties.getProperty("password");
 
-      exc.printStackTrace();
+      connection = DriverManager.getConnection(location, user, password);
+
+      connection.close();
+
+    } catch (IOException ioex) {
+
+      ioex.printStackTrace();
+
+    } catch (SQLException sqlex) {
+
+      sqlex.printStackTrace();
 
     }
-
-
 
   }
 
