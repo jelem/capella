@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,10 +11,10 @@ public class Admin {
 
   private Connection connection;
 
-  private HashSet<Author> authors;
-  private HashSet<Customer> customers;
-  private HashSet<Book> books;
-  private HashSet<Sell> sells;
+  private HashMap<Author, Integer> authors;
+  private HashMap<Customer, Integer> customers;
+  private HashMap<Book, Integer> books;
+  private HashMap<Sell, Integer> sells;
 
   private static final String SELECTCUSTOMERS = "select c.id, c.name\n"
       + "from customers c\n"
@@ -38,13 +39,18 @@ public class Admin {
   public Admin(Connection connection) {
     this.connection = connection;
 
-    this.authors  = new HashSet<>();
-    this.customers = new HashSet<>();
-    this.books = new HashSet<>();
-    this.sells = new HashSet<>();
+    this.authors  = new HashMap<>();
+    this.customers = new HashMap<>();
+    this.books = new HashMap<>();
+    this.sells = new HashMap<>();
+
+    setAuthors();
+    setBooks();
+    setCustomers();
+    setSells();
   }
 
-  public void setAuthors() {
+  private void setAuthors() {
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTAUTHORS)) {
@@ -53,8 +59,8 @@ public class Admin {
 
       while (resultSet.next()) {
 
-        authors.add(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
-            resultSet.getInt("a.id")));
+        authors.put(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
+            resultSet.getInt("a.id")), resultSet.getInt("a.id"));
 
       }
 
@@ -69,14 +75,15 @@ public class Admin {
     }
   }
 
-  public void setCustomers() {
+  private void setCustomers() {
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTCUSTOMERS)) {
 
       while (resultSet.next()) {
 
-        customers.add(new Customer(resultSet.getInt("c.id"), resultSet.getString("c.name")));
+        customers.put(new Customer(resultSet.getInt("c.id"),
+            resultSet.getString("c.name")), resultSet.getInt("c.id"));
 
       }
 
@@ -91,14 +98,14 @@ public class Admin {
     }
   }
 
-  public void setBooks() {
+  private void setBooks() {
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTBOOKS)) {
 
       while (resultSet.next()) {
-        books.add(new Book(resultSet.getInt("b.id"), resultSet.getInt("b.author_id"),
-            resultSet.getString("b.name"), resultSet.getDouble("b.price")));
+        books.put(new Book(resultSet.getInt("b.id"), resultSet.getInt("b.author_id"),
+            resultSet.getString("b.name"), resultSet.getDouble("b.price")), resultSet.getInt("b.id"));
       }
 
       resultSet.close();
@@ -112,21 +119,21 @@ public class Admin {
     }
   }
 
-  public void setSells() {
+  private void setSells() {
 
     try (Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(SELECTSELLS)) {
 
       while (resultSet.next()) {
 
-        sells.add(new Sell(resultSet.getInt("s.id"), resultSet.getInt("s.customer_id"),
-            resultSet.getInt("s.book_id")));
-
-        resultSet.close();
-
-        statement.close();
+        sells.put(new Sell(resultSet.getInt("s.id"), resultSet.getInt("s.customer_id"),
+            resultSet.getInt("s.book_id")), resultSet.getInt("s.id"));
 
       }
+
+      resultSet.close();
+
+      statement.close();
 
     } catch (SQLException exc) {
 
