@@ -37,13 +37,7 @@ public class Main {
 
       connection = DriverManager.getConnection(location, user, password);
 
-      Admin admin = new Admin();
-
-      HashSet<Sell> sells = admin.getSells(connection);
-
-      for (Sell sell : sells) {
-        System.out.println(sell);
-      }
+      
 
       connection.close();
 

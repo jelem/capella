@@ -8,6 +8,8 @@ import java.util.Set;
 
 public class Admin {
 
+  private Connection connection;
+
   private HashSet<Author> authors;
   private HashSet<Customer> customers;
   private HashSet<Book> books;
@@ -33,14 +35,16 @@ public class Admin {
       + ";"
       ;
 
-  public Admin() {
+  public Admin(Connection connection) {
+    this.connection = connection;
+
     this.authors  = new HashSet<>();
     this.customers = new HashSet<>();
     this.books = new HashSet<>();
     this.sells = new HashSet<>();
   }
 
-  public HashSet<Author> getAuthors(Connection connection) {
+  public void setAuthors() {
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTAUTHORS)) {
@@ -63,11 +67,9 @@ public class Admin {
       exc.printStackTrace();
 
     }
-
-    return authors;
   }
 
-  public HashSet<Customer> getCustomers(Connection connection) {
+  public void setCustomers() {
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTCUSTOMERS)) {
@@ -87,11 +89,9 @@ public class Admin {
       exc.printStackTrace();
 
     }
-
-    return customers;
   }
 
-  public HashSet<Book> getBooks(Connection connection) {
+  public void setBooks() {
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTBOOKS)) {
@@ -110,11 +110,9 @@ public class Admin {
       exc.printStackTrace();
 
     }
-
-    return books;
   }
 
-  public HashSet<Sell> getSells(Connection connection) {
+  public void setSells() {
 
     try (Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(SELECTSELLS)) {
@@ -124,6 +122,10 @@ public class Admin {
         sells.add(new Sell(resultSet.getInt("s.id"), resultSet.getInt("s.customer_id"),
             resultSet.getInt("s.book_id")));
 
+        resultSet.close();
+
+        statement.close();
+
       }
 
     } catch (SQLException exc) {
@@ -131,7 +133,5 @@ public class Admin {
       exc.printStackTrace();
 
     }
-
-    return sells;
   }
 }
