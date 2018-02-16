@@ -37,7 +37,7 @@ public class Main {
 
       Admin admin = new Admin();
 
-      HashSet<Author> authors = (HashSet<Author>) admin.getAuthors(connection);
+      HashSet<Author> authors = admin.getAuthors(connection);
 
       for (Author author : authors) {
         System.out.println(author);

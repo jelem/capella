@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Admin {
-  Set<Author> authors;
+  HashSet<Author> authors;
 
   private static final String SELECTAUTHORS = "select a.id, a.name, a.age\n"
       + "from authors a\n"
@@ -18,7 +18,7 @@ public class Admin {
     this.authors  = new HashSet<>();
   }
 
-  public Set<Author> getAuthors(Connection connection) {
+  public HashSet<Author> getAuthors(Connection connection) {
 
     try (Statement statement = connection.createStatement();
          ResultSet resultSet = statement.executeQuery(SELECTAUTHORS)) {
@@ -30,8 +30,11 @@ public class Admin {
         authors.add(new Author(resultSet.getString("a.name"), resultSet.getInt("a.age"),
             resultSet.getInt("a.id")));
 
-
       }
+
+      resultSet.close();
+
+      statement.close();
 
     } catch (SQLException exc) {
 
