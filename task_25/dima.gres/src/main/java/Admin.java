@@ -60,7 +60,7 @@ public class Admin {
 
       while (resultSet.next()) {
 
-        customers.add(new Customer(1, "Senior") );
+        customers.add(new Customer(resultSet.getInt("c.id"), resultSet.getString("c.name")));
 
       }
 
