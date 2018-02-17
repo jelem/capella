@@ -32,12 +32,10 @@ public class Main {
 
       Admin admin = new Admin(connection);
 
-      admin.addAuthor(new Author("Test",777, 0));
+      admin.addBook(new Book(0, 0, "Far away", 103.60),
+                    new Author("Boris Pasternak", 123, 0));
 
       admin.printBooksAuthors();
-
-      System.out.println(admin.getAuthorId("Victor Suvorov"));
-
 
       connection.close();
       

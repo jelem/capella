@@ -331,6 +331,26 @@ public class Admin {
       addAuthor(author);
     }
 
+    int authorId = getAuthorId(author.getName());
+
+    String sql = "insert into books (author_id, name, price)\n"
+        + "values (?, ?, ?)\n"
+        + ";"
+        ;
+
+    ResultSet resultSet = null;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+      preparedStatement.setInt(1,authorId);
+      preparedStatement.setString(2, book.getName());
+      preparedStatement.setDouble(3, book.getPrice());
+
+      preparedStatement.executeUpdate();
+
+    } catch (SQLException exc) {
+      exc.printStackTrace();
+    }
   }
 
   public boolean isAuthorExist(String name) {
