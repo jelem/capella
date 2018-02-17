@@ -1,65 +1,91 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Objects;
 
 public class Book {
+
+  private int id;
+  private int authorId;
   private String name;
   private double price;
 
-  public Book() {
+  public Book(){
   }
 
-  public Book(String name, double price) {
+  public Book(int id, int authorId, String name, double price) {
+    this.id = id;
+    this.authorId = authorId;
     this.name = name;
     this.price = price;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public int getAuthorId() {
+    return authorId;
+  }
+
+  public void setAuthorId(int authorId) {
+    this.authorId = authorId;
   }
 
   public String getName() {
     return name;
   }
 
-  public double getPrice() {
-    return price;
-  }
-
   public void setName(String name) {
     this.name = name;
+  }
+
+  public double getPrice() {
+    return price;
   }
 
   public void setPrice(double price) {
     this.price = price;
   }
 
-  public int getId(Connection connection) {
-    String sql = "select b.id from books b\n"
-        + " where b.name = \'" + name + "\';"
-        ;
-
-    int id = -1;
-
-    try (Statement statement = connection.createStatement();
-         ResultSet resultSet = statement.executeQuery(sql);) {
-
-      while (resultSet.next()) {
-        id = resultSet.getInt("b.id");
-      }
-
-      resultSet.close();
-      statement.close();
-    } catch (SQLException exc) {
-      exc.printStackTrace();
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
     }
 
-    return id;
+    if (!(object instanceof Book)) {
+      return false;
+    }
+
+    Book book = (Book) object;
+
+    return getId() == book.getId()
+        && getAuthorId() == book.getAuthorId()
+        && Double.compare(book.getPrice(), getPrice()) == 0
+        && Objects.equals(getName(), book.getName());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getId(), getAuthorId(), getName(), getPrice());
   }
 
   @Override
   public String toString() {
-    String inforamtion = "\'" + name + "\'";
-    if (price != 0) {
-      inforamtion += " price = " + "\'" + price + "\'";
-    }
-    return inforamtion;
+    return "Book{"
+        + "id="
+        + id
+        + ", authorId="
+        + authorId
+        + ", name='"
+        + name
+        + '\''
+        + ", price="
+        + price
+        + '}'
+        ;
   }
 }
