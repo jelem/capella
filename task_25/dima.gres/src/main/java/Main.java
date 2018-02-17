@@ -11,10 +11,6 @@ import java.sql.SQLException;
 
 import java.sql.Statement;
 
-import java.util.HashMap;
-
-import java.util.HashSet;
-
 import java.util.Properties;
 
 public class Main {
@@ -43,9 +39,12 @@ public class Main {
 
       admin.printYoungAuthors();
 
+      admin.printExpensiveBooks();
 
+      admin.printAllCustomers();
 
       connection.close();
+      
 
     } catch (IOException | SQLException ex) {
 

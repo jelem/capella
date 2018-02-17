@@ -1,8 +1,11 @@
 import java.io.IOException;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -43,6 +46,12 @@ public class Admin {
       + "from authors a\n"
       + "where a.age < 50\n"
       + "order by a.name;"
+      ;
+
+  private static final String EXPENSIVETENBOOKS = "select b.id, b.author_id, b.name, b.price\n"
+      + "from books b\n"
+      + "order by b.price desc\n"
+      + "limit 10;"
       ;
 
   private void printBorder() {
@@ -107,6 +116,82 @@ public class Admin {
       resultSet.close();
 
       statement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+  }
+
+  public void printExpensiveBooks() {
+
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(EXPENSIVETENBOOKS)) {
+
+      Book book = new Book();
+
+      while (resultSet.next()) {
+        book.setId(resultSet.getInt("b.id"));
+        book.setAuthorId(resultSet.getInt("b.author_id"));
+        book.setName(resultSet.getString("b.name"));
+        book.setPrice(resultSet.getDouble("b.price"));
+
+        System.out.println(book);
+      }
+
+      printBorder();
+
+      resultSet.close();
+
+      statement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+  }
+
+  public void printAllCustomers() {
+
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(SELECTCUSTOMERS);) {
+
+      Customer customer = new Customer();
+
+      while (resultSet.next()) {
+        customer.setId(resultSet.getInt("c.id"));
+        customer.setName(resultSet.getString("c.name"));
+
+        System.out.println(customer);
+      }
+
+      printBorder();
+
+      resultSet.close();
+
+      statement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+  }
+
+  public void printListBooksByCustomers(int id) {
+
+    String sql = "select b.id, b.author_id, b.name, b.price\n"
+        + "from sells s\n"
+        + "inner join books b\n"
+        + "on s.book_id = b.id\n"
+        + "where s.customer_id = ?;"
+        ;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+
+      preparedStatement.setInt(1, id);
 
     } catch (SQLException exc) {
 
