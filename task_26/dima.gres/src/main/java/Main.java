@@ -32,9 +32,12 @@ public class Main {
 
       Admin admin = new Admin(connection);
 
-      admin.printAllCustomers();
+      admin.printBooksAuthors();
 
-      System.out.println(admin.getCustomerId("Boris Berezovsky"));
+      admin.sellBook(new Book(0, 0, "Kobzar", 0),
+                     new Author("Taras Shevchenko", 0, 0),
+                     new Customer(0, "Nikita Morgunov")
+      );
 
       connection.close();
 

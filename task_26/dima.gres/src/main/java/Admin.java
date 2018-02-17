@@ -530,4 +530,68 @@ public class Admin {
 
     return result;
   }
+
+  public void sellBook(Book book, Author author, Customer customer) {
+
+    if (!isBookExist(book.getName(), author.getName())) {
+      System.out.println(". . . Sorry we hav'nt this book. Stend by letter . . .");
+      return;
+    }
+
+    if (!isAuthorExist(author.getName())) {
+      addAuthor(author);
+    }
+
+    String sql = "insert into sells(customer_id, book_id)\n"
+        + "values(?, ?)\n"
+        + ";"
+        ;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+
+      preparedStatement.setInt(1, getCustomerId(customer.getName()));
+      preparedStatement.setInt(2, getBookId(book.getName()));
+
+      preparedStatement.executeUpdate();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+  }
+
+  public int getBookId(String name) {
+
+    int result = -1;
+
+    String sql = "select b.id, b.name\n"
+        + "from books b\n"
+        + "where b.name = ?;"
+        ;
+
+    ResultSet resultSet = null;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+
+      preparedStatement.setString(1, name);
+      resultSet = preparedStatement.executeQuery();
+
+      while (resultSet.next()) {
+        result = resultSet.getInt(1);
+        break;
+      }
+
+      resultSet.close();
+
+      preparedStatement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
+    return result;
+  }
 }
