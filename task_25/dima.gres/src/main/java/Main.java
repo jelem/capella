@@ -43,6 +43,8 @@ public class Main {
 
       admin.printAllCustomers();
 
+      admin.printListBooksByCustomers(1);
+
       connection.close();
       
 

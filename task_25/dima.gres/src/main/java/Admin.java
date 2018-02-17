@@ -189,9 +189,32 @@ public class Admin {
         + "where s.customer_id = ?;"
         ;
 
+    ResultSet resultSet = null;
+
     try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
 
-      preparedStatement.setInt(1, id);
+      preparedStatement.setInt(1, 1);
+
+      resultSet = preparedStatement.executeQuery();
+
+      Book book = new Book();
+
+      while (resultSet.next()) {
+
+        book.setId(resultSet.getInt(1));
+        book.setAuthorId(resultSet.getInt(2));
+        book.setName(resultSet.getString(3));
+        book.setPrice(resultSet.getDouble(4));
+
+        System.out.println(book);
+
+      }
+
+      printBorder();
+
+      resultSet.close();
+
+      preparedStatement.close();
 
     } catch (SQLException exc) {
 
