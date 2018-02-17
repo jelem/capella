@@ -296,6 +296,10 @@ public class Admin {
 
   public void addAuthor(Author author) {
 
+    if (isAuthorExist(author.getName())) {
+      return ;
+    }
+
     String sql = "insert into authors \n"
         + "(name, age) values(?, ?);"
         ;
