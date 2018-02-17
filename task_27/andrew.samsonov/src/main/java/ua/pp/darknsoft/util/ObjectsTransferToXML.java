@@ -12,7 +12,6 @@ public class ObjectsTransferToXML<E> {
 
 
   private BufferedWriter bufferedWriter;
-  private String path;
   private String pathToFile;
   private E obj;
   private List<E> list;
@@ -21,19 +20,24 @@ public class ObjectsTransferToXML<E> {
 
 
   public ObjectsTransferToXML(String path, E obj) {
-    this.path = path;
     this.obj = obj;
     this.list = Collections.emptyList();
-    pathToFile =
-        path + "\\" + obj.getClass().getSimpleName() + "@" + Integer
-            .toHexString(list.hashCode())
-            + ".xml";
-    start = "<" + obj.getClass().getSimpleName() + "s>";
-    stop = "</" + obj.getClass().getSimpleName() + "s>";
+    if (obj == null) {
+      this.pathToFile = path + "\\empty.xml";
+      start = "<OBJECTS>";
+      stop = "</OBJECTS>";
+    } else {
+      pathToFile =
+          path + "\\" + obj.getClass().getSimpleName() + "@" + Integer
+              .toHexString(list.hashCode())
+              + ".xml";
+      start = "<" + obj.getClass().getSimpleName() + "s>";
+      stop = "</" + obj.getClass().getSimpleName() + "s>";
+    }
+
   }
 
   public ObjectsTransferToXML(String path, List<E> list) {
-    this.path = path;
     if (list == null) {
       this.list = Collections.emptyList();
       this.pathToFile = path + "\\empty.xml";

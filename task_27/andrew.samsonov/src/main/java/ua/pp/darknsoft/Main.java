@@ -1,5 +1,6 @@
 package ua.pp.darknsoft;
 
+import ua.pp.darknsoft.util.LoadStudentsFromFileToList;
 import ua.pp.darknsoft.util.ObjectsTransferToXML;
 
 import java.util.ArrayList;
@@ -8,7 +9,10 @@ import java.util.List;
 public class Main {
 
   public static void main(String[] args) {
-    final String path = "D:\\JavaProject\\JavaRush\\capella\\task_27\\andrew.samsonov\\src\\main\\resources\\files";
+
+    String path = "D:\\JavaProject\\JavaRush\\capella\\task_27\\andrew.samsonov\\src\\main\\resources\\files";
+
+    System.out.println(LoadStudentsFromFileToList.getStudents(path + "\\Studentslist.txt"));
 
     Student student1 = new Student("Alik", "Bolduin", 25);
     Student student2 = new Student("Serhio", "Cornandes", 43);
@@ -21,7 +25,7 @@ public class Main {
     ObjectsTransferToXML transferToXML0 = new ObjectsTransferToXML(path, studentList);
     transferToXML0.transfer();
 
-    ObjectsTransferToXML transferToXML1 = new ObjectsTransferToXML(path, student2);
+    ObjectsTransferToXML transferToXML1 = new ObjectsTransferToXML(path, student3);
     transferToXML1.transfer();
 
     Book book1 = new Book("Old warriors", "Sandro Kun Jr", true, 324);
@@ -35,7 +39,6 @@ public class Main {
 
     ObjectsTransferToXML transferToXML3 = new ObjectsTransferToXML(path, book1);
     transferToXML3.transfer();
-
   }
 
 }
