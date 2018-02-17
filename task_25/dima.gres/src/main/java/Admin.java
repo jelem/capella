@@ -180,6 +180,35 @@ public class Admin {
     }
   }
 
+  public void printAllAuthors() {
+
+    try (Statement statement = connection.createStatement();
+         ResultSet resultSet = statement.executeQuery(SELECTAUTHORS)) {
+
+      Author author = new Author();
+
+      while (resultSet.next()) {
+
+        author.setId(resultSet.getInt(1));
+        author.setName(resultSet.getString(2));
+        author.setAge(resultSet.getInt(3));
+
+        System.out.println(author);
+      }
+
+      printBorder();
+
+      resultSet.close();
+
+      statement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+  }
+
   public void printListBooksByCustomers(int id) {
 
     String sql = "select b.id, b.author_id, b.name, b.price\n"
@@ -221,5 +250,48 @@ public class Admin {
       exc.printStackTrace();
 
     }
+  }
+
+  public void printSumsBooksGroubByAuthors(int id) {
+
+    String sql = "select a.id, a.name, a.age, sum(b.price) as s\n"
+        + "from books b\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "where a.id = ?\n"
+        + "group by a.id\n"
+        + ";"
+        ;
+
+    ResultSet resultSet = null;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+      preparedStatement.setInt(1, id);
+      resultSet = preparedStatement.executeQuery();
+
+      Author author = new Author();
+
+      while (resultSet.next()) {
+
+        author.setId(resultSet.getInt(1));
+        author.setName(resultSet.getString(2));
+        author.setAge(resultSet.getInt(3));
+
+        System.out.println(author + " ---> " + resultSet.getDouble("s"));
+      }
+
+      printBorder();
+
+      resultSet.close();
+
+      preparedStatement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
   }
 }

@@ -45,6 +45,10 @@ public class Main {
 
       admin.printListBooksByCustomers(1);
 
+      admin.printAllAuthors();
+
+      admin.printSumsBooksGroubByAuthors(3);
+
       connection.close();
       
 
