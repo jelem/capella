@@ -463,4 +463,71 @@ public class Admin {
 
     return result;
   }
+
+  public boolean isCustomerExist(String name) {
+
+    boolean result = false;
+
+    String sql = "select c.id, c.name\n"
+        + "from customers c\n"
+        + "where c.name = ?;"
+        ;
+
+    ResultSet resultSet = null;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+      preparedStatement.setString(1, name);
+      resultSet = preparedStatement.executeQuery();
+
+      while (resultSet.next()) {
+        result = true;
+        break;
+      }
+
+      resultSet.close();
+
+      preparedStatement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
+    return result;
+  }
+
+  public int getCustomerId(String name) {
+    int result = -1;
+
+    String sql = "select c.id, c.name\n"
+        + "from customers c\n"
+        + "where c.name = ?;"
+        ;
+
+    ResultSet resultSet = null;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+      preparedStatement.setString(1, name);
+      resultSet = preparedStatement.executeQuery();
+
+      while (resultSet.next()) {
+        result = resultSet.getInt(1);
+        break;
+      }
+
+      resultSet.close();
+
+      preparedStatement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
+    return result;
+  }
 }

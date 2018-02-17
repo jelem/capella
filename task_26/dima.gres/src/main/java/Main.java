@@ -32,13 +32,11 @@ public class Main {
 
       Admin admin = new Admin(connection);
 
-      admin.addBook(new Book(0, 0, "Far away", 103.60),
-                    new Author("Boris Pasternak", 123, 0));
+      admin.printAllCustomers();
 
-      admin.printBooksAuthors();
+      System.out.println(admin.getCustomerId("Boris Berezovsky"));
 
       connection.close();
-      
 
     } catch (IOException | SQLException ex) {
 
