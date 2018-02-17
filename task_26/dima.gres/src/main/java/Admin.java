@@ -372,6 +372,29 @@ public class Admin {
 
     ResultSet resultSet = null;
 
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+      preparedStatement.setString(1, bookName);
+      preparedStatement.setString(2, authorName);
+      resultSet = preparedStatement.executeQuery();
+
+      while (resultSet.next()) {
+        result = true;
+        break;
+      }
+
+      resultSet.close();
+
+      preparedStatement.close();
+
+      return result;
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
     return result;
   }
 }

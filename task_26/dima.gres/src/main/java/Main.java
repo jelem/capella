@@ -34,7 +34,9 @@ public class Main {
 
       admin.addAuthor(new Author("Test",777, 0));
 
-      admin.printAllAuthors();
+      admin.printBooksAuthors();
+
+      System.out.println(admin.isBookExist("Hobbit", "Mykola Gogol"));
 
       connection.close();
       
