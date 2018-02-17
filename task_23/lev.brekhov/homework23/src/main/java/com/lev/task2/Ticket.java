@@ -23,12 +23,12 @@ public class Ticket {
 
   @Override
   public String toString() {
-    return "Ticket{" + "price=" + price
-        + ", carriage=" + carriage
-        + ", seat=" + seat
-        + ", date=" + date
-        + ", city='" + city + '\''
-        + '}';
+    return "Your Ticket: " + "price = " + price
+        + ", carriage = " + carriage
+        + ", seat = " + seat
+        + ", date = " + date
+        + ", city = '" + city + '\''
+        + '.';
   }
 
   public static Ticket inData() {
@@ -36,11 +36,13 @@ public class Ticket {
     int carriage = 1;
     double price = 100.0;
 
+    System.out.println("Enter a seat");
     int seat = Ticket.seatInput(scanner.nextInt());
     System.out.println("Enter date and city where you want to go");
+    System.out.print("Date format m/d/yyyy: ");
     LocalDate date = Ticket.dateInput(scanner.next());
-    String city = Ticket.cityInput(scanner.next());
-    System.out.println("Enter a seat");
+    System.out.println("You can choose from Odessa, Lvov, Kiev");
+    String city = Ticket.cityInput(scanner);
 
     return new Ticket(price, carriage, seat, date, city);
   }
@@ -53,33 +55,27 @@ public class Ticket {
     if (input < 1) {
       throw new IndexOutOfBoundsException("Seats belong 1 don't exist");
     }
-    return seats[input - 1];
+
+    return input;
   }
 
-  private static LocalDate dateInput(String userInput) throws RuntimeException{
-    System.out.print("Date format M/d/yyyy: ");
-
+  private static LocalDate dateInput(String userInput) throws RuntimeException {
     DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("M/d/yyyy");
     return LocalDate.parse(userInput, dateFormat);
   }
 
-  private static String cityInput(String userInput) {
-    System.out.println("You can choose from Odessa, Lvov, Kiev");
-
-    boolean correctCity = false;
-    while (!correctCity) {
+  private static String cityInput(Scanner scanner) {
+    String input;
+    while (true) {
       System.out.println("City: ");
-      correctCity = !userInput.equals("Lvov") && !userInput.equals("Odessa") && !userInput.equals("Kiev");
+      input = scanner.next();
+      if (input.equals("Lvov") || input.equals("Odessa") || input.equals("Kiev")) {
+        return input;
+      }
     }
-    return userInput;
   }
 
   public static void buyTicket () {
-    Ticket ticket = Ticket.inData();
-    System.out.println("Your ticket: " + ticket);
-//    addTicket(ticket);
+    System.out.println(Ticket.inData());
   }
-
-//  private void addTicket(Ticket ticket) {
-//  }
 }

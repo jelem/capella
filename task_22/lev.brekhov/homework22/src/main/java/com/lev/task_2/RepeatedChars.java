@@ -7,14 +7,13 @@ public class RepeatedChars {
   public RepeatedChars() {
   }
 
-  public String output (RepeatedChars word) {
+  public String output(RepeatedChars word) {
     if (word.isRepeated(word.getWord())) {
       return "Симводы в слове повторяются";
     } else {
       return "Символы уникальны";
     }
   }
-
 
   public boolean isRepeated(String word) {
     char[] letters = creatingChars(word);

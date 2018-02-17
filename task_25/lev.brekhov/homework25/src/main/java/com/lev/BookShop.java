@@ -10,16 +10,16 @@ public class BookShop {
 
   public static void main(String[] args) throws SQLException {
     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookshop?serverTimezone=UTC&useSSL=false", "root",
-            "root");
+        "root");
     System.out.println("Connected");
 
     printBooks(connection);
     System.out.println();
-    lessThen50OfAuthors(connection);
+    lessThen50YearsOld(connection);
     System.out.println();
     tenExpensiveBooks(connection);
     System.out.println();
-    listOfCustomer(connection);
+    listOfBooksByCustomer(connection);
     System.out.println();
     sumOfBooksPrice(connection);
   }
@@ -33,12 +33,12 @@ public class BookShop {
         String name = resultSet.getString("name");
         System.out.println(name);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     }
   }
 
-  public static void lessThen50OfAuthors(Connection connection) {
+  public static void lessThen50YearsOld(Connection connection) {
     String sql = "select firstname, lastname FROM authors where years < 50";
 
     try (Statement statement = connection.createStatement();
@@ -48,8 +48,8 @@ public class BookShop {
         String lastname = resultSet.getString("lastname");
         System.out.println(firstname + " " + lastname + "is younger than 50");
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     }
   }
 
@@ -63,12 +63,12 @@ public class BookShop {
         String price = resultSet.getString("price");
         System.out.println(name + " " + price);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     }
   }
 
-  public static void listOfCustomer (Connection connection) {
+  public static void listOfBooksByCustomer(Connection connection) {
     String sql = "SELECT c.name, b.name FROM ((customers_books cb"
         + " inner join books b on cb.book_id = b.id)"
         + " inner join customers c on cb.customer_id = c.id)"
@@ -81,8 +81,8 @@ public class BookShop {
         String bookName = resultSet.getString("b.name");
         System.out.println(customerName + " " + bookName);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     }
   }
 
@@ -101,8 +101,8 @@ public class BookShop {
         int sum = resultSet.getInt("sum(b.price)");
         System.out.println(authorFirstame + " " + authorLastname + " " + sum);
       }
-    } catch (SQLException e) {
-      e.printStackTrace();
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     }
   }
 }
