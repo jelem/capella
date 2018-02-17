@@ -292,6 +292,28 @@ public class Admin {
       exc.printStackTrace();
 
     }
+  }
 
+  void addAuthor(Author author) {
+
+    String sql = "insert into authors \n"
+        + "(name, age) values(?, ?);"
+        ;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+      preparedStatement.setString(1, author.getName());
+
+      preparedStatement.setInt(2, author.getAge());
+
+      preparedStatement.executeUpdate();
+
+      preparedStatement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
   }
 }

@@ -2,14 +2,11 @@
 import java.io.IOException;
 
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 
-import java.sql.ResultSet;
+
 
 import java.sql.SQLException;
-
-import java.sql.Statement;
 
 import java.util.Properties;
 
@@ -35,19 +32,11 @@ public class Main {
 
       Admin admin = new Admin(connection);
 
-      admin.printBooksAuthors();
-
-      admin.printYoungAuthors();
-
-      admin.printExpensiveBooks();
-
-      admin.printAllCustomers();
-
-      admin.printListBooksByCustomers(1);
+      admin.addAuthor(new Author("Test",777, 0));
 
       admin.printAllAuthors();
 
-      admin.printSumsBooksGroubByAuthors(3);
+
 
       connection.close();
       
