@@ -36,7 +36,8 @@ public class Main {
 
       admin.printBooksAuthors();
 
-      System.out.println(admin.isBookExist("Hobbit", "Mykola Gogol"));
+      System.out.println(admin.getAuthorId("Victor Suvorov"));
+
 
       connection.close();
       

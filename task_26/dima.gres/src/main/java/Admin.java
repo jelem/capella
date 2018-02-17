@@ -321,6 +321,18 @@ public class Admin {
     }
   }
 
+  public void addBook(Book book, Author author) {
+
+    if (isBookExist(book.getName(), author.getName())) {
+      return;
+    }
+
+    if (!isAuthorExist(author.getName())) {
+      addAuthor(author);
+    }
+
+  }
+
   public boolean isAuthorExist(String name) {
 
     String sql = "select a.name\n"
@@ -337,8 +349,6 @@ public class Admin {
       preparedStatement.setString(1, name);
 
       resultSet = preparedStatement.executeQuery();
-
-
 
       while (resultSet.next()) {
         result = true;
@@ -380,6 +390,42 @@ public class Admin {
 
       while (resultSet.next()) {
         result = true;
+        break;
+      }
+
+      resultSet.close();
+
+      preparedStatement.close();
+
+      return result;
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
+    return result;
+  }
+
+  public int getAuthorId(String name) {
+
+    String sql = "select a.name, a.id\n"
+        + "from authors a\n"
+        + "where a.name = ?;"
+        ;
+
+    int result = -1;
+
+    ResultSet resultSet = null;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+
+      preparedStatement.setString(1, name);
+      resultSet = preparedStatement.executeQuery();
+
+      while (resultSet.next()) {
+        result = resultSet.getInt(2);
         break;
       }
 
