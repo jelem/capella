@@ -357,4 +357,21 @@ public class Admin {
 
     return result;
   }
+
+  public boolean isBookExist(String bookName, String authorName) {
+
+    String sql = "select b.name, a.name\n"
+        + "from books b\n"
+        + "inner join authors a\n"
+        + "on b.author_id = a.id\n"
+        + "where b.name = ?\n"
+        + "and a.name = ?;"
+        ;
+
+    boolean result = false;
+
+    ResultSet resultSet = null;
+
+    return result;
+  }
 }
