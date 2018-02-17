@@ -36,7 +36,7 @@ public class Main {
 
       admin.printAllAuthors();
 
-
+      System.out.println(admin.isAuthorExist("Test"));
 
       connection.close();
       

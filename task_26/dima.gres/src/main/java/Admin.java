@@ -294,7 +294,7 @@ public class Admin {
     }
   }
 
-  void addAuthor(Author author) {
+  public void addAuthor(Author author) {
 
     String sql = "insert into authors \n"
         + "(name, age) values(?, ?);"
@@ -315,5 +315,42 @@ public class Admin {
       exc.printStackTrace();
 
     }
+  }
+
+  public boolean isAuthorExist(String name) {
+
+    String sql = "select a.name\n"
+        + "from authors a\n"
+        + "where a.name = ?;"
+        ;
+
+    ResultSet resultSet = null;
+
+    boolean result = false;
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+      preparedStatement.setString(1, name);
+
+      resultSet = preparedStatement.executeQuery();
+
+
+
+      while (resultSet.next()) {
+        result = true;
+        break;
+      }
+
+      resultSet.close();
+
+      preparedStatement.close();
+
+    } catch (SQLException exc) {
+
+      exc.printStackTrace();
+
+    }
+
+    return result;
   }
 }
