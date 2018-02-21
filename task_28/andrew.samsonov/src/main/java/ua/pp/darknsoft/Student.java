@@ -4,23 +4,43 @@ import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.util.Properties;
 
 public class Student implements Externalizable {
 
   private static final long serialVersionUID = 1095687126744L;
 
+  private static final int BIG_BEGIN = 'A';
+  private static final int BIG_END = 'Z';
+  private static final int SMALL_BEGIN = 'a';
+  private static final int SMALL_END = 'z';
+
   private String name;
   private int age;
   private String password;
+  private int offSet;
 
   public Student() {
-
+    Properties properties = new Properties();
+    try {
+      properties.load(Main.class.getClassLoader().getResourceAsStream("cipher.properties"));
+      offSet = Integer.parseInt(properties.getProperty("offset"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   public Student(String name, int age, String password) {
     this.name = name;
     this.age = age;
     this.password = password;
+    Properties properties = new Properties();
+    try {
+      properties.load(Main.class.getClassLoader().getResourceAsStream("cipher.properties"));
+      offSet = Integer.parseInt(properties.getProperty("offset"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
@@ -54,26 +74,51 @@ public class Student implements Externalizable {
   public void writeExternal(ObjectOutput out) throws IOException {
     out.writeObject(name);
     out.writeInt(age);
-    String encoded = caesarCoding(password);
+    String encoded = caesarCoding(password, offSet);
     out.writeObject(encoded);
   }
 
   public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-    if (name == null || password == null) {
-      throw new IllegalArgumentException();
-    }
+
     name = (String) in.readObject();
     age = in.readInt();
     String encoded = (String) in.readObject();
-    password = caesarDeCoding(encoded);
+    password = caesarDeCoding(encoded, offSet);
   }
 
-  private String caesarCoding(String pwd) {
-    return pwd;
+  private static String caesarCoding(String pwd, int offset) {
+    char[] chars = pwd.toCharArray();
+    for (int i = 0; i < chars.length; i++) {
+
+      if (BIG_BEGIN <= chars[i] && chars[i] <= BIG_END) {
+        if (chars[i] + offset > BIG_END) {
+          chars[i] = (char) (BIG_BEGIN - 1 + ((chars[i] + offset) - BIG_END));
+          continue;
+        }
+        if (chars[i] + offset < BIG_BEGIN) {
+          chars[i] = (char) (BIG_END + 1 - (BIG_BEGIN - (chars[i] + offset)));
+          continue;
+        }
+        chars[i] = (char) (chars[i] + offset);
+      }
+
+      if (SMALL_BEGIN <= chars[i] && chars[i] <= SMALL_END) {
+        if (chars[i] + offset > SMALL_END) {
+          chars[i] = (char) (SMALL_BEGIN - 1 + (chars[i] + offset) - SMALL_END);
+          continue;
+        }
+        if (chars[i] + offset < SMALL_BEGIN) {
+          chars[i] = (char) (SMALL_END + 1 - (SMALL_BEGIN - (chars[i] + offset)));
+          continue;
+        }
+        chars[i] = (char) (chars[i] + offset);
+      }
+    }
+    return new String(chars);
   }
 
-  private String caesarDeCoding(String pwd) {
-    return pwd;
+  private static String caesarDeCoding(String pwd, int offset) {
+    return caesarCoding(pwd, -offset);
   }
 
   @Override
