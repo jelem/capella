@@ -1,0 +1,17 @@
+<Students>
+	<Student>
+		<firstName>Alik</firstName>
+		<lastName>Bolduin</lastName>
+		<age>25</age>
+	</Student>
+	<Student>
+		<firstName>Serhio</firstName>
+		<lastName>Cornandes</lastName>
+		<age>43</age>
+	</Student>
+	<Student>
+		<firstName>Paulino</firstName>
+		<lastName>Johnson</lastName>
+		<age>38</age>
+	</Student>
+</Students>
