@@ -25,8 +25,8 @@ public class Student implements Externalizable {
     try {
       properties.load(Main.class.getClassLoader().getResourceAsStream("cipher.properties"));
       offSet = Integer.parseInt(properties.getProperty("offset"));
-    } catch (IOException e) {
-      e.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
   }
 
@@ -38,8 +38,8 @@ public class Student implements Externalizable {
     try {
       properties.load(Main.class.getClassLoader().getResourceAsStream("cipher.properties"));
       offSet = Integer.parseInt(properties.getProperty("offset"));
-    } catch (IOException e) {
-      e.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
   }
 

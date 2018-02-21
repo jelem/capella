@@ -1,14 +1,17 @@
 package ua.pp.darknsoft;
 
-import org.junit.Test;
-
-import java.io.*;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class ExternalizableTest {
+import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class ExternalizableTest {
 
   @Test
   public void cloneStudent() {
@@ -32,10 +35,10 @@ public class ExternalizableTest {
     try {
       serializeStudent(student2);
       anotherStudent2 = deserializeStudent();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    } catch (ClassNotFoundException ex) {
+      ex.printStackTrace();
     }
     assertThat(anotherStudent2, is(student2));
   }
