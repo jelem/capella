@@ -2,12 +2,13 @@ package first;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
-public class StudentsGraduate {
+public class StudentsGrade {
 
   private Node root;
 
-  public StudentsGraduate() {
+  public StudentsGrade() {
     root = null;
   }
 
@@ -79,6 +80,25 @@ public class StudentsGraduate {
 
       if (current.right != null) {
         queue.add(current.right);
+      }
+    }
+  }
+
+  public void stackTraversy() {
+    Stack<Node> stack = new Stack<>();
+
+    stack.add(root);
+
+    while (!stack.isEmpty()) {
+      Node current = stack.pop();
+      System.out.println(current);
+
+      if (current.left != null) {
+        stack.add(current.left);
+      }
+
+      if (current.right != null) {
+        stack.add(current.right);
       }
     }
   }

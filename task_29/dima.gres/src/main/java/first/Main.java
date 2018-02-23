@@ -3,17 +3,21 @@ package first;
 public class Main {
 
   public static void main(String[] args) {
-    StudentsGraduate studentsGraduate = new StudentsGraduate();
-    studentsGraduate.add("Max", 4);
-    studentsGraduate.add("Oleg", 3);
-    studentsGraduate.add("Masha", 8);
-    studentsGraduate.add("Anton", 6);
-    studentsGraduate.add("Ira", 5);
-    studentsGraduate.add("Artem", 5);
-    studentsGraduate.add("Slavik", 4);
-    studentsGraduate.add("Serega", 7);
-    studentsGraduate.add("Alex", 3);
+    StudentsGrade studentsGrade = new StudentsGrade();
+    studentsGrade.add("Max", 4);
+    studentsGrade.add("Oleg", 3);
+    studentsGrade.add("Masha", 8);
+    studentsGrade.add("Anton", 6);
+    studentsGrade.add("Ira", 5);
+    studentsGrade.add("Artem", 5);
+    studentsGrade.add("Slavik", 4);
+    studentsGrade.add("Serega", 7);
+    studentsGrade.add("Alex", 3);
 
-    studentsGraduate.queueTraversy();
+    studentsGrade.queueTraversy();
+
+    System.out.println("* . * . * . * . * . * . * . * . * . * . *");
+
+    studentsGrade.stackTraversy();
   }
 }
