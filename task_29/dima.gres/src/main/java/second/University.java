@@ -71,6 +71,18 @@ public class University {
     System.out.println();
   }
 
+  public void printAllBoss(String name) {
+    Department department = getDepatment(name);
+    if (department == null || rectorat.getName().equals(name)) {
+      return;
+    }
+
+    while (department.getPerent() != null) {
+      department = department.getPerent();
+      System.out.println(department);
+    }
+  }
+
   public void printAllSubordinates(String name) {
     if (rectorat.getName().equals(name)) {
       generalTraverse();
@@ -92,8 +104,6 @@ public class University {
       printFacCafedras(getDepatment(name));
       return;
     }
-
-    System.out.println("No subortinations");
   }
 
   private boolean isProExist(String name) {

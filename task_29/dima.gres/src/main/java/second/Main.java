@@ -16,6 +16,7 @@ public class Main {
     university.addFac(FacList.SYSTEMPROG.getName(), ProList.CCC.getName());
 
     university.addFac(FacList.GAMEDEV.getName(), ProList.CPP.getName());
+    university.addFac(FacList.DESCTOPDEV.getName(), ProList.CPP.getName());
 
     university.addFac(FacList.BACKENDDEV.getName(), ProList.JAVA.getName());
     university.addFac(FacList.SYSTEMARCHYTECH.getName(), ProList.JAVA.getName());
@@ -23,7 +24,8 @@ public class Main {
     university.addCaf(Cafedras.GRAPHICS.getName(), FacList.GAMEDEV.getName());
     university.addCaf(Cafedras.PHYLOSOPHY.getName(), FacList.GAMEDEV.getName());
 
-    university.addCaf(Cafedras.ENGLISH.getName(), FacList.SYSTEMARCHYTECH.getName());
+    university.addCaf(Cafedras.ENGLISH.getName(), FacList.DESCTOPDEV.getName());
+
     university.addCaf(Cafedras.DEUTSCH.getName(), FacList.SYSTEMARCHYTECH.getName());
 
     university.addCaf(Cafedras.ADMIN.getName(), FacList.BACKENDDEV.getName());
@@ -34,6 +36,9 @@ public class Main {
 
     university.generalTraverse();
 
-    
+    university.printAllSubordinates(ProList.CPP.getName());
+    System.out.println();
+
+    university.printAllBoss(Cafedras.ALGEBRA.getName());
   }
 }
