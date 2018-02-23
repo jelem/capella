@@ -1,5 +1,8 @@
 package first;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class StudentsGraduate {
 
   private Node root;
@@ -41,6 +44,45 @@ public class StudentsGraduate {
     }
   }
 
+  public void traversy() {
+    orderTravercy(root);
+  }
+
+  private void orderTravercy(Node node) {
+    if (node == null) {
+      return;
+    }
+
+    if (node.left != null) {
+      orderTravercy(node.left);
+    }
+
+    System.out.println(node);
+
+    if (node.right != null) {
+      orderTravercy(node.right);
+    }
+  }
+
+  public void queueTraversy() {
+    Queue<Node> queue = new LinkedList();
+
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+      Node current = queue.remove();
+      System.out.println(current);
+
+      if (current.left != null) {
+        queue.add(current.left);
+      }
+
+      if (current.right != null) {
+        queue.add(current.right);
+      }
+    }
+  }
+
 
   private static class Node {
     String name;
@@ -69,6 +111,18 @@ public class StudentsGraduate {
 
     public void setGraduate(int grade) {
       this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+      return "Node{"
+          + "name='"
+          + name
+          + '\''
+          + ", grade="
+          + grade
+          + '}'
+          ;
     }
   }
 }
