@@ -33,5 +33,7 @@ public class Main {
     university.addCaf(Cafedras.SPORT.getName(), FacList.DESCRETMATH.getName());
 
     university.generalTraverse();
+
+    
   }
 }

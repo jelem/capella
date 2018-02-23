@@ -70,4 +70,107 @@ public class University {
 
     System.out.println();
   }
+
+  public void printAllSubordinates(String name) {
+    if (rectorat.getName().equals(name)) {
+      generalTraverse();
+      return;
+    }
+
+    if (isProExist(name)) {
+      Department department = getDepatment(name);
+
+      for (Department fac : facultyes) {
+        if (fac.getPerent() == department) {
+          System.out.println(fac);
+          printFacCafedras(fac);
+        }
+      }
+    }
+
+    if (isFacExist(name)) {
+      printFacCafedras(getDepatment(name));
+      return;
+    }
+
+    System.out.println("No subortinations");
+  }
+
+  private boolean isProExist(String name) {
+
+    for (Department pro : proRectorats) {
+      if (pro.getName().equals(name)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  private boolean isFacExist(String name) {
+
+    for (Department fac : facultyes) {
+      if (fac.getName().equals(name)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  private boolean isCafExist(String name) {
+
+    for (Department caf : cafedras) {
+      if (caf.getName().equals(name)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  private void printFacCafedras(Department fac) {
+
+    System.out.print("cafedra: ");
+
+    for (Department caf : cafedras) {
+      if (caf.getPerent() == fac) {
+        System.out.print(caf + "...");
+      }
+    }
+
+    System.out.println();
+  }
+
+  private Department getDepatment(String name) {
+    if (rectorat.getName().equals(name)) {
+      return rectorat;
+    }
+
+    if (isProExist(name)) {
+      for (Department pro : proRectorats) {
+        if (pro.getName().equals(name)) {
+          return pro;
+        }
+      }
+    }
+
+    if (isFacExist(name)) {
+      for (Department fac : facultyes) {
+        if (fac.getName().equals(name)) {
+          return fac;
+        }
+      }
+    }
+
+    if (isCafExist(name)) {
+      for (Department caf : cafedras) {
+        if (caf.getName().equals(name)) {
+          return caf;
+        }
+      }
+    }
+
+    return null;
+  }
 }
