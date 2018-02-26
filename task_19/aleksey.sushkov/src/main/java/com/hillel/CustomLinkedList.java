@@ -28,9 +28,9 @@ public class CustomLinkedList implements Iterable {
     if (first == null && first.next == null) {
       throw new NoSuchElementException("Element not found");
     }
-    int res = first.value;
+    Node curr = first;
     first = first.next;
-    return res;
+    return curr.value;
   }
 
   public int peek() {
@@ -97,12 +97,15 @@ public class CustomLinkedList implements Iterable {
     @Override
     public Object next() {
       int val = current.value;
+      if (current.next == null) {
+        throw new NoSuchElementException();
+      }
       current = current.next;
       return val;
     }
   }
 
-  private class Node {
+  private static class Node {
 
     int value;
     Node next;
