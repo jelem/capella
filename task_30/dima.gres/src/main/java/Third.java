@@ -1,6 +1,6 @@
-public class Second extends Printer implements Runnable {
+public class Third extends Printer implements Runnable {
 
-  public Second(int loops, long sleeps) {
+  public Third(int loops, long sleeps) {
     super(loops, sleeps);
   }
 
@@ -14,8 +14,8 @@ public class Second extends Printer implements Runnable {
 
         Thread.sleep(sleeps);
 
-        if (mask(i) == 2) {
-          System.out.println("\t#s " + (i + 1));
+        if (mask(i) == 0) {
+          System.out.println("\t\t#t " + (i + 1));
         }
 
       } catch (InterruptedException exc) {
