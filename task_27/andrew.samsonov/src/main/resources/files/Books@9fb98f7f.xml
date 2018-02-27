@@ -1,0 +1,14 @@
+<Books>
+	<Book>
+		<name>Old warriors</name>
+		<authorName>Sandro Kun Jr</authorName>
+		<available>true</available>
+		<price>324</price>
+	</Book>
+	<Book>
+		<name>New story</name>
+		<authorName>Olgerd Stunword</authorName>
+		<available>false</available>
+		<price>728</price>
+	</Book>
+</Books>

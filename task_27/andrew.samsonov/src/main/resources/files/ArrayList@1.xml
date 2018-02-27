@@ -1,0 +1,11 @@
+<ArrayLists>
+	<ArrayList>
+		<serialVersionUID>8683452581122892189</serialVersionUID>
+		<DEFAULT_CAPACITY>10</DEFAULT_CAPACITY>
+		<EMPTY_ELEMENTDATA>[Ljava.lang.Object;@677327b6</EMPTY_ELEMENTDATA>
+		<DEFAULTCAPACITY_EMPTY_ELEMENTDATA>[Ljava.lang.Object;@14ae5a5</DEFAULTCAPACITY_EMPTY_ELEMENTDATA>
+		<elementData>[Ljava.lang.Object;@7f31245a</elementData>
+		<size>2</size>
+		<MAX_ARRAY_SIZE>2147483639</MAX_ARRAY_SIZE>
+	</ArrayList>
+</ArrayLists>
