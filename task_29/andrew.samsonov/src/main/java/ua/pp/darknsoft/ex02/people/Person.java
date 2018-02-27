@@ -41,10 +41,10 @@ public class Person implements Comparable<Person> {
       return false;
     }
     Person person = (Person) obj;
-    return ipn == person.ipn &&
-        Objects.equals(firstName, person.firstName) &&
-        Objects.equals(lastName, person.lastName) &&
-        position == person.position;
+    return ipn == person.ipn
+        && Objects.equals(firstName, person.firstName)
+        && Objects.equals(lastName, person.lastName)
+        && position == person.position;
   }
 
   @Override

@@ -4,7 +4,7 @@ import ua.pp.darknsoft.ex02.people.Person;
 
 import java.util.Set;
 
-public class ProRectorate extends Department {
+public class ProRectorate extends Rectorate {
 
   public ProRectorate(String name) {
     super(name);

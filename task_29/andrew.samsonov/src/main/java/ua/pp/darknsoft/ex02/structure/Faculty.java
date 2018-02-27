@@ -4,7 +4,7 @@ import ua.pp.darknsoft.ex02.people.Person;
 
 import java.util.Set;
 
-public class Faculty extends Department {
+public class Faculty extends ProRectorate {
 
   public Faculty(String name) {
     super(name);
@@ -23,4 +23,5 @@ public class Faculty extends Department {
   void removeEmployee(Person person) {
 
   }
+
 }

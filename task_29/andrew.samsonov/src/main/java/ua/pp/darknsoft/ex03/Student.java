@@ -2,7 +2,7 @@ package ua.pp.darknsoft.ex03;
 
 import java.util.Objects;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student> {
 
   private String firstName;
   private String lastName;
@@ -35,9 +35,9 @@ public class Student implements Comparable<Student>{
       return false;
     }
     Student student = (Student) obj;
-    return age == student.age &&
-        Objects.equals(firstName, student.firstName) &&
-        Objects.equals(lastName, student.lastName);
+    return age == student.age
+        && Objects.equals(firstName, student.firstName)
+        && Objects.equals(lastName, student.lastName);
   }
 
   @Override
@@ -45,7 +45,6 @@ public class Student implements Comparable<Student>{
 
     return Objects.hash(firstName, lastName, age);
   }
-
 
 
   @Override
@@ -58,7 +57,7 @@ public class Student implements Comparable<Student>{
   }
 
   @Override
-  public int compareTo(Student o) {
-    return this.firstName.compareTo(o.firstName);
+  public int compareTo(Student student) {
+    return this.firstName.compareTo(student.firstName);
   }
 }

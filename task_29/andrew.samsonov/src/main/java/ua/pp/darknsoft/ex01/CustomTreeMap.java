@@ -105,7 +105,7 @@ public class CustomTreeMap {
     }
   }
 
-  private class Node {
+  private static class Node {
 
     private Integer key;
     private String value;

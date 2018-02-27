@@ -4,7 +4,7 @@ import ua.pp.darknsoft.ex02.people.Person;
 
 import java.util.Set;
 
-public class Chair extends Department {
+public class Chair extends Faculty {
 
   public Chair(String name) {
     super(name);

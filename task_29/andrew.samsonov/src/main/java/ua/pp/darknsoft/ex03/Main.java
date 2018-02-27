@@ -5,8 +5,10 @@ import java.util.TreeMap;
 
 public class Main {
 
+  private static Map<Student, Rating> treeMap = new TreeMap<>();
+
   public static void main(String[] args) {
-    Map<Student, Rating> treeMap = new TreeMap<>();
+
     Student student01 = new Student("Jimi", "Hendrix", 45);
     Student student02 = new Student("Eric", "Clapton", 34);
     Student student03 = new Student("Richards", "Keith", 72);
@@ -19,7 +21,7 @@ public class Main {
     treeMap.put(student04, Rating.FOUR);
     treeMap.put(student03, Rating.THREE);
 
-    treeMap.forEach((k, v) -> System.out.println("STUDENT: " + k + " RATING: " + v));
+    treeMap.forEach((key, value) -> System.out.println("STUDENT: " + key + " RATING: " + value));
   }
 
 }

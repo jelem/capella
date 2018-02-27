@@ -18,7 +18,7 @@ public abstract class Department implements Comparable<Department> {
 
   public Department(String name, Set<Person> employees) {
     this.name = name;
-    this.employees = this.employees;
+    this.employees = employees;
   }
 
   public Set<Person> getBosses() {
@@ -41,6 +41,10 @@ public abstract class Department implements Comparable<Department> {
     return subs;
   }
 
+  public String getName() {
+    return name;
+  }
+
   abstract void addEmployee(Person person);
 
   abstract void removeEmployee(Person person);
@@ -54,8 +58,8 @@ public abstract class Department implements Comparable<Department> {
       return false;
     }
     Department that = (Department) obj;
-    return Objects.equals(name, that.name) &&
-        Objects.equals(employees, that.employees);
+    return Objects.equals(name, that.name)
+        && Objects.equals(employees, that.employees);
   }
 
   @Override
@@ -67,4 +71,5 @@ public abstract class Department implements Comparable<Department> {
   public int compareTo(Department department) {
     return this.name.compareTo(department.name);
   }
+
 }
