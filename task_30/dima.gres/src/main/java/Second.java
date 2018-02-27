@@ -1,10 +1,8 @@
-public class First extends Printer implements  Runnable {
+public class Second extends Printer implements Runnable {
 
-  public First(int loops, long sleeps) {
+  public Second(int loops, long sleeps) {
     super(loops, sleeps);
   }
-
-
 
   @Override
   public void run() {
@@ -16,8 +14,8 @@ public class First extends Printer implements  Runnable {
 
         Thread.sleep(sleeps);
 
-        if (mask(i) == 1) {
-          System.out.println("#f " + (i + 1));
+        if (mask(i) == 2) {
+          System.out.println("/t#s " + (i + 1));
         }
 
       } catch (InterruptedException exc) {
