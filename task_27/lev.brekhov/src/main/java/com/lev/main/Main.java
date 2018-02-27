@@ -13,5 +13,4 @@ public class Main {
     ArrayList<Student> list = ReadFile.read(path);
     WriteFile.write(list, "E:\\Projects\\Capella\\capella\\task_27\\lev.brekhov\\src\\main\\java\\com\\lev\\files\\students_out.xml");
   }
-
 }
