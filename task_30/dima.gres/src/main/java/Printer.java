@@ -1,7 +1,7 @@
 public abstract class Printer {
 
-  public int mask(int i) {
-    return (i + 1) % 3;
+  public int mask(int itr) {
+    return (itr + 1) % 3;
   }
 
 }
