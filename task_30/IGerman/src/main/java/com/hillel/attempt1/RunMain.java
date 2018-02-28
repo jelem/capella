@@ -1,4 +1,4 @@
-package com.hillel;
+package com.hillel.attempt1;
 
 public class RunMain {
 
@@ -6,12 +6,12 @@ public class RunMain {
 
     Thread thread1 = new Thread(new RunOne());
     thread1.setName("RunOne");
-    // thread1.setPriority(10);
+
     thread1.start();
 
     Thread thread2 = new Thread(new RunTwo());
     thread2.setName("RunTwo");
-    //thread1.setPriority(5);
+
     thread2.start();
 
     try {

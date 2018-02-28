@@ -1,4 +1,4 @@
-package com.hillel;
+package com.hillel.attempt1;
 
 public class RunOne implements Runnable {
 
