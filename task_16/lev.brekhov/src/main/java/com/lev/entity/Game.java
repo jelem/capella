@@ -1,4 +1,4 @@
-package com.lev;
+package com.lev.entity;
 
 public class Game {
 

@@ -1,11 +1,16 @@
-package com.lev;
+package com.lev.main;
 
+import com.lev.AIs.AIEasy;
+import com.lev.AIs.AIHard;
+import com.lev.entity.Game;
+import com.lev.entity.Human;
+import com.lev.entity.Player;
 import java.util.Scanner;
 
 public class Main {
 
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in,"utf-8");
+    Scanner scanner = new Scanner(System.in, "utf-8");
     System.out.println("Choose the game from: easy, hard, human");
     String complexity = scanner.next();
 
@@ -26,7 +31,7 @@ public class Main {
         player2 = new AIHard("Siri", 'O');
         break;
       case "easy":
-        player2 = new AIEasy("Siri", 'O');
+        player2 = new AIEasy("Alena", 'O');
         break;
       default:
         player2 = new Human("Anton", 'O');

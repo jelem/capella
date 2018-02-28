@@ -1,4 +1,4 @@
-package com.lev;
+package com.lev.entity;
 
 public class Board {
 
@@ -29,14 +29,14 @@ public class Board {
   }
 
   public void print() {
-    System.out.println(
-        String.valueOf(field[0][0]) + '|' + String.valueOf(field[0][1]) + '|' + String.valueOf(field[0][2]));
+    System.out.println(String.valueOf(field[0][0]) + '|' + String.valueOf(field[0][1]) + '|'
+            + String.valueOf(field[0][2]));
     System.out.println("-+-+-");
-    System.out.println(
-        String.valueOf(field[1][0]) + '|' + String.valueOf(field[1][1]) + '|' + String.valueOf(field[1][2]));
+    System.out.println(String.valueOf(field[1][0]) + '|' + String.valueOf(field[1][1]) + '|'
+            + String.valueOf(field[1][2]));
     System.out.println("-+-+-");
-    System.out.println(
-        String.valueOf(field[2][0]) + '|' + String.valueOf(field[2][1]) + '|' + String.valueOf(field[2][2]));
+    System.out.println(String.valueOf(field[2][0]) + '|' + String.valueOf(field[2][1]) + '|'
+            + String.valueOf(field[2][2]));
   }
 
   public boolean isWin() {
