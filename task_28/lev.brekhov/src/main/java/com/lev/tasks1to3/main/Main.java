@@ -1,7 +1,7 @@
 package com.lev.tasks1to3.main;
 
-import com.lev.tasks1to3.Serialize.DeserializePerson;
-import com.lev.tasks1to3.Serialize.SerializePerson;
+import com.lev.tasks1to3.serialize.DeserializePerson;
+import com.lev.tasks1to3.serialize.SerializePerson;
 import com.lev.tasks1to3.entity.City;
 import com.lev.tasks1to3.entity.Country;
 import com.lev.tasks1to3.entity.Person;

@@ -1,16 +1,28 @@
 package com.lev.main;
 
 import com.lev.entity.Student;
-import com.lev.studentsIO.ReadFile;
-import com.lev.studentsIO.WriteFile;
+import com.lev.readandwrite.ReadFile;
+import com.lev.readandwrite.WriteFile;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class Main {
 
-  public static void main(String[] args) {
-    String path = "E:\\Projects\\Capella\\capella\\task_27\\lev.brekhov\\src\\main\\java\\com\\lev\\files\\students.txt";
+  public static void main(String[] args) throws IOException {
 
-    ArrayList<Student> list = ReadFile.read(path);
-    WriteFile.write(list, "E:\\Projects\\Capella\\capella\\task_27\\lev.brekhov\\src\\main\\java\\com\\lev\\files\\students_out.xml");
+    Properties properties = new Properties();
+    properties.load(Main.class.getClassLoader().getResourceAsStream("file.properties"));
+    File fin = new File(properties.getProperty("input"));
+    ArrayList<Student> list = ReadFile.read(fin);
+
+    for (Student student : list) {
+      System.out.println(student);
+    }
+
+    File fout = new File(properties.getProperty("output"));
+    WriteFile.write(list, fout);
   }
 }

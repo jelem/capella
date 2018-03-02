@@ -1,7 +1,8 @@
-package com.lev.AIs;
+package com.lev.ais;
 
 import com.lev.entity.Board;
 import com.lev.entity.Player;
+
 import java.util.Random;
 
 public class AIEasy extends Player {

@@ -5,7 +5,7 @@ public class Board {
   private char[][] field = new char[3][3];
 
   public char[][] getField() {
-    return field;
+    return this.field.clone();
   }
 
   public Board() {

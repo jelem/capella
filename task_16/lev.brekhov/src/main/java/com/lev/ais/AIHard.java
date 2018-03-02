@@ -1,7 +1,8 @@
-package com.lev.AIs;
+package com.lev.ais;
 
 import com.lev.entity.Board;
 import com.lev.entity.Player;
+
 import java.util.Random;
 
 public class AIHard extends Player {
@@ -125,7 +126,7 @@ public class AIHard extends Player {
   }
 
 
-  class Coordinates {
+  static class Coordinates {
 
     private int oxAxis;
     private int oyAxis;

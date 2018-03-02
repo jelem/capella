@@ -1,10 +1,11 @@
 package com.lev.main;
 
-import com.lev.AIs.AIEasy;
-import com.lev.AIs.AIHard;
+import com.lev.ais.AIEasy;
+import com.lev.ais.AIHard;
 import com.lev.entity.Game;
 import com.lev.entity.Human;
 import com.lev.entity.Player;
+
 import java.util.Scanner;
 
 public class Main {

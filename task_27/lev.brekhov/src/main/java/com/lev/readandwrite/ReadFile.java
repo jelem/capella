@@ -1,14 +1,17 @@
-package com.lev.studentsIO;
+package com.lev.readandwrite;
 
 import com.lev.entity.Student;
+
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class ReadFile {
 
-  public static ArrayList<Student> read(String path) {
+  public static ArrayList<Student> read(File file) {
 
     String firstname = null;
     String lastname = null;
@@ -16,7 +19,7 @@ public class ReadFile {
     Student student = new Student();
     ArrayList<Student> students = new ArrayList<>();
 
-    try (FileReader readFile = new FileReader(path);
+    try (InputStreamReader readFile = new InputStreamReader(new FileInputStream(file), "UTF8");
         BufferedReader bufferedReader = new BufferedReader(readFile)) {
 
       String line;

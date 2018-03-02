@@ -1,4 +1,4 @@
-package com.lev.tasks1to3.Serialize;
+package com.lev.tasks1to3.serialize;
 
 import com.lev.tasks1to3.entity.Person;
 import java.io.FileInputStream;
