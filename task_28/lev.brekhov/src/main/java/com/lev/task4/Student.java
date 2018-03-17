@@ -6,13 +6,16 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.io.Serializable;
 import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Properties;
 
 public class Student implements Externalizable, Serializable {
 
   private String name;
   private int age;
   private String password;
-  private String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  private static String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  public static final int serialVersionUID = -1;
 
   public Student(String name, int age, String password) {
     this.name = name;
@@ -27,13 +30,14 @@ public class Student implements Externalizable, Serializable {
   public void writeExternal(ObjectOutput out) throws IOException {
     out.writeObject(name);
     out.writeInt(age);
-    String encrypt = encryptPassword(password, 2);
+    String encrypt = encryptPassword(password);
     out.writeObject(encrypt);
   }
 
-  private String encryptPassword(String password, int key) {
+  public static String encryptPassword(String password) {
     String line = validPassword(password);
     StringBuilder encrypted = new StringBuilder();
+    int key = getKey();
 
     for (int i = 0; i < line.length(); i++) {
       int letter = alphabet.indexOf(line.charAt(i));
@@ -47,7 +51,7 @@ public class Student implements Externalizable, Serializable {
     return String.valueOf(encrypted);
   }
 
-  private String validPassword(String password) {
+  private static String validPassword(String password) {
     password = password.replaceAll("\n", "");
 
     for (int i = 0; i < password.length(); i++) {
@@ -63,12 +67,13 @@ public class Student implements Externalizable, Serializable {
     name = (String) in.readObject();
     age = in.readInt();
     String decrypt = (String) in.readObject();
-    password = decryptPassword(decrypt, 2);
+    password = decryptPassword(decrypt);
   }
 
-  private String decryptPassword(String code, int key) {
+  private String decryptPassword(String code) {
     code = validPassword(code);
     StringBuilder decrypted = new StringBuilder();
+    int key = getKey();
 
     for (int i = 0; i < code.length(); i++) {
       int letter = alphabet.indexOf(code.charAt(i));
@@ -82,12 +87,42 @@ public class Student implements Externalizable, Serializable {
     return String.valueOf(decrypted);
   }
 
+
+  private static int getKey() {
+    Properties properties = new Properties();
+    try {
+      properties.load(Student.class.getClassLoader().getResourceAsStream("cipher.properties"));
+      return Integer.parseInt(properties.getProperty("number"));
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+    return 0;
+  }
+
   @Override
   public String toString() {
-    return "Student{" +
-        "name='" + name + '\'' +
-        ", age=" + age +
-        ", password='" + password + '\'' +
-        '}';
+    return "Student{" + "name='"
+        + name + '\'' + ", age=" + age
+        + ", password='" + password + '\'' + "}";
+  }
+
+  @Override
+  public boolean equals(Object ob) {
+    if (this == ob) {
+      return true;
+    }
+    if (ob == null || getClass() != ob.getClass()) {
+      return false;
+    }
+    Student student = (Student) ob;
+    return age == student.age
+        && Objects.equals(name, student.name)
+        && Objects.equals(password, student.password);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(name, age, password);
   }
 }

@@ -23,8 +23,8 @@ public class City implements Serializable {
       return false;
     }
     City city = (City) obj;
-    return Objects.equals(name, city.name) &&
-        Objects.equals(country, city.country);
+    return Objects.equals(name, city.name)
+        && Objects.equals(country, city.country);
   }
 
   @Override

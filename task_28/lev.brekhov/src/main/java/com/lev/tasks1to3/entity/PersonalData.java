@@ -25,9 +25,9 @@ public class PersonalData implements Serializable {
       return false;
     }
     PersonalData that = (PersonalData) obj;
-    return age == that.age &&
-        Objects.equals(passport, that.passport) &&
-        Objects.equals(address, that.address);
+    return age == that.age
+        && Objects.equals(passport, that.passport)
+        && Objects.equals(address, that.address);
   }
 
   @Override

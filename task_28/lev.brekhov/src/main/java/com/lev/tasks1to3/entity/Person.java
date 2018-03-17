@@ -36,10 +36,10 @@ public class Person implements Cloneable, Serializable {
       return false;
     }
     Person person = (Person) obj;
-    return Objects.equals(firstname, person.firstname) &&
-        Objects.equals(lastname, person.lastname) &&
-        Objects.equals(city, person.city) &&
-        Objects.equals(personalData, person.personalData);
+    return Objects.equals(firstname, person.firstname)
+        && Objects.equals(lastname, person.lastname)
+        && Objects.equals(city, person.city)
+        && Objects.equals(personalData, person.personalData);
   }
 
   @Override
