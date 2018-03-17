@@ -3,7 +3,7 @@ package com.lev;
 public class RecursiveMethod {
 
   public static void main(String[] args) {
-    int result = sequenceRecursive(9);// РЕКРУСИВНЫЙ МЕТОДЕ  - ЭКСПОНЕНЦИАЛЬНЫЙ!!
+    int result = sequenceRecursive(9);// РЕКРУСИВНЫЙ МЕТОДЕ  - ЭКСПОНЕНЦИАЛЬНЫЙ
     System.out.println(result);
     int res = sequenceFor(9);// МЕТОД ЦИКЛА - ЛИНЕЙНЫЙ
     System.out.println(res);

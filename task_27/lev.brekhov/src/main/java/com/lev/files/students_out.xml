@@ -1,0 +1,22 @@
+<students>
+  <student>
+    <lastname>Lorem</lastname>
+    <firstname>Ipsum</firstname>
+    <age>30</age>
+  </student>
+  <student>
+    <lastname>Popov</lastname>
+    <firstname>Yuriy</firstname>
+    <age>43</age>
+  </student>
+  <student>
+    <lastname>Black</lastname>
+    <firstname>John</firstname>
+    <age>25</age>
+  </student>
+  <student>
+    <lastname>Dimov</lastname>
+    <firstname>Bob</firstname>
+    <age>56</age>
+  </student>
+</students>
